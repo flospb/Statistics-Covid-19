@@ -1,0 +1,6 @@
+framework module Pods_Statistics_Covid_19_Statistics_Covid_19UITests {
+  umbrella header "Pods-Statistics Covid-19-Statistics Covid-19UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

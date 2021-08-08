@@ -6,11 +6,24 @@
 //
 
 import Foundation
+import UIKit
 
 struct TabBarConstants {
-    static var statisticsTitle = "Статистика"
-    static var statisticsImage = "chart.pie.fill"
+    static let statisticsTitle = "Статистика"
+    static let statisticsImage = "chart.pie.fill"
     
-    static var informationTitle = "Информация"
-    static var informationImage = "info.circle.fill"
+    static let informationTitle = "Информация"
+    static let informationImage = "info.circle.fill"
+}
+
+struct InformationConstants {
+    static let informationTitle = "Информация"
+    static let symptomsTitle = "Симптомы"
+}
+
+struct TextFontConstants {
+    static let bigBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(36))
+    static let boldTitle = UIFont.boldSystemFont(ofSize: CGFloat(20))
+    static let boldText = UIFont.boldSystemFont(ofSize: CGFloat(18))
+    static let text = UIFont.systemFont(ofSize: CGFloat(18))
 }

@@ -14,7 +14,7 @@ protocol IAssemblyBuilder {
 
 class AssemblyBuilder: IAssemblyBuilder {
     
-    // MARK: Tab bar
+    // MARK: - Tab bar
     
     func makeRootTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
@@ -23,7 +23,7 @@ class AssemblyBuilder: IAssemblyBuilder {
         let statisticsViewController = makeStatisticsViewController(router: router)
         let statisticsNavViewController = makeStatisticsNavViewController(rootViewController: statisticsViewController)
         
-        let informationViewController = makeInformationViewController()
+        let informationViewController = makeInformationViewController(router: router)
         let informationNavViewController = makeInformationNavViewController(rootViewController: informationViewController)
 
         tabBarController.setViewControllers([statisticsNavViewController, informationNavViewController], animated: true)
@@ -34,7 +34,7 @@ class AssemblyBuilder: IAssemblyBuilder {
         return tabBarController
     }
     
-    // MARK: Statistics
+    // MARK: - Statistics
     
     private func makeStatisticsViewController(router: IMainRouter) -> UIViewController {
         let statisticsViewController = StatisticsViewController(router: router)
@@ -49,16 +49,17 @@ class AssemblyBuilder: IAssemblyBuilder {
         return statisticsNavViewController
     }
 
-    // MARK: Information
+    // MARK: - Information
     
-    private func makeInformationViewController() -> UIViewController {
-        let informationViewController = InformationViewController()
-        informationViewController.view.backgroundColor = .yellow // test
+    private func makeInformationViewController(router: IMainRouter) -> UIViewController {
+        let informationView = InformationView(frame: UIScreen.main.bounds)
+        let informationViewController = InformationViewController(router: router, view: informationView)
         return informationViewController
     }
     
     private func makeInformationNavViewController(rootViewController: UIViewController) -> UINavigationController {
         let informationNavViewController = UINavigationController(rootViewController: rootViewController)
+        informationNavViewController.isNavigationBarHidden = true
         informationNavViewController.tabBarItem.title = TabBarConstants.informationTitle
         informationNavViewController.tabBarItem.image = UIImage(systemName: TabBarConstants.informationImage)
         return informationNavViewController

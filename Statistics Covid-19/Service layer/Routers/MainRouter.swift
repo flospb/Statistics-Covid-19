@@ -19,7 +19,7 @@ final class MainRouter: IMainRouter {
     private weak var statisticsNavViewController: UINavigationController?
     private weak var informationNavViewController: UINavigationController?
     
-    // MARK: Initialization
+    // MARK: - Initialization
     
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController

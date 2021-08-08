@@ -17,6 +17,9 @@
 		B42BD69826BFDF03007969B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B42BD69626BFDF03007969B7 /* LaunchScreen.storyboard */; };
 		B42BD6A326BFDF04007969B7 /* Statistics_Covid_19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6A226BFDF04007969B7 /* Statistics_Covid_19Tests.swift */; };
 		B42BD6AE26BFDF04007969B7 /* Statistics_Covid_19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6AD26BFDF04007969B7 /* Statistics_Covid_19UITests.swift */; };
+		B42BD6C126BFF568007969B7 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6C026BFF568007969B7 /* AssemblyBuilder.swift */; };
+		B42BD6C326BFF6E5007969B7 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6C226BFF6E5007969B7 /* StatisticsViewController.swift */; };
+		B42BD6C626C00021007969B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6C526C00021007969B7 /* Constants.swift */; };
 		DC66CB7358C1622E1D193735 /* Pods_Statistics_Covid_19.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C120E39902EA31894F438E /* Pods_Statistics_Covid_19.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,9 @@
 		B42BD6A926BFDF04007969B7 /* Statistics Covid-19UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Statistics Covid-19UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B42BD6AD26BFDF04007969B7 /* Statistics_Covid_19UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics_Covid_19UITests.swift; sourceTree = "<group>"; };
 		B42BD6AF26BFDF04007969B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B42BD6C026BFF568007969B7 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
+		B42BD6C226BFF6E5007969B7 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		B42BD6C526C00021007969B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BDF675DD1DDBBA9F6055C9F9 /* Pods_Statistics_Covid_19Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Statistics_Covid_19Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D417A5FBDD5E225DC6F8C8D1 /* Pods-Statistics Covid-19-Statistics Covid-19UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Statistics Covid-19-Statistics Covid-19UITests.debug.xcconfig"; path = "Target Support Files/Pods-Statistics Covid-19-Statistics Covid-19UITests/Pods-Statistics Covid-19-Statistics Covid-19UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F252A9D5A2E7D73E7C7F29E6 /* Pods-Statistics Covid-19Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Statistics Covid-19Tests.release.xcconfig"; path = "Target Support Files/Pods-Statistics Covid-19Tests/Pods-Statistics Covid-19Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +147,8 @@
 			children = (
 				B42BD6BB26BFE3D7007969B7 /* Application layer */,
 				B42BD6BD26BFE4BC007969B7 /* Presentation layer */,
+				B42BD6BF26BFF531007969B7 /* Service layer */,
+				B42BD6C426BFFFBC007969B7 /* Core layer */,
 				B42BD69126BFDF02007969B7 /* Statistics_Covid_19.xcdatamodeld */,
 			);
 			path = "Statistics Covid-19";
@@ -188,8 +196,25 @@
 			isa = PBXGroup;
 			children = (
 				B42BD68C26BFDF02007969B7 /* ViewController.swift */,
+				B42BD6C226BFF6E5007969B7 /* StatisticsViewController.swift */,
 			);
 			path = "Presentation layer";
+			sourceTree = "<group>";
+		};
+		B42BD6BF26BFF531007969B7 /* Service layer */ = {
+			isa = PBXGroup;
+			children = (
+				B42BD6C026BFF568007969B7 /* AssemblyBuilder.swift */,
+			);
+			path = "Service layer";
+			sourceTree = "<group>";
+		};
+		B42BD6C426BFFFBC007969B7 /* Core layer */ = {
+			isa = PBXGroup;
+			children = (
+				B42BD6C526C00021007969B7 /* Constants.swift */,
+			);
+			path = "Core layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,7 +437,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B42BD69326BFDF02007969B7 /* Statistics_Covid_19.xcdatamodeld in Sources */,
+				B42BD6C126BFF568007969B7 /* AssemblyBuilder.swift in Sources */,
 				B42BD68D26BFDF02007969B7 /* ViewController.swift in Sources */,
+				B42BD6C626C00021007969B7 /* Constants.swift in Sources */,
+				B42BD6C326BFF6E5007969B7 /* StatisticsViewController.swift in Sources */,
 				B42BD68926BFDF02007969B7 /* AppDelegate.swift in Sources */,
 				B42BD68B26BFDF02007969B7 /* SceneDelegate.swift in Sources */,
 			);

@@ -17,24 +17,28 @@ class AssemblyBuilder: IAssemblyBuilder {
     // MARK: Tab bar
     
     func makeRootTabBarController() -> UITabBarController {
-        let statisticsViewController = makeStatisticsViewController()
+        let tabBarController = UITabBarController()
+        let router = MainRouter(tabBarController: tabBarController)
+
+        let statisticsViewController = makeStatisticsViewController(router: router)
         let statisticsNavViewController = makeStatisticsNavViewController(rootViewController: statisticsViewController)
         
         let informationViewController = makeInformationViewController()
         let informationNavViewController = makeInformationNavViewController(rootViewController: informationViewController)
-        
-        let tabBarController = UITabBarController()
+
         tabBarController.setViewControllers([statisticsNavViewController, informationNavViewController], animated: true)
+        
+        router.setNavigationControllers(statisticsNavigation: statisticsNavViewController,
+                                        informationNavigation: informationNavViewController)
         
         return tabBarController
     }
     
     // MARK: Statistics
     
-    private func makeStatisticsViewController() -> UIViewController {
-        let statisticsViewController = StatisticsViewController()
-        // test
-        statisticsViewController.view.backgroundColor = .cyan
+    private func makeStatisticsViewController(router: IMainRouter) -> UIViewController {
+        let statisticsViewController = StatisticsViewController(router: router)
+        statisticsViewController.view.backgroundColor = .cyan // test
         return statisticsViewController
     }
     
@@ -48,12 +52,10 @@ class AssemblyBuilder: IAssemblyBuilder {
     // MARK: Information
     
     private func makeInformationViewController() -> UIViewController {
-        let informationViewController = StatisticsViewController()
-        informationViewController.view.backgroundColor = .blue
+        let informationViewController = InformationViewController()
+        informationViewController.view.backgroundColor = .yellow // test
         return informationViewController
     }
-    
-    // MARK: Information
     
     private func makeInformationNavViewController(rootViewController: UIViewController) -> UINavigationController {
         let informationNavViewController = UINavigationController(rootViewController: rootViewController)

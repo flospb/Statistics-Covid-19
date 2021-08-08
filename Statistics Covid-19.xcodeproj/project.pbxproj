@@ -11,7 +11,6 @@
 		9FB770F3196CB3D3D38CCE62 /* Pods_Statistics_Covid_19Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF675DD1DDBBA9F6055C9F9 /* Pods_Statistics_Covid_19Tests.framework */; };
 		B42BD68926BFDF02007969B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD68826BFDF02007969B7 /* AppDelegate.swift */; };
 		B42BD68B26BFDF02007969B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD68A26BFDF02007969B7 /* SceneDelegate.swift */; };
-		B42BD68D26BFDF02007969B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD68C26BFDF02007969B7 /* ViewController.swift */; };
 		B42BD69326BFDF02007969B7 /* Statistics_Covid_19.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B42BD69126BFDF02007969B7 /* Statistics_Covid_19.xcdatamodeld */; };
 		B42BD69526BFDF03007969B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B42BD69426BFDF03007969B7 /* Assets.xcassets */; };
 		B42BD69826BFDF03007969B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B42BD69626BFDF03007969B7 /* LaunchScreen.storyboard */; };
@@ -52,7 +51,6 @@
 		B42BD68526BFDF02007969B7 /* Statistics Covid-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Statistics Covid-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B42BD68826BFDF02007969B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B42BD68A26BFDF02007969B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B42BD68C26BFDF02007969B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B42BD69226BFDF02007969B7 /* Statistics_Covid_19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Statistics_Covid_19.xcdatamodel; sourceTree = "<group>"; };
 		B42BD69426BFDF03007969B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B42BD69726BFDF03007969B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -199,9 +197,8 @@
 		B42BD6BD26BFE4BC007969B7 /* Presentation layer */ = {
 			isa = PBXGroup;
 			children = (
-				B42BD68C26BFDF02007969B7 /* ViewController.swift */,
-				B42BD6C226BFF6E5007969B7 /* StatisticsViewController.swift */,
-				B42BD6CB26C0091A007969B7 /* InformationViewController.swift */,
+				B42BD6CE26C012EE007969B7 /* Statistics */,
+				B42BD6CD26C012D5007969B7 /* Information */,
 			);
 			path = "Presentation layer";
 			sourceTree = "<group>";
@@ -237,6 +234,22 @@
 				B42BD6C926C00478007969B7 /* MainRouter.swift */,
 			);
 			path = Routers;
+			sourceTree = "<group>";
+		};
+		B42BD6CD26C012D5007969B7 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				B42BD6CB26C0091A007969B7 /* InformationViewController.swift */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		B42BD6CE26C012EE007969B7 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				B42BD6C226BFF6E5007969B7 /* StatisticsViewController.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,7 +474,6 @@
 				B42BD69326BFDF02007969B7 /* Statistics_Covid_19.xcdatamodeld in Sources */,
 				B42BD6CA26C00478007969B7 /* MainRouter.swift in Sources */,
 				B42BD6C126BFF568007969B7 /* AssemblyBuilder.swift in Sources */,
-				B42BD68D26BFDF02007969B7 /* ViewController.swift in Sources */,
 				B42BD6C626C00021007969B7 /* Constants.swift in Sources */,
 				B42BD6C326BFF6E5007969B7 /* StatisticsViewController.swift in Sources */,
 				B42BD68926BFDF02007969B7 /* AppDelegate.swift in Sources */,

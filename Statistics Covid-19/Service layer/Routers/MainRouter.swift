@@ -10,7 +10,7 @@ import UIKit
 
 protocol IMainRouter {
     var tabBarController: UITabBarController { get }
-    func openTestVC()
+    func openTestVC() // test
 }
 
 final class MainRouter: IMainRouter {

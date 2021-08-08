@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  InformationViewController.swift
 //  Statistics Covid-19
 //
 //  Created by Сергей Флоря on 08.08.2021.
@@ -7,11 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class InformationViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // test
-        self.view.backgroundColor = .yellow
+
+        // Do any additional setup after loading the view.
     }
+
 }

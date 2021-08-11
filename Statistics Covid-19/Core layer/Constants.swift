@@ -19,6 +19,7 @@ struct TabBarConstants {
 struct InformationConstants {
     static let informationTitle = "Информация"
     static let symptomsTitle = "Симптомы"
+    static let recommendations = "Рекомендации"
 }
 
 struct TextFontConstants {
@@ -26,4 +27,8 @@ struct TextFontConstants {
     static let boldTitle = UIFont.boldSystemFont(ofSize: CGFloat(20))
     static let boldText = UIFont.boldSystemFont(ofSize: CGFloat(18))
     static let text = UIFont.systemFont(ofSize: CGFloat(18))
+}
+
+struct CellNames {
+    static let informationCollectionCell = "CollectionCell"
 }

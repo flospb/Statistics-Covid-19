@@ -7,12 +7,15 @@
 
 import UIKit
 
-protocol IInformationViewController {
+protocol IInformationViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
 }
 
 class InformationViewController: UIViewController {
     private var router: IMainRouter
     private var informationView: IInformationView
+    
+    private var cellName = CellNames.informationCollectionCell
     
     // MARK: - Initialization
     
@@ -35,24 +38,19 @@ class InformationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        informationView.symptomsCollectionView.delegate = self
-        informationView.symptomsCollectionView.dataSource = self
-        informationView.symptomsCollectionView.register(InformationCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        informationView.setDelegateCollectionView()
     }
 }
 
-extension InformationViewController: IInformationViewController {}
-extension InformationViewController: UICollectionViewDelegate {}
+// MARK: - ICollectionViewController
 
-// MARK: - UICollectionViewDataSource
-
-extension InformationViewController: UICollectionViewDataSource {
+extension InformationViewController: IInformationViewController {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         5 // test
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? InformationCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName, for: indexPath) as? InformationCollectionViewCell else { return UICollectionViewCell() }
         cell.backgroundColor = .lightGray // test
         return cell
     }

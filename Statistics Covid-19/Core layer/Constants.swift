@@ -22,11 +22,16 @@ struct InformationConstants {
     static let recommendations = "Рекомендации"
 }
 
-struct TextFontConstants {
-    static let bigBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(36))
-    static let boldTitle = UIFont.boldSystemFont(ofSize: CGFloat(20))
-    static let boldText = UIFont.boldSystemFont(ofSize: CGFloat(18))
-    static let text = UIFont.systemFont(ofSize: CGFloat(18))
+struct InformationFontConstants {
+    static let largeBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(36))
+    static let mediumBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(20))
+    static let smallBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(16))
+    static let smallText = UIFont.systemFont(ofSize: CGFloat(14))
+}
+
+struct ColorsConstants {
+    static let recommendationBackground = UIColor(red: 0.992, green: 0.961, blue: 0.957, alpha: 1)
+    static let descriptionRecommendation = UIColor(red: 0.557, green: 0.553, blue: 0.573, alpha: 1)
 }
 
 struct CellNames {

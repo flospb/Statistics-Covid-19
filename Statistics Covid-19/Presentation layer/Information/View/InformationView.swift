@@ -21,7 +21,7 @@ class InformationView: UIView {
     
     private let symptomsViewTitle = UILabel()
     private let symptomsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    private let symptomsArray = SymptomsArray().symptomsArray
+    private let recommendations = RecommendationModel().recommendations
     
     private let recommendationsViewTitle = UILabel()
     private let recommendationsContainer = UIStackView()
@@ -42,7 +42,7 @@ class InformationView: UIView {
     // MARK: - Setting view
     
     private func settingView() {
-        self.backgroundColor = .yellow // test
+        self.backgroundColor = .systemBackground
         
         addScrollView()
         addContentView()
@@ -61,16 +61,16 @@ class InformationView: UIView {
         self.addSubview(scrollView)
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
-            scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0)
+            scrollView.topAnchor.constraint(equalTo: self.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
     }
     
     private func addContentView() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .systemBlue // test
+        contentView.backgroundColor = .systemBackground
         
         scrollView.addSubview(contentView)
         
@@ -90,8 +90,7 @@ class InformationView: UIView {
     private func addContentViewTitle() {
         contentViewTitle.translatesAutoresizingMaskIntoConstraints = false
         contentViewTitle.text = InformationConstants.informationTitle
-        contentViewTitle.font = TextFontConstants.bigBoldTitle
-        contentViewTitle.backgroundColor = .systemGray // test
+        contentViewTitle.font = InformationFontConstants.largeBoldTitle
         
         contentView.addSubview(contentViewTitle)
         
@@ -105,8 +104,7 @@ class InformationView: UIView {
     private func addSymptomsViewTitle() {
         symptomsViewTitle.translatesAutoresizingMaskIntoConstraints = false
         symptomsViewTitle.text = InformationConstants.symptomsTitle
-        symptomsViewTitle.font = TextFontConstants.boldTitle
-        symptomsViewTitle.backgroundColor = .systemGray // test
+        symptomsViewTitle.font = InformationFontConstants.mediumBoldTitle
         
         contentView.addSubview(symptomsViewTitle)
         
@@ -130,8 +128,8 @@ class InformationView: UIView {
         
         NSLayoutConstraint.activate([
             symptomsCollectionView.topAnchor.constraint(equalTo: symptomsViewTitle.bottomAnchor, constant: anchorСonstant),
-            symptomsCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: anchorСonstant),
-            symptomsCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -anchorСonstant),
+            symptomsCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            symptomsCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             symptomsCollectionView.heightAnchor.constraint(equalToConstant: 180)
         ])
     }
@@ -139,8 +137,7 @@ class InformationView: UIView {
     private func addRecommendationsViewTitle() {
         recommendationsViewTitle.translatesAutoresizingMaskIntoConstraints = false
         recommendationsViewTitle.text = InformationConstants.recommendations
-        recommendationsViewTitle.font = TextFontConstants.boldTitle
-        recommendationsViewTitle.backgroundColor = .systemGray // test
+        recommendationsViewTitle.font = InformationFontConstants.mediumBoldTitle
         
         contentView.addSubview(recommendationsViewTitle)
         
@@ -157,9 +154,9 @@ class InformationView: UIView {
         recommendationsContainer.spacing = 10.0
         recommendationsContainer.alignment = .fill
         
-        for item in symptomsArray {
-            let recommendationView = RecommendationView(frame: .zero, title: item.title, content: item.content, imageName: "")
-            recommendationsContainer.addArrangedSubview(recommendationView)
+        for item in recommendations {
+            let recommendation = RecommendationView(frame: .zero, title: item.title, content: item.content, imageName: item.imageAddress)
+            recommendationsContainer.addArrangedSubview(recommendation)
         }
         
         contentView.addSubview(recommendationsContainer)

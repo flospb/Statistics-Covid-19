@@ -29,8 +29,6 @@ class RecommendationView: UIView {
     // MARK: - Setting view
     
     private func settingView(title: String, content: String, imageName: String) {
-        self.backgroundColor = .white // test
-        
         addMainContentStackView()
         addImageView(imageName: imageName)
         addRightContentStackView(title: title, content: content)
@@ -40,49 +38,50 @@ class RecommendationView: UIView {
         mainContentStackView.translatesAutoresizingMaskIntoConstraints = false
         mainContentStackView.axis = .horizontal
         mainContentStackView.spacing = 10.0
-        mainContentStackView.backgroundColor = .systemOrange // test
+        mainContentStackView.backgroundColor = ColorsConstants.recommendationBackground
         mainContentStackView.alignment = .fill
+        mainContentStackView.layer.cornerRadius = 5
         
         self.addSubview(mainContentStackView)
         
         NSLayoutConstraint.activate([
-            mainContentStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            mainContentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            mainContentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
-            mainContentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
+            mainContentStackView.topAnchor.constraint(equalTo: self.topAnchor),
+            mainContentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            mainContentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            mainContentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     
     private func addImageView(imageName: String) {
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        // TODO change image name
-        imageView.image = UIImage(systemName: TabBarConstants.informationImage)
+        imageView.image = UIImage(named: imageName)
         imageView.contentMode = .scaleToFill
         
         self.addSubview(imageView)
         
         NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: 50),
-            imageView.heightAnchor.constraint(equalToConstant: 50),
+            imageView.widthAnchor.constraint(equalToConstant: 30),
+            imageView.heightAnchor.constraint(equalToConstant: 30),
             imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10)
         ])
     }
     
     private func addRightContentStackView(title: String, content: String) {
-        titleView.font = TextFontConstants.boldTitle
+        titleView.font = InformationFontConstants.mediumBoldTitle
         titleView.numberOfLines = 0
         titleView.text = title
+        titleView.font = InformationFontConstants.smallBoldTitle
         
-        descriptionView.font = TextFontConstants.boldTitle
+        descriptionView.font = InformationFontConstants.smallText
         descriptionView.numberOfLines = 0
         descriptionView.text = content
-
+        descriptionView.textColor = ColorsConstants.descriptionRecommendation
+        
         rightContentStackView.translatesAutoresizingMaskIntoConstraints = false
         rightContentStackView.axis = .vertical
         rightContentStackView.spacing = 5.0
         rightContentStackView.alignment = .fill
-        rightContentStackView.backgroundColor = .systemGray // test
         
         rightContentStackView.addArrangedSubview(titleView)
         rightContentStackView.addArrangedSubview(descriptionView)

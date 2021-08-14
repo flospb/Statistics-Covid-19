@@ -16,6 +16,7 @@ class InformationViewController: UIViewController {
     private var informationView: IInformationView
     
     private var cellName = CellNames.informationCollectionCell
+    private var symptomsCollection = SymptomModel().imageAddresses
     
     // MARK: - Initialization
     
@@ -46,13 +47,18 @@ class InformationViewController: UIViewController {
 
 extension InformationViewController: IInformationViewController {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5 // test
+        symptomsCollection.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName, for: indexPath) as? InformationCollectionViewCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .lightGray // test
+        let imageName = symptomsCollection[indexPath.row]
+        cell.configureCell(imageName: imageName)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
 }
 
@@ -60,7 +66,7 @@ extension InformationViewController: IInformationViewController {
 
 extension InformationViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize(width: CGFloat(146), height: CGFloat(180))
+        let size = CGSize(width: CGFloat(140), height: CGFloat(180))
         return size
     }
 }

@@ -68,15 +68,15 @@ class RecommendationView: UIView {
     }
     
     private func addRightContentStackView(title: String, content: String) {
-        titleView.font = InformationFontConstants.mediumBoldTitle
+        titleView.font = FontConstants.mediumBoldTitle
         titleView.numberOfLines = 0
         titleView.text = title
-        titleView.font = InformationFontConstants.smallBoldTitle
+        titleView.font = FontConstants.smallBoldTitle
         
-        descriptionView.font = InformationFontConstants.smallText
+        descriptionView.font = FontConstants.smallText
         descriptionView.numberOfLines = 0
         descriptionView.text = content
-        descriptionView.textColor = ColorsConstants.descriptionRecommendation
+        descriptionView.textColor = ColorsConstants.recommendationDescription
         
         rightContentStackView.translatesAutoresizingMaskIntoConstraints = false
         rightContentStackView.axis = .vertical

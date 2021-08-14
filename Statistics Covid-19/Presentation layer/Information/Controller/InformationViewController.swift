@@ -8,7 +8,7 @@
 import UIKit
 
 protocol IInformationViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
+    // TODO 
 }
 
 class InformationViewController: UIViewController {

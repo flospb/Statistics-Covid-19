@@ -90,7 +90,7 @@ class InformationView: UIView {
     private func addContentViewTitle() {
         contentViewTitle.translatesAutoresizingMaskIntoConstraints = false
         contentViewTitle.text = InformationConstants.informationTitle
-        contentViewTitle.font = InformationFontConstants.largeBoldTitle
+        contentViewTitle.font = FontConstants.largeBoldTitle
         
         contentView.addSubview(contentViewTitle)
         
@@ -104,7 +104,7 @@ class InformationView: UIView {
     private func addSymptomsViewTitle() {
         symptomsViewTitle.translatesAutoresizingMaskIntoConstraints = false
         symptomsViewTitle.text = InformationConstants.symptomsTitle
-        symptomsViewTitle.font = InformationFontConstants.mediumBoldTitle
+        symptomsViewTitle.font = FontConstants.mediumBoldTitle
         
         contentView.addSubview(symptomsViewTitle)
         
@@ -137,7 +137,7 @@ class InformationView: UIView {
     private func addRecommendationsViewTitle() {
         recommendationsViewTitle.translatesAutoresizingMaskIntoConstraints = false
         recommendationsViewTitle.text = InformationConstants.recommendations
-        recommendationsViewTitle.font = InformationFontConstants.mediumBoldTitle
+        recommendationsViewTitle.font = FontConstants.mediumBoldTitle
         
         contentView.addSubview(recommendationsViewTitle)
         

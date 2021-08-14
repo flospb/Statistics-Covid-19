@@ -37,8 +37,8 @@ class AssemblyBuilder: IAssemblyBuilder {
     // MARK: - Statistics
     
     private func makeStatisticsViewController(router: IMainRouter) -> UIViewController {
-        let statisticsViewController = StatisticsViewController(router: router)
-        statisticsViewController.view.backgroundColor = .cyan // test
+        let statisticsView = StatisticsView(frame: UIScreen.main.bounds)
+        let statisticsViewController = StatisticsViewController(router: router, view: statisticsView)
         return statisticsViewController
     }
     

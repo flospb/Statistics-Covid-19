@@ -7,13 +7,19 @@
 
 import UIKit
 
+protocol IStatisticsViewController {
+    // TODO
+}
+
 class StatisticsViewController: UIViewController {
     private var router: IMainRouter
-      
+    private var statisticsView: IStatisticsView
+    
     // MARK: - Initialization
     
-    init(router: IMainRouter) {
+    init(router: IMainRouter, view: IStatisticsView) {
         self.router = router
+        self.statisticsView = view
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -23,16 +29,27 @@ class StatisticsViewController: UIViewController {
     
     // MARK: - Lifecycle
     
+    override func loadView() {
+        self.view = statisticsView as? UIView
+        statisticsView.delegate = self
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // test
-        self.view.backgroundColor = .yellow
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     // test
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        router.openTestVC()
+        // router.openTestVC()
     }
 }
+
+// MARK: - IStatisticsViewController
+
+extension StatisticsViewController: IStatisticsViewController {}

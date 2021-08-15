@@ -29,6 +29,7 @@
 		B42BD6D226C02BB8007969B7 /* InformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6D126C02BB8007969B7 /* InformationCollectionViewCell.swift */; };
 		B498B4EE26C46FBF003409B7 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B498B4ED26C46FBF003409B7 /* RecommendationView.swift */; };
 		B4C27F2C26C1BF84005738F6 /* InformationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C27F2B26C1BF84005738F6 /* InformationModels.swift */; };
+		B4CB879126C93A8D00F68893 /* TotalCasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CB879026C93A8D00F68893 /* TotalCasesView.swift */; };
 		DC66CB7358C1622E1D193735 /* Pods_Statistics_Covid_19.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C120E39902EA31894F438E /* Pods_Statistics_Covid_19.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		B42BD6D126C02BB8007969B7 /* InformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCollectionViewCell.swift; sourceTree = "<group>"; };
 		B498B4ED26C46FBF003409B7 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
 		B4C27F2B26C1BF84005738F6 /* InformationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationModels.swift; sourceTree = "<group>"; };
+		B4CB879026C93A8D00F68893 /* TotalCasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCasesView.swift; sourceTree = "<group>"; };
 		BDF675DD1DDBBA9F6055C9F9 /* Pods_Statistics_Covid_19Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Statistics_Covid_19Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D417A5FBDD5E225DC6F8C8D1 /* Pods-Statistics Covid-19-Statistics Covid-19UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Statistics Covid-19-Statistics Covid-19UITests.debug.xcconfig"; path = "Target Support Files/Pods-Statistics Covid-19-Statistics Covid-19UITests/Pods-Statistics Covid-19-Statistics Covid-19UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F252A9D5A2E7D73E7C7F29E6 /* Pods-Statistics Covid-19Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Statistics Covid-19Tests.release.xcconfig"; path = "Target Support Files/Pods-Statistics Covid-19Tests/Pods-Statistics Covid-19Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				B42BD6C226BFF6E5007969B7 /* StatisticsViewController.swift */,
 				B423F3EA26C835860054C163 /* StatisticsView.swift */,
 				B423F3F326C864CC0054C163 /* NewCasesView.swift */,
+				B4CB879026C93A8D00F68893 /* TotalCasesView.swift */,
 				B423F3EC26C849E30054C163 /* CountryView.swift */,
 			);
 			path = Statistics;
@@ -542,6 +545,7 @@
 				B42BD68926BFDF02007969B7 /* AppDelegate.swift in Sources */,
 				B42BD6D026C013DF007969B7 /* InformationView.swift in Sources */,
 				B42BD68B26BFDF02007969B7 /* SceneDelegate.swift in Sources */,
+				B4CB879126C93A8D00F68893 /* TotalCasesView.swift in Sources */,
 				B42BD6CC26C0091A007969B7 /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

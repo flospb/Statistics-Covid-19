@@ -32,6 +32,7 @@ class NewCasesView: UIView {
         
         settingCasesTodayViewTitle()
         settingCasesTodayView()
+        settingCasesYesterdayView()
     }
 
     private func addContentStackView() {
@@ -56,15 +57,22 @@ class NewCasesView: UIView {
     
     private func settingCasesTodayViewTitle() {
         casesTodayViewTitle.translatesAutoresizingMaskIntoConstraints = false
-        casesTodayViewTitle.text = StatisticsConstants.casesTodayTitle
+        casesTodayViewTitle.text = StatisticsConstants.casesTodayTitle + " 15.07.2021" // test change
         casesTodayViewTitle.font = FontConstants.smallText
         
     }
     
     private func settingCasesTodayView() {
         casesTodayView.translatesAutoresizingMaskIntoConstraints = false
-        casesTodayView.text = "+ 22 144" // test
-        casesTodayView.font = FontConstants.newCases
-        casesTodayView.textColor = ColorsConstants.newCases
+        casesTodayView.text = "+ 22 144" // test change
+        casesTodayView.font = FontConstants.casesToday
+        casesTodayView.textColor = ColorsConstants.casesToday
+    }
+    
+    private func settingCasesYesterdayView() {
+        casesYesterdayView.translatesAutoresizingMaskIntoConstraints = false
+        casesYesterdayView.text = "+ 21 531 " + StatisticsConstants.casesYesterdayTitle // test change
+        casesYesterdayView.font = FontConstants.casesYesterday
+        casesYesterdayView.textColor = ColorsConstants.casesYesterday
     }
 }

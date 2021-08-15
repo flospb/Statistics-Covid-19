@@ -34,7 +34,10 @@ struct InformationConstants {
 }
 
 struct FontConstants {
-    static let newCases = UIFont.boldSystemFont(ofSize: CGFloat(46))
+    static let casesToday = UIFont.boldSystemFont(ofSize: CGFloat(46))
+    static let casesYesterday = UIFont.systemFont(ofSize: CGFloat(18))
+    static let totalCases = UIFont.systemFont(ofSize: CGFloat(36))
+    static let detailsCases = UIFont.systemFont(ofSize: CGFloat(16))
     
     static let largeBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(36))
     static let mediumBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(20))
@@ -44,7 +47,13 @@ struct FontConstants {
 }
 
 struct ColorsConstants {
-    static let newCases = UIColor(red: 0.969, green: 0.580, blue: 0.006, alpha: 1)
+    static let casesToday = UIColor(red: 0.969, green: 0.580, blue: 0.006, alpha: 1)
+    static let casesYesterday = UIColor(red: 0.546, green: 0.546, blue: 0.546, alpha: 1)
+    
+    static let recovered = UIColor(red: 0.350, green: 0.743, blue: 0.449, alpha: 1)
+    static let critical = UIColor(red: 0.835, green: 0.546, blue: 0.170, alpha: 1)
+    static let deaths = UIColor(red: 0.778, green: 0.222, blue: 0.245, alpha: 1)
+    
     static let recommendationBackground = UIColor(red: 0.992, green: 0.961, blue: 0.957, alpha: 1)
     static let recommendationDescription = UIColor(red: 0.557, green: 0.553, blue: 0.573, alpha: 1)
 }

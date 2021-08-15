@@ -18,6 +18,7 @@ class StatisticsView: UIView {
     private let countryView = CountryView(frame: .zero, country: CountryModel(code: "RU", name: "Россия"))
     
     private let newCasesView = NewCasesView(frame: .zero)
+    private let totalCasesView = TotalCasesView(frame: .zero)
 
     private let anchorСonstant = CGFloat(20)
     
@@ -44,6 +45,7 @@ class StatisticsView: UIView {
         addStatisticsViewTitle()
         addCountryView()
         addNewCasesView()
+        addTotalCasesView()
     }
     
     private func addStatisticsViewTitle() {
@@ -80,7 +82,7 @@ class StatisticsView: UIView {
     
     private func addNewCasesView() {
         newCasesView.translatesAutoresizingMaskIntoConstraints = false
-        newCasesView.backgroundColor = .cyan // test
+        newCasesView.backgroundColor = .yellow // test
     
         self.addSubview(newCasesView)
             
@@ -91,10 +93,23 @@ class StatisticsView: UIView {
         ])
     }
     
+    private func addTotalCasesView() {
+        totalCasesView.translatesAutoresizingMaskIntoConstraints = false
+        totalCasesView.backgroundColor = .green // test
+    
+        self.addSubview(totalCasesView)
+            
+        NSLayoutConstraint.activate([
+            totalCasesView.topAnchor.constraint(equalTo: newCasesView.bottomAnchor, constant: anchorСonstant),
+            totalCasesView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant),
+            totalCasesView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -anchorСonstant)
+        ])
+    }
+    
     // MARK: - Actions
     
     @objc func countryTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        print("Gusi")
+        print("Gusi") // test
     }
 }
 

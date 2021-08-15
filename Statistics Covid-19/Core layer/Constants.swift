@@ -25,6 +25,9 @@ struct StatisticsConstants {
     static let recoveredTitle = "Выздоровело"
     static let criticalTitle = "Болеет"
     static let deathsTitle = "Смертей"
+    
+    static let shareTitle = "Поделиться"
+    static let refreshTitle = "Обновить"
 }
 
 struct InformationConstants {
@@ -53,6 +56,9 @@ struct ColorsConstants {
     static let recovered = UIColor(red: 0.350, green: 0.743, blue: 0.449, alpha: 1)
     static let critical = UIColor(red: 0.835, green: 0.546, blue: 0.170, alpha: 1)
     static let deaths = UIColor(red: 0.778, green: 0.222, blue: 0.245, alpha: 1)
+    
+    static let shareBackground = UIColor(red: 0.952, green: 0.949, blue: 0.970, alpha: 1)
+    static let refreshBackground = UIColor(red: 0.188, green: 0.481, blue: 1, alpha: 1)
     
     static let recommendationBackground = UIColor(red: 0.992, green: 0.961, blue: 0.957, alpha: 1)
     static let recommendationDescription = UIColor(red: 0.557, green: 0.553, blue: 0.573, alpha: 1)

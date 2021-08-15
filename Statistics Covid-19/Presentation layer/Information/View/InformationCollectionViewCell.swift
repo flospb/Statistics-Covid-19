@@ -42,7 +42,7 @@ class InformationCollectionViewCell: UICollectionViewCell {
     func configureCell(imageName: String) {
         guard let image = UIImage(named: imageName) else { return }
         imageView.image = image
-        imageView.layer.cornerRadius = 5.0
+        imageView.layer.cornerRadius = 5
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleToFill
     }

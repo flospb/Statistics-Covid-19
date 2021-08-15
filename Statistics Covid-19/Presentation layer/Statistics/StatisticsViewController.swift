@@ -8,7 +8,9 @@
 import UIKit
 
 protocol IStatisticsViewController {
-    // TODO
+    func countryTapped()
+    func shareButtonTapped()
+    func refreshButtonTapped()
 }
 
 class StatisticsViewController: UIViewController {
@@ -52,4 +54,16 @@ class StatisticsViewController: UIViewController {
 
 // MARK: - IStatisticsViewController
 
-extension StatisticsViewController: IStatisticsViewController {}
+extension StatisticsViewController: IStatisticsViewController {
+    func countryTapped() {
+        print("Country tapped")
+    }
+    
+    func shareButtonTapped() {
+        print("Share tapped")
+    }
+    
+    func refreshButtonTapped() {
+        print("Refresh tapped")
+    }
+}

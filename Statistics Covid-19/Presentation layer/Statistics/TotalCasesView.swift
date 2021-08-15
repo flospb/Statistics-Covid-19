@@ -56,7 +56,7 @@ class TotalCasesView: UIView {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
 
         let subviews = [totalCasesViewTitle, totalCasesView, casesDetailsStackView]
-        configureStackView(stackView: contentStackView, axis: .vertical, spacing: 5.0, subviews: subviews, alignment: .fill)
+        configureStackView(stackView: contentStackView, axis: .vertical, spacing: 10.0, subviews: subviews, alignment: .fill)
         
         self.addSubview(contentStackView)
         
@@ -66,6 +66,14 @@ class TotalCasesView: UIView {
             contentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             contentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
+    }
+    
+    private func addCasesDetailsStackView() {
+        let subviews = [recoveredStackView, criticalStackView, deathsStackView]
+        configureStackView(stackView: casesDetailsStackView, axis: .horizontal, spacing: 5.0, subviews: subviews, alignment: .center)
+        casesDetailsStackView.distribution = .fillEqually
+        
+        contentStackView.addArrangedSubview(casesDetailsStackView)
     }
     
     private func settingCasesTodayViewTitle() {
@@ -117,14 +125,6 @@ class TotalCasesView: UIView {
         
         let subviews = [deathsViewTitle, deathsView]
         configureStackView(stackView: deathsStackView, axis: .vertical, spacing: 2.0, subviews: subviews, alignment: .center)
-    }
-    
-    private func addCasesDetailsStackView() {
-        let subviews = [recoveredStackView, criticalStackView, deathsStackView]
-        configureStackView(stackView: casesDetailsStackView, axis: .horizontal, spacing: 5.0, subviews: subviews, alignment: .center)
-        casesDetailsStackView.distribution = .fillEqually
-        
-        contentStackView.addArrangedSubview(casesDetailsStackView)
     }
     
     // MARK: - Helpers

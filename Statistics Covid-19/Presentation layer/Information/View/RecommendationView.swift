@@ -38,7 +38,7 @@ class RecommendationView: UIView {
         mainContentStackView.translatesAutoresizingMaskIntoConstraints = false
         mainContentStackView.axis = .horizontal
         mainContentStackView.spacing = 10.0
-        mainContentStackView.backgroundColor = ColorsConstants.recommendationBackground
+        mainContentStackView.backgroundColor = .systemGray6
         mainContentStackView.alignment = .fill
         mainContentStackView.layer.cornerRadius = 5
         

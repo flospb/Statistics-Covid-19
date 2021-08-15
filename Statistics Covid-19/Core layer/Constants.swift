@@ -60,7 +60,6 @@ struct ColorsConstants {
     static let shareBackground = UIColor(red: 0.952, green: 0.949, blue: 0.970, alpha: 1)
     static let refreshBackground = UIColor(red: 0.188, green: 0.481, blue: 1, alpha: 1)
     
-    static let recommendationBackground = UIColor(red: 0.992, green: 0.961, blue: 0.957, alpha: 1)
     static let recommendationDescription = UIColor(red: 0.557, green: 0.553, blue: 0.573, alpha: 1)
 }
 

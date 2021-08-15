@@ -122,7 +122,7 @@ class InformationView: UIView {
         
         symptomsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         symptomsCollectionView.collectionViewLayout = layout
-        symptomsCollectionView.backgroundColor = .white
+        symptomsCollectionView.backgroundColor = .systemBackground
 
         contentView.addSubview(symptomsCollectionView)
         

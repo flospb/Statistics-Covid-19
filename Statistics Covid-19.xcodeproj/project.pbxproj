@@ -278,22 +278,54 @@
 			isa = PBXGroup;
 			children = (
 				B423F3EE26C84A600054C163 /* Model */,
-				B42BD6C226BFF6E5007969B7 /* StatisticsViewController.swift */,
-				B423F3EA26C835860054C163 /* StatisticsView.swift */,
-				B4CB879226C96BC300F68893 /* CommandButtonView.swift */,
-				B423F3F326C864CC0054C163 /* NewCasesView.swift */,
-				B4CB879026C93A8D00F68893 /* TotalCasesView.swift */,
-				B423F3EC26C849E30054C163 /* CountryView.swift */,
+				B461A93826C999E500231FD7 /* View */,
+				B461A93926C999EE00231FD7 /* Controller */,
 			);
 			path = Statistics;
+			sourceTree = "<group>";
+		};
+		B461A93826C999E500231FD7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B423F3EA26C835860054C163 /* StatisticsView.swift */,
+				B461A93A26C999FF00231FD7 /* Subviews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B461A93926C999EE00231FD7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B42BD6C226BFF6E5007969B7 /* StatisticsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B461A93A26C999FF00231FD7 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				B423F3EC26C849E30054C163 /* CountryView.swift */,
+				B423F3F326C864CC0054C163 /* NewCasesView.swift */,
+				B4CB879026C93A8D00F68893 /* TotalCasesView.swift */,
+				B4CB879226C96BC300F68893 /* CommandButtonView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		B461A93B26C99A5200231FD7 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				B498B4ED26C46FBF003409B7 /* RecommendationView.swift */,
+				B42BD6D126C02BB8007969B7 /* InformationCollectionViewCell.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		B498B4EF26C46FE5003409B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B42BD6CF26C013DF007969B7 /* InformationView.swift */,
-				B42BD6D126C02BB8007969B7 /* InformationCollectionViewCell.swift */,
-				B498B4ED26C46FBF003409B7 /* RecommendationView.swift */,
+				B461A93B26C99A5200231FD7 /* Subviews */,
 			);
 			path = View;
 			sourceTree = "<group>";

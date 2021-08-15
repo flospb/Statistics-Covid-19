@@ -54,13 +54,9 @@ class TotalCasesView: UIView {
 
     private func addContentStackView() {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        contentStackView.axis = .vertical
-        contentStackView.spacing = 5.0
-        contentStackView.alignment = .fill
-    
-        contentStackView.addArrangedSubview(totalCasesViewTitle)
-        contentStackView.addArrangedSubview(totalCasesView)
-        contentStackView.addArrangedSubview(casesDetailsStackView)
+
+        let subviews = [totalCasesViewTitle, totalCasesView, casesDetailsStackView]
+        configureStackView(stackView: contentStackView, axis: .vertical, spacing: 5.0, subviews: subviews, alignment: .fill)
         
         self.addSubview(contentStackView)
         
@@ -76,7 +72,6 @@ class TotalCasesView: UIView {
         totalCasesViewTitle.translatesAutoresizingMaskIntoConstraints = false
         totalCasesViewTitle.text = StatisticsConstants.casesTotalTitle
         totalCasesViewTitle.font = FontConstants.smallText
-        
     }
     
     private func settingTotalCasesView() {
@@ -94,7 +89,8 @@ class TotalCasesView: UIView {
         recoveredView.font = FontConstants.detailsCases
         recoveredView.text = "5 884 316" // test
         
-        setupStackView(stackView: recoveredStackView, axis: .vertical, spacing: 2.0, arrangedSubviews: [recoveredViewTitle, recoveredView], alignment: .leading)
+        let subviews = [recoveredViewTitle, recoveredView]
+        configureStackView(stackView: recoveredStackView, axis: .vertical, spacing: 2.0, subviews: subviews, alignment: .center)
     }
     
     private func settingCriticalViews() {
@@ -106,7 +102,8 @@ class TotalCasesView: UIView {
         criticalView.font = FontConstants.detailsCases
         criticalView.text = "546 021" // test
         
-        setupStackView(stackView: criticalStackView, axis: .vertical, spacing: 2.0, arrangedSubviews: [criticalViewTitle, criticalView], alignment: .leading)
+        let subviews = [criticalViewTitle, criticalView]
+        configureStackView(stackView: criticalStackView, axis: .vertical, spacing: 2.0, subviews: subviews, alignment: .center)
     }
     
     private func settingDeathsViews() {
@@ -118,29 +115,26 @@ class TotalCasesView: UIView {
         deathsView.font = FontConstants.detailsCases
         deathsView.text = "170 499" // test
         
-        setupStackView(stackView: deathsStackView, axis: .vertical, spacing: 2.0, arrangedSubviews: [deathsViewTitle, deathsView], alignment: .leading)
+        let subviews = [deathsViewTitle, deathsView]
+        configureStackView(stackView: deathsStackView, axis: .vertical, spacing: 2.0, subviews: subviews, alignment: .center)
     }
     
     private func addCasesDetailsStackView() {
-        setupStackView(stackView: recoveredStackView, axis: .vertical, spacing: 2.0, arrangedSubviews: [recoveredViewTitle, recoveredView], alignment: .leading)
-
-        setupStackView(stackView: self.casesDetailsStackView,
-                            axis: .horizontal,
-                            spacing: 5.0,
-                            arrangedSubviews: [recoveredStackView, criticalStackView, deathsStackView], alignment: .center)
+        let subviews = [recoveredStackView, criticalStackView, deathsStackView]
+        configureStackView(stackView: casesDetailsStackView, axis: .horizontal, spacing: 5.0, subviews: subviews, alignment: .center)
+        casesDetailsStackView.distribution = .fillEqually
         
         contentStackView.addArrangedSubview(casesDetailsStackView)
     }
     
     // MARK: - Helpers
     
-    private func setupStackView(stackView: UIStackView, axis: NSLayoutConstraint.Axis, spacing: CGFloat, arrangedSubviews: [UIView], alignment: UIStackView.Alignment) {
+    private func configureStackView(stackView: UIStackView, axis: NSLayoutConstraint.Axis, spacing: CGFloat, subviews: [UIView], alignment: UIStackView.Alignment) {
         stackView.axis = axis
         stackView.spacing = spacing
-        stackView.alignment = .center
-        stackView.distribution = .fillEqually
+        stackView.alignment = alignment
         
-        for subview in arrangedSubviews {
+        for subview in subviews {
             stackView.addArrangedSubview(subview)
         }
     }

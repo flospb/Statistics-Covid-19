@@ -338,12 +338,36 @@
 		B451BBD326D13900008A3791 /* CountryList */ = {
 			isa = PBXGroup;
 			children = (
-				B451BBD126D138FB008A3791 /* CountryListViewController.swift */,
-				B451BBD426D139FB008A3791 /* CountryListView.swift */,
-				B451BBD626D140D2008A3791 /* CountryListModel.swift */,
-				B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */,
+				B451BBDC26D18FF4008A3791 /* Model */,
+				B451BBDB26D18FEF008A3791 /* View */,
+				B451BBDA26D18FE2008A3791 /* Controller */,
 			);
 			path = CountryList;
+			sourceTree = "<group>";
+		};
+		B451BBDA26D18FE2008A3791 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B451BBD126D138FB008A3791 /* CountryListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B451BBDB26D18FEF008A3791 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */,
+				B451BBD426D139FB008A3791 /* CountryListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B451BBDC26D18FF4008A3791 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B451BBD626D140D2008A3791 /* CountryListModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B461A93826C999E500231FD7 /* View */ = {

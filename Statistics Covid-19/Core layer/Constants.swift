@@ -40,8 +40,13 @@ struct InformationConstants {
     static let recommendations = "Рекомендации"
 }
 
+struct CountryListConstants {
+    static let selectedCountryImage = "checkmark"
+}
+
 struct CellNames {
     static let informationCollectionCell = "CollectionCell"
+    static let countryListTableCell = "TableCell"
 }
 
 struct AdressesAPIConstants {   // TODO Check
@@ -73,6 +78,7 @@ struct FontConstants {
     static let mediumBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(20))
     static let smallBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(16))
     
+    static let mediumText = UIFont.systemFont(ofSize: CGFloat(18))
     static let smallText = UIFont.systemFont(ofSize: CGFloat(14))
 }
 

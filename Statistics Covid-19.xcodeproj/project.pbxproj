@@ -15,7 +15,6 @@
 		B40CC20426D00CE800247152 /* Parsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20326D00CE800247152 /* Parsers.swift */; };
 		B40CC20626D01E6900247152 /* ServiceStatisticsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20526D01E6800247152 /* ServiceStatisticsModels.swift */; };
 		B40CC20B26D0437A00247152 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20A26D0437A00247152 /* UserDefaultsService.swift */; };
-		B40CC20D26D05F5600247152 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20C26D05F5500247152 /* TestViewController.swift */; };
 		B423F3EB26C835860054C163 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423F3EA26C835860054C163 /* StatisticsView.swift */; };
 		B423F3ED26C849E30054C163 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423F3EC26C849E30054C163 /* CountryView.swift */; };
 		B423F3F226C84A9F0054C163 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423F3F126C84A9F0054C163 /* StatisticsModel.swift */; };
@@ -34,6 +33,10 @@
 		B42BD6CC26C0091A007969B7 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6CB26C0091A007969B7 /* InformationViewController.swift */; };
 		B42BD6D026C013DF007969B7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6CF26C013DF007969B7 /* InformationView.swift */; };
 		B42BD6D226C02BB8007969B7 /* InformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6D126C02BB8007969B7 /* InformationCollectionViewCell.swift */; };
+		B451BBD226D138FB008A3791 /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451BBD126D138FB008A3791 /* CountryListViewController.swift */; };
+		B451BBD526D139FB008A3791 /* CountryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451BBD426D139FB008A3791 /* CountryListView.swift */; };
+		B451BBD726D140D2008A3791 /* CountryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451BBD626D140D2008A3791 /* CountryListModel.swift */; };
+		B451BBD926D161AB008A3791 /* CountryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */; };
 		B498B4EE26C46FBF003409B7 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B498B4ED26C46FBF003409B7 /* RecommendationView.swift */; };
 		B4C27F2C26C1BF84005738F6 /* InformationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C27F2B26C1BF84005738F6 /* InformationModels.swift */; };
 		B4CB879126C93A8D00F68893 /* TotalCasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CB879026C93A8D00F68893 /* TotalCasesView.swift */; };
@@ -71,7 +74,6 @@
 		B40CC20326D00CE800247152 /* Parsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsers.swift; sourceTree = "<group>"; };
 		B40CC20526D01E6800247152 /* ServiceStatisticsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStatisticsModels.swift; sourceTree = "<group>"; };
 		B40CC20A26D0437A00247152 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
-		B40CC20C26D05F5500247152 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		B423F3EA26C835860054C163 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		B423F3EC26C849E30054C163 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		B423F3F126C84A9F0054C163 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
@@ -96,6 +98,10 @@
 		B42BD6CB26C0091A007969B7 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		B42BD6CF26C013DF007969B7 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		B42BD6D126C02BB8007969B7 /* InformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCollectionViewCell.swift; sourceTree = "<group>"; };
+		B451BBD126D138FB008A3791 /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
+		B451BBD426D139FB008A3791 /* CountryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListView.swift; sourceTree = "<group>"; };
+		B451BBD626D140D2008A3791 /* CountryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListModel.swift; sourceTree = "<group>"; };
+		B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableViewCell.swift; sourceTree = "<group>"; };
 		B498B4ED26C46FBF003409B7 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
 		B4C27F2B26C1BF84005738F6 /* InformationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationModels.swift; sourceTree = "<group>"; };
 		B4CB879026C93A8D00F68893 /* TotalCasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCasesView.swift; sourceTree = "<group>"; };
@@ -268,6 +274,7 @@
 			children = (
 				B42BD6CE26C012EE007969B7 /* Statistics */,
 				B42BD6CD26C012D5007969B7 /* Information */,
+				B451BBD326D13900008A3791 /* CountryList */,
 			);
 			path = "Presentation layer";
 			sourceTree = "<group>";
@@ -328,6 +335,17 @@
 			path = Statistics;
 			sourceTree = "<group>";
 		};
+		B451BBD326D13900008A3791 /* CountryList */ = {
+			isa = PBXGroup;
+			children = (
+				B451BBD126D138FB008A3791 /* CountryListViewController.swift */,
+				B451BBD426D139FB008A3791 /* CountryListView.swift */,
+				B451BBD626D140D2008A3791 /* CountryListModel.swift */,
+				B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */,
+			);
+			path = CountryList;
+			sourceTree = "<group>";
+		};
 		B461A93826C999E500231FD7 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,7 +359,6 @@
 			isa = PBXGroup;
 			children = (
 				B42BD6C226BFF6E5007969B7 /* StatisticsViewController.swift */,
-				B40CC20C26D05F5500247152 /* TestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -612,21 +629,24 @@
 			files = (
 				B498B4EE26C46FBF003409B7 /* RecommendationView.swift in Sources */,
 				B423F3F426C864CC0054C163 /* NewCasesView.swift in Sources */,
+				B451BBD526D139FB008A3791 /* CountryListView.swift in Sources */,
 				B40CC20426D00CE800247152 /* Parsers.swift in Sources */,
 				B40CC20226D0067300247152 /* RequestSender.swift in Sources */,
 				B42BD69326BFDF02007969B7 /* Statistics_Covid_19.xcdatamodeld in Sources */,
+				B451BBD726D140D2008A3791 /* CountryListModel.swift in Sources */,
 				B42BD6CA26C00478007969B7 /* MainRouter.swift in Sources */,
 				B40CC20626D01E6900247152 /* ServiceStatisticsModels.swift in Sources */,
 				B4CB879326C96BC300F68893 /* CommandButtonView.swift in Sources */,
 				B42BD6C126BFF568007969B7 /* AssemblyBuilder.swift in Sources */,
 				B42BD6D226C02BB8007969B7 /* InformationCollectionViewCell.swift in Sources */,
-				B40CC20D26D05F5600247152 /* TestViewController.swift in Sources */,
+				B451BBD226D138FB008A3791 /* CountryListViewController.swift in Sources */,
 				B423F3ED26C849E30054C163 /* CountryView.swift in Sources */,
 				B423F3EB26C835860054C163 /* StatisticsView.swift in Sources */,
 				B40CC20B26D0437A00247152 /* UserDefaultsService.swift in Sources */,
 				B4C27F2C26C1BF84005738F6 /* InformationModels.swift in Sources */,
 				B423F3F226C84A9F0054C163 /* StatisticsModel.swift in Sources */,
 				B42BD6C626C00021007969B7 /* Constants.swift in Sources */,
+				B451BBD926D161AB008A3791 /* CountryListTableViewCell.swift in Sources */,
 				B42BD6C326BFF6E5007969B7 /* StatisticsViewController.swift in Sources */,
 				B42BD68926BFDF02007969B7 /* AppDelegate.swift in Sources */,
 				B42BD6D026C013DF007969B7 /* InformationView.swift in Sources */,

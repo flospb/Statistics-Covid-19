@@ -27,9 +27,9 @@ class InformationCollectionViewCell: UICollectionViewCell {
     private func settingView() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.axis = .horizontal
-        containerView.addArrangedSubview(self.imageView)
+        containerView.addArrangedSubview(imageView)
         
-        self.addSubview(self.containerView)
+        self.addSubview(containerView)
         
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: self.topAnchor),

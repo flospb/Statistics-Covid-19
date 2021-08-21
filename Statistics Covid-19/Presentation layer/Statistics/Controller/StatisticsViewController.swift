@@ -8,9 +8,6 @@
 import UIKit
 
 protocol IStatisticsViewController {
-    // test
-    var codeCurrentCountry: String? { get set }
-    
     func countryTapped()
     func shareButtonTapped()
     func refreshButtonTapped()
@@ -22,7 +19,11 @@ class StatisticsViewController: UIViewController {
     private var networkingService: INetworkingService
     private var userDefaultsService: IUserDefaultsService
     
-    var codeCurrentCountry: String? // not private for test
+    // test
+    private var countryList = [CountryModel]()
+    //
+    
+    private var codeCurrentCountry: String?
     
     // MARK: - Initialization
     
@@ -69,23 +70,30 @@ class StatisticsViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
+    
+    private func countrySelectionHandler(countryCode: String) {
+        self.codeCurrentCountry = countryCode
+        // TODO selected country
+        loadData()
+    }
 }
 
 // MARK: - IStatisticsViewController
 
 extension StatisticsViewController: IStatisticsViewController {
     func countryTapped() {
-        // TODO Open new VC
-        loadData()
+        let countryListViewController = AssemblyBuilder().makeCountryListViewController(router: router, countryList: countryList)
+        countryListViewController.delegateHandler = countrySelectionHandler
+        router.openCountryListViewController(controller: countryListViewController)
     }
     
     func shareButtonTapped() {
         print("Share tapped")
-        router.openTestVC(VC: self)
     }
     
     func refreshButtonTapped() {
-        loadData()
+        loadCountries()
+        // loadData()
     }
     
     // MARK: - Loading data
@@ -104,10 +112,12 @@ extension StatisticsViewController: IStatisticsViewController {
         networkingService.fetchCountriesList { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success:
+            case .success(let countriesList):
                 self.userDefaultsService.saveObject(object: DefaultCountryConstants.countryCode, for: DefaultCountryConstants.valueKey)
                 self.loadStatisticsByCountry(countryCode: DefaultCountryConstants.countryCode)
                 self.loadCountryImage(countryCode: DefaultCountryConstants.countryCode, countryImageName: AdressesAPIConstants.countryImageName)
+                
+                self.saveCountryList(countries: countriesList.data)
             case .failure(let error):
                 self.showAlert(for: error)
             }
@@ -146,6 +156,16 @@ extension StatisticsViewController: IStatisticsViewController {
             DispatchQueue.main.async {
                 self.statisticsView.fillCountryData(country: nil, image: image)
             }
+        }
+    }
+    
+    // MARK: - Save data (test)
+    
+    private func saveCountryList(countries: [CountryDescription]) {
+        for country in countries {
+            let countrySelected = country.code == codeCurrentCountry
+            let newCountry = CountryModel(name: country.name, code: country.code, selected: countrySelected)
+            countryList.append(newCountry)
         }
     }
 }

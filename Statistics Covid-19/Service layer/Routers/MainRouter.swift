@@ -10,7 +10,8 @@ import UIKit
 
 protocol IMainRouter {
     var tabBarController: UITabBarController { get }
-    func openTestVC(VC: IStatisticsViewController) // test
+    func openCountryListViewController(controller: ICountryListViewController)
+    func closeCountryListViewController()
 }
 
 final class MainRouter: IMainRouter {
@@ -30,10 +31,12 @@ final class MainRouter: IMainRouter {
         informationNavViewController = informationNavigation
     }
     
-    // test
-    func openTestVC(VC: IStatisticsViewController) {
-        let testVC = TestViewController()
-        testVC.delegate = VC
-        statisticsNavViewController?.pushViewController(testVC, animated: true)
+    func openCountryListViewController(controller: ICountryListViewController) {
+        guard let viewController = controller as? UIViewController else { return }
+        statisticsNavViewController?.present(viewController, animated: true, completion: nil)
+    }
+    
+    func closeCountryListViewController() {
+        statisticsNavViewController?.dismiss(animated: true, completion: nil)
     }
 }

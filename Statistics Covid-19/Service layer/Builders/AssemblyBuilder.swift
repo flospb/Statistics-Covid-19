@@ -10,6 +10,7 @@ import UIKit
 
 protocol IAssemblyBuilder {
     func makeRootTabBarController() -> UITabBarController
+    func makeCountryListViewController(router: IMainRouter, countryList: [CountryModel]) -> ICountryListViewController
 }
 
 class AssemblyBuilder: IAssemblyBuilder {
@@ -67,5 +68,13 @@ class AssemblyBuilder: IAssemblyBuilder {
         informationNavViewController.tabBarItem.title = TabBarConstants.informationTitle
         informationNavViewController.tabBarItem.image = UIImage(systemName: TabBarConstants.informationImage)
         return informationNavViewController
+    }
+    
+    // MARK: - Country list
+    
+    func makeCountryListViewController(router: IMainRouter, countryList: [CountryModel]) -> ICountryListViewController {
+        let countryListView = CountryListView(frame: UIScreen.main.bounds)
+        let countryListViewController = CountryListViewController(router: router, view: countryListView, countryList: countryList)
+        return countryListViewController
     }
 }

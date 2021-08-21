@@ -6,8 +6,3 @@
 //
 
 import UIKit
-
-struct CountryModel {
-    let name: String
-    let image: UIImage
-}

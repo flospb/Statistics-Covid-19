@@ -356,8 +356,8 @@
 		B451BBDB26D18FEF008A3791 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */,
 				B451BBD426D139FB008A3791 /* CountryListView.swift */,
+				B451BBDD26D19112008A3791 /* Subviews */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +368,14 @@
 				B451BBD626D140D2008A3791 /* CountryListModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B451BBDD26D19112008A3791 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		B461A93826C999E500231FD7 /* View */ = {

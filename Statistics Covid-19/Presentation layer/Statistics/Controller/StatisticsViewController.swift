@@ -162,6 +162,8 @@ extension StatisticsViewController: IStatisticsViewController {
     // MARK: - Save data (test)
     
     private func saveCountryList(countries: [CountryDescription]) {
+        countryList.removeAll()
+        
         for country in countries {
             let countrySelected = country.code == codeCurrentCountry
             let newCountry = CountryModel(name: country.name, code: country.code, selected: countrySelected)

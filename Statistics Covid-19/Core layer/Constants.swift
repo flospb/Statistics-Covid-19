@@ -32,6 +32,8 @@ struct StatisticsConstants {
     static let refreshTitle = "Обновить"
     
     static let defaultCountryCode = "RU"
+    
+    static let listOpeningImage = "arrowtriangle.down.fill"
 }
 
 struct InformationConstants {
@@ -85,6 +87,8 @@ struct FontConstants {
 // MARK: - Colors constants
 
 struct ColorsConstants {
+    static let flagImageBorder = UIColor(red: 0.949, green: 0.949, blue: 0.952, alpha: 1)
+    
     static let casesToday = UIColor(red: 0.969, green: 0.580, blue: 0.006, alpha: 1)
     static let casesYesterday = UIColor(red: 0.546, green: 0.546, blue: 0.546, alpha: 1)
     

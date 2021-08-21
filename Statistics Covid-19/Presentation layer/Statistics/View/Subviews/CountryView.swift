@@ -62,30 +62,32 @@ class CountryView: UIView {
     
     private func settingCountryImage() {
         countryImage.translatesAutoresizingMaskIntoConstraints = false
-        countryImage.image = UIImage(systemName: "flag.fill")
-        countryImage.layer.borderWidth = 1 // TODO change
-        // TODO border color
-        countryImage.layer.cornerRadius = 15.0
+        countryImage.layer.borderWidth = 1.5
+        countryImage.layer.borderColor = ColorsConstants.flagImageBorder.cgColor
+        countryImage.layer.cornerRadius = 20.0
         countryImage.layer.masksToBounds = true
         countryImage.contentMode = .scaleAspectFill
+        countryImage.clipsToBounds = true
         
         NSLayoutConstraint.activate([
-            countryImage.heightAnchor.constraint(equalToConstant: 30),
-            countryImage.widthAnchor.constraint(equalToConstant: 30)
+            countryImage.heightAnchor.constraint(equalToConstant: 40),
+            countryImage.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
     
     private func settingCountryName() {
-        countryName.text = "Россия" // test
+        countryName.text = "-"
         countryName.font = FontConstants.mediumBoldTitle
     }
     
     private func settingListOpeningImage() {
         listOpeningImage.translatesAutoresizingMaskIntoConstraints = false
-        listOpeningImage.image = UIImage(systemName: "arrowtriangle.down.fill")
+        listOpeningImage.image = UIImage(systemName: StatisticsConstants.listOpeningImage)
         listOpeningImage.contentMode = .scaleAspectFit
     }
 }
+
+// MARK: - ICountryView
 
 extension CountryView: ICountryView {
     

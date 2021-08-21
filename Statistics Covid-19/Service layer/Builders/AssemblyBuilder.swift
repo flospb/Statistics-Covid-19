@@ -38,7 +38,11 @@ class AssemblyBuilder: IAssemblyBuilder {
     
     private func makeStatisticsViewController(router: IMainRouter) -> UIViewController {
         let statisticsView = StatisticsView(frame: UIScreen.main.bounds)
-        let statisticsViewController = StatisticsViewController(router: router, view: statisticsView)
+        
+        let requestSender = RequestSender()
+        let networkingService = NetworkingService(requestSender: requestSender)
+        
+        let statisticsViewController = StatisticsViewController(router: router, view: statisticsView, networkingService: networkingService)
         return statisticsViewController
     }
     

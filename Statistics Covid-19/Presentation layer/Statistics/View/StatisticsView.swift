@@ -9,13 +9,14 @@ import UIKit
 
 protocol IStatisticsView {
     var delegate: IStatisticsViewController? { get set }
+    func fillCountryData(country: String?, image: UIImage?)
 }
 
 class StatisticsView: UIView {
     var delegate: IStatisticsViewController?
     
     private let statisticsViewTitle = UILabel()
-    private let countryView = CountryView(frame: .zero, country: CountryModel(code: "RU", name: "Россия")) // test change
+    private let countryView: ICountryView = CountryView(frame: .zero)
     
     private let newCasesView = NewCasesView(frame: .zero)
     private let totalCasesView = TotalCasesView(frame: .zero)
@@ -164,4 +165,14 @@ class StatisticsView: UIView {
 
 // MARK: - IStatisticsView
 
-extension StatisticsView: IStatisticsView {} // TODO
+extension StatisticsView: IStatisticsView {
+    func fillCountryData(country: String?, image: UIImage?) {
+        if let countryName = country {
+            countryView.fillCountryName(country: countryName)
+        }
+        
+        if let countryImage = image {
+            countryView.fillCountryImage(image: countryImage)
+        }
+    }
+}

@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// MARK: - Text constants
+
 struct TabBarConstants {
     static let statisticsTitle = "Статистика"
     static let statisticsImage = "chart.pie.fill"
@@ -28,6 +30,8 @@ struct StatisticsConstants {
     
     static let shareTitle = "Поделиться"
     static let refreshTitle = "Обновить"
+    
+    static let defaultCountryCode = "RU"
 }
 
 struct InformationConstants {
@@ -35,6 +39,29 @@ struct InformationConstants {
     static let symptomsTitle = "Симптомы"
     static let recommendations = "Рекомендации"
 }
+
+struct CellNames {
+    static let informationCollectionCell = "CollectionCell"
+}
+
+struct AdressesAPIConstants {   // TODO Check
+    static let statisticsByCountry = "https://corona-api.com/countries/"
+    static let countryList = "https://corona-api.com/countries"
+    static let countryImage = "https://www.countryflags.io/"
+    static let countryImageName = "/shiny/64.png"
+}
+
+struct AlertConstants {
+    static let alertTitle = "Внимание!"
+    static let alertActionOk = "Хорошо"
+}
+
+struct DefaultCountryConstants {
+    static let countryCode = "RU"
+    static let valueKey = "codeCountry"
+}
+
+// MARK: - Fonts constants
 
 struct FontConstants {
     static let casesToday = UIFont.boldSystemFont(ofSize: CGFloat(46))
@@ -49,6 +76,8 @@ struct FontConstants {
     static let smallText = UIFont.systemFont(ofSize: CGFloat(14))
 }
 
+// MARK: - Colors constants
+
 struct ColorsConstants {
     static let casesToday = UIColor(red: 0.969, green: 0.580, blue: 0.006, alpha: 1)
     static let casesYesterday = UIColor(red: 0.546, green: 0.546, blue: 0.546, alpha: 1)
@@ -61,8 +90,4 @@ struct ColorsConstants {
     static let refreshBackground = UIColor(red: 0.188, green: 0.481, blue: 1, alpha: 1)
     
     static let recommendationDescription = UIColor(red: 0.557, green: 0.553, blue: 0.573, alpha: 1)
-}
-
-struct CellNames {
-    static let informationCollectionCell = "CollectionCell"
 }

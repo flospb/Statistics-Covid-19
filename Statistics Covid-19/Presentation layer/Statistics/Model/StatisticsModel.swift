@@ -5,10 +5,9 @@
 //  Created by Сергей Флоря on 14.08.2021.
 //
 
-import Foundation
+import UIKit
 
 struct CountryModel {
-    var code: String
-    var name: String
-    // TODO image address
+    let name: String
+    let image: UIImage
 }

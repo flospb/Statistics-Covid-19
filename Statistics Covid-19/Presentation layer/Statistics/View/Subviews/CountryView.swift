@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol ICountryView: UIView { // check
+    func fillCountryName(country: String)
+    func fillCountryImage(image: UIImage)
+}
+
 class CountryView: UIView {
     private let contentStackView = UIStackView()
     
@@ -16,7 +21,7 @@ class CountryView: UIView {
     
     // MARK: - Initialization
     
-    init(frame: CGRect, country: CountryModel) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         settingView()
     }
@@ -62,7 +67,7 @@ class CountryView: UIView {
         // TODO border color
         countryImage.layer.cornerRadius = 15.0
         countryImage.layer.masksToBounds = true
-        countryImage.contentMode = .scaleToFill
+        countryImage.contentMode = .scaleAspectFill
         
         NSLayoutConstraint.activate([
             countryImage.heightAnchor.constraint(equalToConstant: 30),
@@ -79,5 +84,18 @@ class CountryView: UIView {
         listOpeningImage.translatesAutoresizingMaskIntoConstraints = false
         listOpeningImage.image = UIImage(systemName: "arrowtriangle.down.fill")
         listOpeningImage.contentMode = .scaleAspectFit
+    }
+}
+
+extension CountryView: ICountryView {
+    
+    // MARK: - Filling data
+    
+    func fillCountryName(country: String) {
+        countryName.text = country
+    }
+    
+    func fillCountryImage(image: UIImage) {
+        countryImage.image = image
     }
 }

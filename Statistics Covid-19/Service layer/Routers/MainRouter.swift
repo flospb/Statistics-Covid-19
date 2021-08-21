@@ -10,7 +10,7 @@ import UIKit
 
 protocol IMainRouter {
     var tabBarController: UITabBarController { get }
-    func openTestVC() // test
+    func openTestVC(VC: IStatisticsViewController) // test
 }
 
 final class MainRouter: IMainRouter {
@@ -31,9 +31,9 @@ final class MainRouter: IMainRouter {
     }
     
     // test
-    func openTestVC() {
-        let testVC = UIViewController()
-        testVC.view.backgroundColor = .blue
+    func openTestVC(VC: IStatisticsViewController) {
+        let testVC = TestViewController()
+        testVC.delegate = VC
         statisticsNavViewController?.pushViewController(testVC, animated: true)
     }
 }

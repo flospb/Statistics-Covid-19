@@ -75,7 +75,7 @@ class StatisticsViewController: UIViewController {
         switch result {
         case .success(let countryStatistics):
             DispatchQueue.main.async {
-                self.statisticsView.fillCountryData(countryStatistics: countryStatistics)
+                self.statisticsView.fillCountryData(countryStatistics: countryStatistics, dataFormatter: DataFormatter())
             }
         case .failure(let error):
             self.showAlert(for: error)

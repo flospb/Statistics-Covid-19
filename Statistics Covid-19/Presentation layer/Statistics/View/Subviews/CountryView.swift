@@ -7,9 +7,8 @@
 
 import UIKit
 
-protocol ICountryView: UIView { // check
-    func fillCountryName(country: String)
-    func fillCountryImage(image: UIImage)
+protocol ICountryView: UIView {
+    func fillCountryData(country: String, image: UIImage?)
 }
 
 class CountryView: UIView {
@@ -93,11 +92,8 @@ extension CountryView: ICountryView {
     
     // MARK: - Filling data
     
-    func fillCountryName(country: String) {
+    func fillCountryData(country: String, image: UIImage?) {
         countryName.text = country
-    }
-    
-    func fillCountryImage(image: UIImage) {
         countryImage.image = image
     }
 }

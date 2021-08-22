@@ -33,6 +33,8 @@ struct StatisticsConstants {
     
     static let defaultCountryCode = "RU"
     static let listOpeningImage = "arrowtriangle.down.fill"
+    
+    static let defaultCasesValue = "0"
 }
 
 struct InformationConstants {

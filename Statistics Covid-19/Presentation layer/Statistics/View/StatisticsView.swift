@@ -9,7 +9,7 @@ import UIKit
 
 protocol IStatisticsView {
     var delegate: IStatisticsViewController? { get set }
-    func fillCountryData(countryStatistics: CountryStatisticsModel)
+    func fillCountryData(countryStatistics: CountryStatisticsModel, dataFormatter: DataFormatter)
 }
 
 class StatisticsView: UIView {
@@ -18,8 +18,8 @@ class StatisticsView: UIView {
     private let statisticsViewTitle = UILabel()
     private let countryView: ICountryView = CountryView(frame: .zero)
     
-    private let newCasesView = NewCasesView(frame: .zero)
-    private let totalCasesView = TotalCasesView(frame: .zero)
+    private let newCasesView: INewCasesView = NewCasesView(frame: .zero)
+    private let totalCasesView: ITotalCasesView = TotalCasesView(frame: .zero)
 
     private let anchorСonstant = CGFloat(20)
     private let doubleAnchorСonstant = CGFloat(40)
@@ -165,23 +165,20 @@ class StatisticsView: UIView {
 // MARK: - IStatisticsView
 
 extension StatisticsView: IStatisticsView {
-    func fillCountryData(countryStatistics: CountryStatisticsModel) {
-        countryView.fillCountryName(country: countryStatistics.country.name)
-        if let countryImage = countryStatistics.country.image {
-            countryView.fillCountryImage(image: countryImage)
-        }
-        print(countryStatistics)
+    func fillCountryData(countryStatistics: CountryStatisticsModel, dataFormatter: DataFormatter) {
+        countryView.fillCountryData(country: countryStatistics.country.name, image: countryStatistics.country.image)
+        
+        newCasesView.fillNewCasesData(updateDate: countryStatistics.updateDate,
+                                      confirmedToday: countryStatistics.confirmedToday,
+                                      confirmedYesterday: countryStatistics.confirmedYesterday,
+                                      dataFormatter: dataFormatter)
+        
+        totalCasesView.fillTotalCasesData(total: countryStatistics.totalConfirmed,
+                                          recovered: countryStatistics.totalRecovered,
+                                          critical: countryStatistics.totalCritical,
+                                          deaths: countryStatistics.totalDeaths,
+                                          dataFormatter: dataFormatter)
     }
-    
-//    func fillCountryData(country: String?, image: UIImage?) {
-//        if let countryName = country {
-//            countryView.fillCountryName(country: countryName)
-//        }
-//
-//        if let countryImage = image {
-//            countryView.fillCountryImage(image: countryImage)
-//        }
-//    }
 }
 
 /* TODO refactor and use

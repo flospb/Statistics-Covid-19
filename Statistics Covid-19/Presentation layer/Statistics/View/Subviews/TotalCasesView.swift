@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ITotalCasesView: UIView {
+    func fillTotalCasesData(total: Int, recovered: Int, critical: Int, deaths: Int, dataFormatter: DataFormatter)
+}
+
 class TotalCasesView: UIView {
     private let contentStackView = UIStackView()
     
@@ -26,6 +30,8 @@ class TotalCasesView: UIView {
     private let deathsStackView = UIStackView()
     private let deathsViewTitle = UILabel()
     private let deathsView = UILabel()
+    
+    private let defaultCasesValue = StatisticsConstants.defaultCasesValue
 
     // MARK: - Initialization
     
@@ -84,7 +90,7 @@ class TotalCasesView: UIView {
     
     private func settingTotalCasesView() {
         totalCasesView.translatesAutoresizingMaskIntoConstraints = false
-        totalCasesView.text = "6 600 836" // test change
+        totalCasesView.text = defaultCasesValue
         totalCasesView.font = FontConstants.totalCases
     }
     
@@ -95,7 +101,7 @@ class TotalCasesView: UIView {
         recoveredViewTitle.textColor = ColorsConstants.recovered
         
         recoveredView.font = FontConstants.detailsCases
-        recoveredView.text = "5 884 316" // test
+        recoveredView.text = defaultCasesValue
         
         let subviews = [recoveredViewTitle, recoveredView]
         configureStackView(stackView: recoveredStackView, axis: .vertical, spacing: 2.0, subviews: subviews, alignment: .center)
@@ -108,7 +114,7 @@ class TotalCasesView: UIView {
         criticalViewTitle.textColor = ColorsConstants.critical
         
         criticalView.font = FontConstants.detailsCases
-        criticalView.text = "546 021" // test
+        criticalView.text = defaultCasesValue
         
         let subviews = [criticalViewTitle, criticalView]
         configureStackView(stackView: criticalStackView, axis: .vertical, spacing: 2.0, subviews: subviews, alignment: .center)
@@ -121,7 +127,7 @@ class TotalCasesView: UIView {
         deathsViewTitle.textColor = ColorsConstants.deaths
         
         deathsView.font = FontConstants.detailsCases
-        deathsView.text = "170 499" // test
+        deathsView.text = defaultCasesValue
         
         let subviews = [deathsViewTitle, deathsView]
         configureStackView(stackView: deathsStackView, axis: .vertical, spacing: 2.0, subviews: subviews, alignment: .center)
@@ -137,5 +143,16 @@ class TotalCasesView: UIView {
         for subview in subviews {
             stackView.addArrangedSubview(subview)
         }
+    }
+}
+
+// MARK: - ITotalCasesView
+
+extension TotalCasesView: ITotalCasesView {
+    func fillTotalCasesData(total: Int, recovered: Int, critical: Int, deaths: Int, dataFormatter: DataFormatter) {
+        totalCasesView.text = dataFormatter.decimalFormatting(number: total)
+        recoveredView.text = dataFormatter.decimalFormatting(number: recovered)
+        criticalView.text = dataFormatter.decimalFormatting(number: critical)
+        deathsView.text = dataFormatter.decimalFormatting(number: deaths)
     }
 }

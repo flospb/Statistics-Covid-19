@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol INewCasesView: UIView {
+    func fillNewCasesData(updateDate: String, confirmedToday: Int, confirmedYesterday: Int, dataFormatter: DataFormatter)
+}
+
 class NewCasesView: UIView {
     private let contentStackView = UIStackView()
     
@@ -74,5 +78,22 @@ class NewCasesView: UIView {
         casesYesterdayView.text = "+ 21 531 " + StatisticsConstants.casesYesterdayTitle // test change
         casesYesterdayView.font = FontConstants.casesYesterday
         casesYesterdayView.textColor = ColorsConstants.casesYesterday
+    }
+}
+
+// MARK: - INewCasesView
+
+extension NewCasesView: INewCasesView {
+    func fillNewCasesData(updateDate: String, confirmedToday: Int, confirmedYesterday: Int, dataFormatter: DataFormatter) {
+        let today = dataFormatter.decimalFormatting(number: confirmedToday)
+        let yesterday = dataFormatter.decimalFormatting(number: confirmedYesterday)
+        
+        casesTodayView.text = "+ \(today)"
+        casesYesterdayView.text = "+ \(yesterday) \(StatisticsConstants.casesYesterdayTitle)"
+        
+        let formattedDate = dataFormatter.changeDateFormat(changedDate: updateDate, oldFormat: "yyyy-MM-dd", newFormat: "dd.MM.YYYY")
+        if let date = formattedDate {
+            casesTodayViewTitle.text = "\(StatisticsConstants.casesTodayTitle) \(date)"
+        }
     }
 }

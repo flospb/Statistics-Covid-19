@@ -12,22 +12,6 @@ protocol IParser {
     func parse(data: Data) -> Model?
 }
 
-class CountryListParser: IParser {
-    typealias Model = CountriesResponse
-    
-    func parse(data: Data) -> Model? {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-        do {
-            let countriesResponse = try decoder.decode(Model.self, from: data)
-            return countriesResponse
-        } catch {
-            return nil
-        }
-    }
-}
-
 class StatisticsParser: IParser {
     typealias Model = CountryResponse
     

@@ -9,7 +9,7 @@ import UIKit
 
 protocol IStatisticsView {
     var delegate: IStatisticsViewController? { get set }
-    func fillCountryData(country: String?, image: UIImage?)
+    func fillCountryData(countryStatistics: CountryStatisticsModel)
 }
 
 class StatisticsView: UIView {
@@ -114,7 +114,6 @@ class StatisticsView: UIView {
     
     private func addButtonsStackView() {
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
-        // buttonsStackView.backgroundColor = .green // test
         buttonsStackView.axis = .horizontal
         buttonsStackView.spacing = anchorСonstant
         buttonsStackView.distribution = .fillEqually
@@ -166,15 +165,23 @@ class StatisticsView: UIView {
 // MARK: - IStatisticsView
 
 extension StatisticsView: IStatisticsView {
-    func fillCountryData(country: String?, image: UIImage?) {
-        if let countryName = country {
-            countryView.fillCountryName(country: countryName)
-        }
-        
-        if let countryImage = image {
+    func fillCountryData(countryStatistics: CountryStatisticsModel) {
+        countryView.fillCountryName(country: countryStatistics.country.name)
+        if let countryImage = countryStatistics.country.image {
             countryView.fillCountryImage(image: countryImage)
         }
+        print(countryStatistics)
     }
+    
+//    func fillCountryData(country: String?, image: UIImage?) {
+//        if let countryName = country {
+//            countryView.fillCountryName(country: countryName)
+//        }
+//
+//        if let countryImage = image {
+//            countryView.fillCountryImage(image: countryImage)
+//        }
+//    }
 }
 
 /* TODO refactor and use

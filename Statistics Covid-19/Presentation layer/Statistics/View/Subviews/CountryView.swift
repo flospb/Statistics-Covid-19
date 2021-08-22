@@ -63,7 +63,7 @@ class CountryView: UIView {
     private func settingCountryImage() {
         countryImage.translatesAutoresizingMaskIntoConstraints = false
         countryImage.layer.borderWidth = 1.5
-        countryImage.layer.borderColor = ColorsConstants.flagImageBorder.cgColor
+        countryImage.layer.borderColor = UIColor.systemGray6.cgColor
         countryImage.layer.cornerRadius = 20.0
         countryImage.layer.masksToBounds = true
         countryImage.contentMode = .scaleAspectFill

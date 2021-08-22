@@ -27,15 +27,6 @@ class StatisticsRequest: IRequest {
     }
 }
 
-class CountryDescriptionRequest: IRequest {
-    var urlRequest: URLRequest?
-    
-    init(stringUrl: String) {
-        guard let url = URL(string: stringUrl) else { return }
-        self.urlRequest = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
-    }
-}
-
 class CountryImageRequest: IRequest {
     var urlRequest: URLRequest?
     
@@ -46,13 +37,6 @@ class CountryImageRequest: IRequest {
 }
 
 struct RequestsFactory {
-    static func countryDescriptionConfiguration() -> RequestConfiguration<CountryListParser> {
-        let stringUrl = AdressesAPIConstants.countryList
-        let request = StatisticsRequest(stringUrl: stringUrl)
-        let parser = CountryListParser()
-        return RequestConfiguration<CountryListParser>(request: request, parser: parser)
-    }
-    
     static func statisticsConfiguration(countryCode: String) -> RequestConfiguration<StatisticsParser> {
         let stringUrl = AdressesAPIConstants.statisticsByCountry + countryCode
         let request = StatisticsRequest(stringUrl: stringUrl)
@@ -60,7 +44,8 @@ struct RequestsFactory {
         return RequestConfiguration<StatisticsParser>(request: request, parser: parser)
     }
     
-    static func countryImageConfiguration(countryCode: String, countryImageName: String) -> RequestConfiguration<CountryImageParser> {
+    static func countryImageConfiguration(countryCode: String) -> RequestConfiguration<CountryImageParser> {
+        let countryImageName = AdressesAPIConstants.countryImageName
         let stringUrl = AdressesAPIConstants.countryImage + countryCode + countryImageName
         let request = CountryImageRequest(stringUrl: stringUrl)
         let parser = CountryImageParser()

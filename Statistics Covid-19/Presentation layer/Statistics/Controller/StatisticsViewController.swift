@@ -19,11 +19,9 @@ class StatisticsViewController: UIViewController {
     private var networkingService: INetworkingService
     private var userDefaultsService: IUserDefaultsService
     
-    // test
-    private var countryList = [CountryModel]()
-    //
-    
     private var codeCurrentCountry: String?
+    private var countryList = [CountryModel]() // TODO check
+    private var defaultCountryCode = StatisticsConstants.defaultCountryCode
     
     // MARK: - Initialization
     
@@ -48,19 +46,49 @@ class StatisticsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let codeCountry: String? = userDefaultsService.getObject(for: DefaultCountryConstants.valueKey) {
+    
+        if let codeCountry: String = userDefaultsService.getObject(for: DefaultCountryConstants.valueKey) {
             codeCurrentCountry = codeCountry
         }
         
-        loadData()
+        networkingService.statisticsHandler = statisticsHandler
+        loadStatisticsData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+    // MARK: - Loading data
+    
+    func loadStatisticsData() {
+        if codeCurrentCountry == nil {
+            fillCountryList()
+        }
+        networkingService.fetchDataByCountry(codeCurrentCountry: codeCurrentCountry)
+    }
+    
+    // MARK: - Handlers
+    
+    private func statisticsHandler(result: Result<CountryStatisticsModel, NetworkServiceError>) {
+        switch result {
+        case .success(let countryStatistics):
+            DispatchQueue.main.async {
+                self.statisticsView.fillCountryData(countryStatistics: countryStatistics)
+            }
+        case .failure(let error):
+            self.showAlert(for: error)
+        }
+    }
 
+    private func countrySelectionHandler(countryCode: String) {
+        self.codeCurrentCountry = countryCode
+        userDefaultsService.saveObject(object: countryCode, for: DefaultCountryConstants.valueKey)
+        // TODO selected country
+        loadStatisticsData()
+    }
+    
     // MARK: - Helpers
     
     private func showAlert(for error: NetworkServiceError) {
@@ -71,16 +99,24 @@ class StatisticsViewController: UIViewController {
         }
     }
     
-    private func countrySelectionHandler(countryCode: String) {
-        self.codeCurrentCountry = countryCode
-        // TODO selected country
-        loadData()
+    private func fillCountryList() {
+        let countryCodes = NSLocale.isoCountryCodes
+        
+        for code in countryCodes {
+            guard let name = NSLocale(localeIdentifier: "RU").localizedString(forCountryCode: code) else { continue }
+            let countrySelected = code == defaultCountryCode
+            let country = CountryModel(name: name, code: code, selected: countrySelected)
+            countryList.append(country)
+        }
     }
 }
 
 // MARK: - IStatisticsViewController
 
 extension StatisticsViewController: IStatisticsViewController {
+    
+    // MARK: - View actions
+    
     func countryTapped() {
         let countryListViewController = AssemblyBuilder().makeCountryListViewController(router: router, countryList: countryList)
         countryListViewController.delegateHandler = countrySelectionHandler
@@ -92,82 +128,6 @@ extension StatisticsViewController: IStatisticsViewController {
     }
     
     func refreshButtonTapped() {
-        loadCountries()
-        // loadData()
-    }
-    
-    // MARK: - Loading data
-    
-    func loadData() {
-        guard let codeCountry = codeCurrentCountry else {
-            loadCountries()
-            return
-        }
-        userDefaultsService.saveObject(object: codeCurrentCountry, for: DefaultCountryConstants.valueKey) // test
-        loadStatisticsByCountry(countryCode: codeCountry)
-        loadCountryImage(countryCode: codeCountry, countryImageName: AdressesAPIConstants.countryImageName)
-    }
-    
-    private func loadCountries() {
-        networkingService.fetchCountriesList { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let countriesList):
-                self.userDefaultsService.saveObject(object: DefaultCountryConstants.countryCode, for: DefaultCountryConstants.valueKey)
-                self.loadStatisticsByCountry(countryCode: DefaultCountryConstants.countryCode)
-                self.loadCountryImage(countryCode: DefaultCountryConstants.countryCode, countryImageName: AdressesAPIConstants.countryImageName)
-                
-                self.saveCountryList(countries: countriesList.data)
-            case .failure(let error):
-                self.showAlert(for: error)
-            }
-        }
-    }
-    
-    private func loadStatisticsByCountry(countryCode: String) {
-        networkingService.fetchStatisticsByCountry(countryCode: countryCode) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let country):
-                DispatchQueue.main.async {
-                    self.statisticsView.fillCountryData(country: country.data.name, image: nil)
-                }
-            case .failure(let error):
-                self.showAlert(for: error)
-            }
-        }
-    }
-    
-    private func loadCountryImage(countryCode: String, countryImageName: String) {
-        networkingService.fetchCountryImage(countryCode: countryCode, countryImageName: countryImageName) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let imageData):
-                print(imageData)
-                self.setCountryImage(imageData: imageData.data)
-            case .failure(let error):
-                self.showAlert(for: error)
-            }
-        }
-    }
-    
-    private func setCountryImage(imageData: Data) {
-        if let image = UIImage(data: imageData) {
-            DispatchQueue.main.async {
-                self.statisticsView.fillCountryData(country: nil, image: image)
-            }
-        }
-    }
-    
-    // MARK: - Save data (test)
-    
-    private func saveCountryList(countries: [CountryDescription]) {
-        countryList.removeAll()
-        
-        for country in countries {
-            let countrySelected = country.code == codeCurrentCountry
-            let newCountry = CountryModel(name: country.name, code: country.code, selected: countrySelected)
-            countryList.append(newCountry)
-        }
+        loadStatisticsData()
     }
 }

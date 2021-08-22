@@ -41,7 +41,8 @@ class AssemblyBuilder: IAssemblyBuilder {
         let statisticsView = StatisticsView(frame: UIScreen.main.bounds)
         
         let requestSender = RequestSender()
-        let networkingService = NetworkingService(requestSender: requestSender)
+        let dataMapper = StatisticsDataMapper()
+        let networkingService = NetworkingService(requestSender: requestSender, dataMapper: dataMapper)
         
         let statisticsViewController = StatisticsViewController(router: router, view: statisticsView, networkingService: networkingService)
         return statisticsViewController

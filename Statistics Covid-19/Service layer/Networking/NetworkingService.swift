@@ -5,41 +5,71 @@
 //  Created by Сергей Флоря on 20.08.2021.
 //
 
+import Foundation
+
 protocol INetworkingService {
-    func fetchCountriesList(completion: @escaping (Result<CountriesResponse, NetworkServiceError>) -> Void)
-    func fetchStatisticsByCountry(countryCode: String, completion: @escaping (Result<CountryResponse, NetworkServiceError>) -> Void)
-    func fetchCountryImage(countryCode: String, countryImageName: String, completion: @escaping (Result<CountryImageResponse, NetworkServiceError>) -> Void)
+    var statisticsHandler: ((Result<CountryStatisticsModel, NetworkServiceError>) -> Void)? { get set }
+    func fetchDataByCountry(codeCurrentCountry: String?)
 }
 
 class NetworkingService: INetworkingService {
     private let requestSender: IRequestSender
+    private let dataMapper: IStatisticsDataMapper
     
+    var statisticsHandler: ((Result<CountryStatisticsModel, NetworkServiceError>) -> Void)?
+
     // MARK: - Initialization
     
-    init(requestSender: IRequestSender) {
+    init(requestSender: IRequestSender, dataMapper: IStatisticsDataMapper) {
         self.requestSender = requestSender
+        self.dataMapper = dataMapper
     }
     
     // MARK: - Fetching data
     
-    func fetchCountriesList(completion: @escaping (Result<CountriesResponse, NetworkServiceError>) -> Void) {
-        let requestConfiguration = RequestsFactory.countryDescriptionConfiguration()
-        requestSender.send(configuration: requestConfiguration) { (result: Result<CountriesResponse, NetworkServiceError>) in
-            completion(result)
+    func fetchDataByCountry(codeCurrentCountry: String?) { // Check
+        let codeCountry = codeCurrentCountry ?? DefaultCountryConstants.countryCode
+        
+        var countryImageResponse: CountryImageResponse?
+        var countryResponse: CountryResponse?
+        var errorResult = NetworkServiceError.unknown
+        
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        
+        let statisticsConfiguration = RequestsFactory.statisticsConfiguration(countryCode: codeCountry)
+        requestSender.send(configuration: statisticsConfiguration) { (result: Result<CountryResponse, NetworkServiceError>) in
+            switch result {
+            case .success(let country):
+                countryResponse = country
+            case .failure(let error):
+                errorResult = error
+            }
+            dispatchGroup.leave()
         }
-    }
-    
-    func fetchStatisticsByCountry(countryCode: String, completion: @escaping (Result<CountryResponse, NetworkServiceError>) -> Void) {
-        let requestConfiguration = RequestsFactory.statisticsConfiguration(countryCode: countryCode)
-        requestSender.send(configuration: requestConfiguration) { (result: Result<CountryResponse, NetworkServiceError>) in
-            completion(result)
+        
+        dispatchGroup.enter()
+        
+        let countryImageConfiguration = RequestsFactory.countryImageConfiguration(countryCode: codeCountry)
+        requestSender.send(configuration: countryImageConfiguration) { (result: Result<CountryImageResponse, NetworkServiceError>) in
+            switch result {
+            case .success(let imageData):
+                countryImageResponse = imageData
+            case .failure(let error):
+                // TODO change
+                print(error)
+            }
+            dispatchGroup.leave()
         }
-    }
-    
-    func fetchCountryImage(countryCode: String, countryImageName: String, completion: @escaping (Result<CountryImageResponse, NetworkServiceError>) -> Void) {
-        let requestConfiguration = RequestsFactory.countryImageConfiguration(countryCode: countryCode, countryImageName: countryImageName)
-        requestSender.send(configuration: requestConfiguration) { (result: Result<CountryImageResponse, NetworkServiceError>) in
-            completion(result)
+        
+        dispatchGroup.notify(queue: DispatchQueue.global()) {
+            guard let countryResponse = countryResponse else {
+                self.statisticsHandler?(.failure(errorResult))
+                return
+            }
+            let countryStatistics = self.dataMapper.statisticsByCountry(statistics: countryResponse, countryImage: countryImageResponse)
+            self.statisticsHandler?(.success(countryStatistics))
         }
     }
 }

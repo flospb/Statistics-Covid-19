@@ -28,7 +28,6 @@ struct CountryData: Decodable {
     let name: String
     let code: String
     let updateDate: String
-    let todayData: TodayData?
     let totalData: TotalData?
     let timeLine: [TimeLine]
     
@@ -36,14 +35,9 @@ struct CountryData: Decodable {
         case name
         case code
         case updateDate = "updatedAt"
-        case todayData = "today"
         case totalData = "latestData"
         case timeLine = "timeline"
     }
-}
-
-struct TodayData: Decodable {
-    let confirmed: Int?
 }
 
 struct TotalData: Decodable {

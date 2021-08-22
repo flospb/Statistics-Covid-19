@@ -32,6 +32,8 @@ class CountryView: UIView {
     // MARK: - Setting view
     
     private func settingView() {
+        layer.cornerRadius = 15
+        
         addContentStackView()
         
         settingCountryImage()
@@ -53,8 +55,8 @@ class CountryView: UIView {
         
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: self.topAnchor),
-            contentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            contentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            contentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            contentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             contentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }

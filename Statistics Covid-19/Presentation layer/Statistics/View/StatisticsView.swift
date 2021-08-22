@@ -20,13 +20,13 @@ class StatisticsView: UIView {
     
     private let newCasesView: INewCasesView = NewCasesView(frame: .zero)
     private let totalCasesView: ITotalCasesView = TotalCasesView(frame: .zero)
-
-    private let anchorСonstant = CGFloat(20)
-    private let doubleAnchorСonstant = CGFloat(40)
     
     private let buttonsStackView = UIStackView()
     private let shareButtonView = CommandButtonView(type: .system)
     private let refreshButtonView = CommandButtonView(type: .system)
+    
+    private let anchorСonstant = CGFloat(20)
+    private let doubleAnchorСonstant = CGFloat(40)
     
     // private let activityIndicatorView = UIActivityIndicatorView()
     
@@ -73,7 +73,6 @@ class StatisticsView: UIView {
     
     private func addCountryView() {
         countryView.translatesAutoresizingMaskIntoConstraints = false
-        // countryView.backgroundColor = .systemGreen // test
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(countryTapped(tapGestureRecognizer:)))
         countryView.addGestureRecognizer(tapGestureRecognizer)
@@ -88,7 +87,6 @@ class StatisticsView: UIView {
     
     private func addNewCasesView() {
         newCasesView.translatesAutoresizingMaskIntoConstraints = false
-        // newCasesView.backgroundColor = .yellow // test
     
         self.addSubview(newCasesView)
             
@@ -101,7 +99,6 @@ class StatisticsView: UIView {
     
     private func addTotalCasesView() {
         totalCasesView.translatesAutoresizingMaskIntoConstraints = false
-        // totalCasesView.backgroundColor = .green // test
     
         self.addSubview(totalCasesView)
             
@@ -150,7 +147,11 @@ class StatisticsView: UIView {
     // MARK: - Actions
     
     @objc func countryTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        delegate?.countryTapped()
+        UIView.animate(withDuration: 0.1, animations: startAnimation) {  _ in
+            UIView.animate(withDuration: 0.1, animations: self.finalAnimation) { _ in
+                self.delegate?.countryTapped()
+            }
+        }
     }
     
     @objc private func shareButtonViewAction(_ sender: UIButton) {
@@ -159,6 +160,18 @@ class StatisticsView: UIView {
     
     @objc private func refreshButtonViewAction(_ sender: UIButton) {
         delegate?.refreshButtonTapped()
+    }
+    
+    // MARK: - Animations
+    
+    private func startAnimation() {
+        countryView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        countryView.backgroundColor = .systemGray6
+    }
+    
+    private func finalAnimation() {
+        countryView.transform = CGAffineTransform.identity
+        countryView.backgroundColor = .systemBackground
     }
 }
 
@@ -180,15 +193,3 @@ extension StatisticsView: IStatisticsView {
                                           dataFormatter: dataFormatter)
     }
 }
-
-/* TODO refactor and use
- UIView.animate(withDuration: 0.2,
-                animations: {
-                 self.countryView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                },
-                completion: { _ in
-                 UIView.animate(withDuration: 0.2) {
-                     self.countryView.transform = CGAffineTransform.identity
-                 }
-                })
- */

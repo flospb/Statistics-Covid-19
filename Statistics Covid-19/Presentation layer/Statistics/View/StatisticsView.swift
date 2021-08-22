@@ -16,6 +16,9 @@ class StatisticsView: UIView {
     var delegate: IStatisticsViewController?
     
     private let statisticsViewTitle = UILabel()
+    // test
+    private let activityIndicatorView = UIActivityIndicatorView()
+    //
     private let countryView: ICountryView = CountryView(frame: .zero)
     
     private let newCasesView: INewCasesView = NewCasesView(frame: .zero)
@@ -27,8 +30,6 @@ class StatisticsView: UIView {
     
     private let anchorСonstant = CGFloat(20)
     private let doubleAnchorСonstant = CGFloat(40)
-    
-    // private let activityIndicatorView = UIActivityIndicatorView()
     
     // MARK: - Initialization
     
@@ -51,6 +52,9 @@ class StatisticsView: UIView {
         addNewCasesView()
         addTotalCasesView()
         addButtonsStackView()
+        // test
+        addActivityIndicatorView()
+        //
         
         settingShareButtonView()
         settingRefreshButtonView()
@@ -60,7 +64,6 @@ class StatisticsView: UIView {
         statisticsViewTitle.translatesAutoresizingMaskIntoConstraints = false
         statisticsViewTitle.text = StatisticsConstants.statisticsTitle
         statisticsViewTitle.font = FontConstants.largeBoldTitle
-        // statisticsViewTitle.backgroundColor = .systemGray // test
         
         self.addSubview(statisticsViewTitle)
             
@@ -128,6 +131,18 @@ class StatisticsView: UIView {
         ])
     }
     
+    private func addActivityIndicatorView() {
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorView.hidesWhenStopped = true
+        
+        self.addSubview(activityIndicatorView)
+            
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            activityIndicatorView.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor, constant: anchorСonstant * 2)
+        ])
+    }
+    
     private func settingShareButtonView() {
         shareButtonView.addTarget(self, action: #selector(shareButtonViewAction(_:)), for: .touchUpInside)
         shareButtonView.settingView(title: StatisticsConstants.shareTitle,
@@ -143,7 +158,7 @@ class StatisticsView: UIView {
                                       backgroundColor: ColorsConstants.refreshBackground,
                                       imageName: "Refresh")
     }
-    
+
     // MARK: - Actions
     
     @objc func countryTapped(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -159,6 +174,7 @@ class StatisticsView: UIView {
     }
     
     @objc private func refreshButtonViewAction(_ sender: UIButton) {
+        activityIndicatorView.startAnimating()
         delegate?.refreshButtonTapped()
     }
     
@@ -191,5 +207,8 @@ extension StatisticsView: IStatisticsView {
                                           critical: countryStatistics.totalCritical,
                                           deaths: countryStatistics.totalDeaths,
                                           dataFormatter: dataFormatter)
+        // test
+        activityIndicatorView.stopAnimating()
+        //
     }
 }

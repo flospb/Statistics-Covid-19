@@ -42,9 +42,10 @@ class AssemblyBuilder: IAssemblyBuilder {
         
         let requestSender = RequestSender()
         let dataMapper = StatisticsDataMapper()
+        let userDefaults = UserDefaultsService()
         let networkingService = NetworkingService(requestSender: requestSender, dataMapper: dataMapper)
         
-        let statisticsViewController = StatisticsViewController(router: router, view: statisticsView, networkingService: networkingService)
+        let statisticsViewController = StatisticsViewController(router: router, view: statisticsView, networkingService: networkingService, userDefaultsService: userDefaults)
         return statisticsViewController
     }
     

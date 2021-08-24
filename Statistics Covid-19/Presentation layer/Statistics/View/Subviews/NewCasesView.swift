@@ -8,7 +8,7 @@
 import UIKit
 
 protocol INewCasesView: UIView {
-    func fillNewCasesData(updateDate: String, confirmedToday: Int, confirmedYesterday: Int, dataFormatter: DataFormatter)
+    func fillNewCasesData(updateDate: String, confirmedToday: Int, confirmedYesterday: Int, dataFormatter: IDataFormatterService)
 }
 
 class NewCasesView: UIView {
@@ -84,7 +84,7 @@ class NewCasesView: UIView {
 // MARK: - INewCasesView
 
 extension NewCasesView: INewCasesView {
-    func fillNewCasesData(updateDate: String, confirmedToday: Int, confirmedYesterday: Int, dataFormatter: DataFormatter) {
+    func fillNewCasesData(updateDate: String, confirmedToday: Int, confirmedYesterday: Int, dataFormatter: IDataFormatterService) {
         let today = dataFormatter.decimalFormatting(number: confirmedToday)
         let yesterday = dataFormatter.decimalFormatting(number: confirmedYesterday)
         

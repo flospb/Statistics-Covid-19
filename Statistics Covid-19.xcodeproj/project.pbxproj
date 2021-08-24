@@ -39,7 +39,7 @@
 		B451BBD926D161AB008A3791 /* CountryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */; };
 		B498B4EE26C46FBF003409B7 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B498B4ED26C46FBF003409B7 /* RecommendationView.swift */; };
 		B499908026D27AB600B5338A /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499907F26D27AB600B5338A /* DataMapper.swift */; };
-		B499908626D2E4EA00B5338A /* DataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499908526D2E4EA00B5338A /* DataFormatter.swift */; };
+		B499908626D2E4EA00B5338A /* DataFormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499908526D2E4EA00B5338A /* DataFormatterService.swift */; };
 		B4C27F2C26C1BF84005738F6 /* InformationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C27F2B26C1BF84005738F6 /* InformationModels.swift */; };
 		B4CB879126C93A8D00F68893 /* TotalCasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CB879026C93A8D00F68893 /* TotalCasesView.swift */; };
 		B4CB879326C96BC300F68893 /* CommandButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CB879226C96BC300F68893 /* CommandButtonView.swift */; };
@@ -106,7 +106,7 @@
 		B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableViewCell.swift; sourceTree = "<group>"; };
 		B498B4ED26C46FBF003409B7 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
 		B499907F26D27AB600B5338A /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
-		B499908526D2E4EA00B5338A /* DataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatter.swift; sourceTree = "<group>"; };
+		B499908526D2E4EA00B5338A /* DataFormatterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatterService.swift; sourceTree = "<group>"; };
 		B4C27F2B26C1BF84005738F6 /* InformationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationModels.swift; sourceTree = "<group>"; };
 		B4CB879026C93A8D00F68893 /* TotalCasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCasesView.swift; sourceTree = "<group>"; };
 		B4CB879226C96BC300F68893 /* CommandButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandButtonView.swift; sourceTree = "<group>"; };
@@ -286,11 +286,12 @@
 		B42BD6BF26BFF531007969B7 /* Service layer */ = {
 			isa = PBXGroup;
 			children = (
-				B499907E26D27A6900B5338A /* Data mappers */,
-				B40CC20926D0434600247152 /* User defaults */,
-				B40CC1FD26CFF52000247152 /* Networking */,
-				B42BD6C826C0044E007969B7 /* Routers */,
 				B42BD6C726C00443007969B7 /* Builders */,
+				B42BD6C826C0044E007969B7 /* Routers */,
+				B40CC1FD26CFF52000247152 /* Networking */,
+				B40CC20926D0434600247152 /* User defaults */,
+				B499907E26D27A6900B5338A /* Data mappers */,
+				B499908226D2E40000B5338A /* Data formatters */,
 			);
 			path = "Service layer";
 			sourceTree = "<group>";
@@ -298,7 +299,6 @@
 		B42BD6C426BFFFBC007969B7 /* Core layer */ = {
 			isa = PBXGroup;
 			children = (
-				B499908226D2E40000B5338A /* Data formatters */,
 				B499908126D2E3F100B5338A /* Constants */,
 				B40CC20026CFFFDF00247152 /* Networking */,
 			);
@@ -465,7 +465,7 @@
 		B499908226D2E40000B5338A /* Data formatters */ = {
 			isa = PBXGroup;
 			children = (
-				B499908526D2E4EA00B5338A /* DataFormatter.swift */,
+				B499908526D2E4EA00B5338A /* DataFormatterService.swift */,
 			);
 			path = "Data formatters";
 			sourceTree = "<group>";
@@ -717,7 +717,7 @@
 				B40CC1FF26CFFF1400247152 /* RequestsFactory.swift in Sources */,
 				B42BD68B26BFDF02007969B7 /* SceneDelegate.swift in Sources */,
 				B4CB879126C93A8D00F68893 /* TotalCasesView.swift in Sources */,
-				B499908626D2E4EA00B5338A /* DataFormatter.swift in Sources */,
+				B499908626D2E4EA00B5338A /* DataFormatterService.swift in Sources */,
 				B42BD6CC26C0091A007969B7 /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

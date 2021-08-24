@@ -7,8 +7,12 @@
 
 import Foundation
 
-// Check static
-class DataFormatter {
+protocol IDataFormatterService {
+    func changeDateFormat(changedDate: String, oldFormat: String, newFormat: String) -> String?
+    func decimalFormatting(number: Int) -> String
+}
+
+class DataFormatterService: IDataFormatterService {
     func changeDateFormat(changedDate: String, oldFormat: String, newFormat: String) -> String? {
         guard let date = getDateFromString(format: oldFormat, date: changedDate) else { return nil }
         let dateString = getStringDate(format: newFormat, date: date)

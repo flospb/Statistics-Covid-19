@@ -9,7 +9,7 @@ import UIKit
 
 protocol IStatisticsView {
     var delegate: IStatisticsViewController? { get set }
-    func fillCountryData(countryStatistics: CountryStatisticsModel, dataFormatter: DataFormatter)
+    func fillCountryData(countryStatistics: CountryStatisticsModel, dataFormatter: IDataFormatterService)
 }
 
 class StatisticsView: UIView {
@@ -194,7 +194,7 @@ class StatisticsView: UIView {
 // MARK: - IStatisticsView
 
 extension StatisticsView: IStatisticsView {
-    func fillCountryData(countryStatistics: CountryStatisticsModel, dataFormatter: DataFormatter) {
+    func fillCountryData(countryStatistics: CountryStatisticsModel, dataFormatter: IDataFormatterService) {
         countryView.fillCountryData(country: countryStatistics.country.name, image: countryStatistics.country.image)
         
         newCasesView.fillNewCasesData(updateDate: countryStatistics.updateDate,

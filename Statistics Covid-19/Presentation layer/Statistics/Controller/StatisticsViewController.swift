@@ -25,11 +25,12 @@ class StatisticsViewController: UIViewController {
     
     // MARK: - Initialization
     
-    init(router: IMainRouter, view: IStatisticsView, networkingService: INetworkingService) {
+    init(router: IMainRouter, view: IStatisticsView, networkingService: INetworkingService, userDefaultsService: IUserDefaultsService) {
         self.router = router
         self.statisticsView = view
         self.networkingService = networkingService
-        self.userDefaultsService = UserDefaultsService() // TODO Check
+        self.userDefaultsService = userDefaultsService
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -75,7 +76,7 @@ class StatisticsViewController: UIViewController {
         switch result {
         case .success(let countryStatistics):
             DispatchQueue.main.async {
-                self.statisticsView.fillCountryData(countryStatistics: countryStatistics, dataFormatter: DataFormatter())
+                self.statisticsView.fillCountryData(countryStatistics: countryStatistics, dataFormatter: DataFormatterService())
             }
         case .failure(let error):
             self.showAlert(for: error)
@@ -128,6 +129,7 @@ extension StatisticsViewController: IStatisticsViewController {
     }
     
     func refreshButtonTapped() {
+        countryList.removeAll()
         loadStatisticsData()
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ITotalCasesView: UIView {
-    func fillTotalCasesData(total: Int, recovered: Int, critical: Int, deaths: Int, dataFormatter: DataFormatter)
+    func fillTotalCasesData(total: Int, recovered: Int, critical: Int, deaths: Int, dataFormatter: IDataFormatterService)
 }
 
 class TotalCasesView: UIView {
@@ -149,7 +149,7 @@ class TotalCasesView: UIView {
 // MARK: - ITotalCasesView
 
 extension TotalCasesView: ITotalCasesView {
-    func fillTotalCasesData(total: Int, recovered: Int, critical: Int, deaths: Int, dataFormatter: DataFormatter) {
+    func fillTotalCasesData(total: Int, recovered: Int, critical: Int, deaths: Int, dataFormatter: IDataFormatterService) {
         totalCasesView.text = dataFormatter.decimalFormatting(number: total)
         recoveredView.text = dataFormatter.decimalFormatting(number: recovered)
         criticalView.text = dataFormatter.decimalFormatting(number: critical)

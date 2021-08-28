@@ -15,7 +15,7 @@ struct CurrentCountryModel {
 
 struct CountryStatisticsModel {
     var country: CurrentCountryModel
-    var updateDate: String
+    var updateDate: Date?
     var confirmedToday: Int
     var confirmedYesterday: Int
     
@@ -26,7 +26,6 @@ struct CountryStatisticsModel {
     
     init(country: CurrentCountryModel) {
         self.country = country
-        self.updateDate = ""
         
         let defaultValue = 0
     

@@ -69,6 +69,10 @@ struct DefaultCountryConstants {
     static let valueKey = "codeCountry"
 }
 
+struct CoreDataConstants {
+    static let dataBaseName = "StatisticsCovid"
+}
+
 // MARK: - Fonts constants
 
 struct FontConstants {

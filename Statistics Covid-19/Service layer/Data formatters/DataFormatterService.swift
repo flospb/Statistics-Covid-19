@@ -9,6 +9,8 @@ import Foundation
 
 protocol IDataFormatterService {
     func changeDateFormat(changedDate: String, oldFormat: String, newFormat: String) -> String?
+    func getDateFromString(format: String, date: String) -> Date?
+    func getStringDate(format: String, date: Date) -> String
     func decimalFormatting(number: Int) -> String
 }
 

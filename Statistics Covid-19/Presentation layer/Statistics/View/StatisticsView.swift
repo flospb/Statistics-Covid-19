@@ -196,7 +196,7 @@ class StatisticsView: UIView {
 extension StatisticsView: IStatisticsView {
     func fillCountryData(countryStatistics: CountryStatisticsModel, dataFormatter: IDataFormatterService) {
         countryView.fillCountryData(country: countryStatistics.country.name, image: countryStatistics.country.image)
-        
+
         newCasesView.fillNewCasesData(updateDate: countryStatistics.updateDate,
                                       confirmedToday: countryStatistics.confirmedToday,
                                       confirmedYesterday: countryStatistics.confirmedYesterday,

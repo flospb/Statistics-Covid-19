@@ -17,6 +17,7 @@ class StatisticsViewController: UIViewController {
     private var router: IMainRouter
     private var statisticsView: IStatisticsView
     private var networkingService: INetworkingService
+    private var coreDataService: ICoreDataService
     private var userDefaultsService: IUserDefaultsService
     
     private var codeCurrentCountry: String?
@@ -24,11 +25,18 @@ class StatisticsViewController: UIViewController {
     private var defaultCountryCode = StatisticsConstants.defaultCountryCode
     
     // MARK: - Initialization
-    
-    init(router: IMainRouter, view: IStatisticsView, networkingService: INetworkingService, userDefaultsService: IUserDefaultsService) {
+
+    // change format parameters
+    init(router: IMainRouter,
+         view: IStatisticsView,
+         networkingService: INetworkingService,
+         coreDataService: ICoreDataService,
+         userDefaultsService: IUserDefaultsService) {
+
         self.router = router
         self.statisticsView = view
         self.networkingService = networkingService
+        self.coreDataService = coreDataService
         self.userDefaultsService = userDefaultsService
         
         super.init(nibName: nil, bundle: nil)
@@ -53,6 +61,7 @@ class StatisticsViewController: UIViewController {
         }
         
         networkingService.statisticsHandler = statisticsHandler
+        downloadDataFromStorage()
         loadStatisticsData()
     }
     
@@ -64,12 +73,46 @@ class StatisticsViewController: UIViewController {
     // MARK: - Loading data
     
     private func loadStatisticsData() {
+         return
         if codeCurrentCountry == nil {
             fillCountryList()
+        } else {
+            networkingService.fetchDataByCountry(codeCurrentCountry: codeCurrentCountry)
         }
-        networkingService.fetchDataByCountry(codeCurrentCountry: codeCurrentCountry)
     }
-    
+
+    private func fillCountryList() {
+        coreDataService.getCountryList { [weak self] result in
+            self?.countryList = result
+            self?.networkingService.fetchDataByCountry(codeCurrentCountry: self?.defaultCountryCode)
+        }
+    }
+
+    // MARK: - Storage
+
+    private func downloadDataFromStorage() {
+        let codeCountry: String
+        if let code = codeCurrentCountry {
+            codeCountry = code
+        } else {
+            codeCountry = defaultCountryCode
+        }
+
+        if countryList.count == 0 {
+            coreDataService.getCountryList { [weak self] result in
+                self?.countryList = result
+            }
+        }
+
+        coreDataService.getCountryStatistics(countryCode: codeCountry) { result in
+            self.statisticsView.fillCountryData(countryStatistics: result, dataFormatter: DataFormatterService())
+        }
+    }
+
+    private func saveDataToStorage(countryStatistics: CountryStatisticsModel) {
+        coreDataService.saveCountryStatistics(countryStatistics: countryStatistics)
+    }
+
     // MARK: - Handlers
     
     private func statisticsHandler(result: Result<CountryStatisticsModel, NetworkServiceError>) {
@@ -77,6 +120,7 @@ class StatisticsViewController: UIViewController {
         case .success(let countryStatistics):
             DispatchQueue.main.async {
                 self.statisticsView.fillCountryData(countryStatistics: countryStatistics, dataFormatter: DataFormatterService())
+                self.saveDataToStorage(countryStatistics: countryStatistics)
             }
         case .failure(let error):
             self.showAlert(for: error)
@@ -87,6 +131,7 @@ class StatisticsViewController: UIViewController {
         self.codeCurrentCountry = countryCode
         userDefaultsService.saveObject(object: countryCode, for: DefaultCountryConstants.valueKey)
         markSelectedCountry(code: countryCode)
+        downloadDataFromStorage()
         loadStatisticsData()
     }
     
@@ -97,17 +142,6 @@ class StatisticsViewController: UIViewController {
             let alert = UIAlertController(title: AlertConstants.alertTitle, message: error.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: AlertConstants.alertActionOk, style: .default, handler: nil))
             self.present(alert, animated: true)
-        }
-    }
-    
-    private func fillCountryList() {
-        let countryCodes = NSLocale.isoCountryCodes
-        
-        for code in countryCodes {
-            guard let name = NSLocale(localeIdentifier: "RU").localizedString(forCountryCode: code) else { continue }
-            let countrySelected = code == defaultCountryCode
-            let country = CountryModel(name: name, code: code, selected: countrySelected)
-            countryList.append(country)
         }
     }
 

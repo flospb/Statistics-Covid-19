@@ -68,7 +68,7 @@ class NetworkingService: INetworkingService {
                 self.statisticsHandler?(.failure(errorResult))
                 return
             }
-            let countryStatistics = self.dataMapper.statisticsByCountry(statistics: countryResponse, countryImage: countryImageResponse)
+            let countryStatistics = self.dataMapper.getStatisticsModelByCountry(statistics: countryResponse, countryImage: countryImageResponse)
             self.statisticsHandler?(.success(countryStatistics))
         }
     }

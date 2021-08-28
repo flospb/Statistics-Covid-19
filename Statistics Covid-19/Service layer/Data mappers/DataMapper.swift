@@ -7,27 +7,37 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 protocol IStatisticsDataMapper {
-    func countryListConversion(countries: CountriesResponse) -> [CountryModel]
-    func statisticsByCountry(statistics: CountryResponse, countryImage: CountryImageResponse?) -> CountryStatisticsModel
+    func getCountryListByStorageModel(countries: [DBCountry]) -> [CountryModel]
+    func getStatisticsModelByCountry(statistics: CountryResponse, countryImage: CountryImageResponse?) -> CountryStatisticsModel
+    func getStatisticsModelByStorageModel(statistics: DBStatistics) -> CountryStatisticsModel?
+    func getStatisticsStorageModel(statistics: CountryStatisticsModel, country: DBCountry, context: NSManagedObjectContext) -> DBStatistics
 }
 
 class StatisticsDataMapper: IStatisticsDataMapper {
-    
-    func countryListConversion(countries: CountriesResponse) -> [CountryModel] {
+    private let dataFormatterService: IDataFormatterService
+    private let defaultCountryCode = StatisticsConstants.defaultCountryCode
+
+    init(dataFormatterService: IDataFormatterService) {
+        self.dataFormatterService = dataFormatterService
+    }
+
+    func getCountryListByStorageModel(countries: [DBCountry]) -> [CountryModel] {
         var countryList = [CountryModel]()
-        
-        for item in countries.data {
-            let selectedCountry = item.code == StatisticsConstants.defaultCountryCode
-            let country = CountryModel(name: item.name, code: item.code, selected: selectedCountry)
+
+        for item in countries {
+            guard let name = item.name, let code = item.code else { continue }
+            let selectedCountry = item.code == defaultCountryCode
+            let country = CountryModel(name: name, code: code, selected: selectedCountry)
             countryList.append(country)
         }
-        
+
         return countryList
     }
     
-    func statisticsByCountry(statistics: CountryResponse, countryImage: CountryImageResponse?) -> CountryStatisticsModel {
+    func getStatisticsModelByCountry(statistics: CountryResponse, countryImage: CountryImageResponse?) -> CountryStatisticsModel {
         var image: UIImage?
         if let countryImageResponse = countryImage {
             image = UIImage(data: countryImageResponse.data)
@@ -42,8 +52,8 @@ class StatisticsDataMapper: IStatisticsDataMapper {
 
         let country = CurrentCountryModel(name: countryName, code: data.code, image: image)
         var countryStatistics = CountryStatisticsModel(country: country)
-        
-        countryStatistics.updateDate = data.updateDate
+
+//        countryStatistics.updateDate = dataFormatterService.getDateFromString(format: "yyyy-MM-dd", date: data.updateDate)
 
         if let totalData = data.totalData {
             countryStatistics.totalConfirmed = totalData.confirmed ?? 0
@@ -54,11 +64,46 @@ class StatisticsDataMapper: IStatisticsDataMapper {
         
         let timeLine = data.timeLine
         if timeLine.count != 0 {
-            countryStatistics.updateDate = timeLine[0].date
+            countryStatistics.updateDate = dataFormatterService.getDateFromString(format: "yyyy-MM-dd", date: timeLine[0].date)
             countryStatistics.confirmedToday = timeLine[0].newConfirmed ?? 0
             countryStatistics.confirmedYesterday = timeLine[1].newConfirmed ?? 0
         }
         
         return countryStatistics
+    }
+
+    func getStatisticsModelByStorageModel(statistics: DBStatistics) -> CountryStatisticsModel? {
+        guard let name = statistics.country?.name,
+              let code = statistics.country?.code,
+              let date = statistics.updateDate else { return nil }
+
+        let countryModel = CurrentCountryModel(name: name, code: code, image: nil)
+        var statisticsModel = CountryStatisticsModel(country: countryModel)
+
+        statisticsModel.country = countryModel
+        statisticsModel.updateDate = date
+        statisticsModel.confirmedToday = Int(statistics.confirmedToday)
+        statisticsModel.confirmedYesterday = Int(statistics.confirmedYesterday)
+        statisticsModel.totalConfirmed = Int(statistics.totalConfirmed)
+        statisticsModel.totalRecovered = Int(statistics.recovered)
+        statisticsModel.totalCritical = Int(statistics.critical)
+        statisticsModel.totalDeaths = Int(statistics.deaths)
+
+        return statisticsModel
+    }
+
+    func getStatisticsStorageModel(statistics: CountryStatisticsModel, country: DBCountry, context: NSManagedObjectContext) -> DBStatistics {
+        let storageModel = DBStatistics(context: context)
+
+        storageModel.country = country
+        storageModel.updateDate = statistics.updateDate
+        storageModel.confirmedToday = Int32(statistics.confirmedToday)
+        storageModel.confirmedYesterday = Int32(statistics.confirmedYesterday)
+        storageModel.totalConfirmed = Int32(statistics.totalConfirmed)
+        storageModel.recovered = Int32(statistics.totalRecovered)
+        storageModel.critical = Int32(statistics.totalCritical)
+        storageModel.deaths = Int32(statistics.totalDeaths)
+
+        return storageModel
     }
 }

@@ -39,13 +39,23 @@ class AssemblyBuilder: IAssemblyBuilder {
     
     private func makeStatisticsViewController(router: IMainRouter) -> UIViewController {
         let statisticsView = StatisticsView(frame: UIScreen.main.bounds)
-        
+
+        let dataFormatterService = DataFormatterService()
+        let dataMapper = StatisticsDataMapper(dataFormatterService: dataFormatterService)
+
         let requestSender = RequestSender()
-        let dataMapper = StatisticsDataMapper()
-        let userDefaults = UserDefaultsService()
         let networkingService = NetworkingService(requestSender: requestSender, dataMapper: dataMapper)
-        
-        let statisticsViewController = StatisticsViewController(router: router, view: statisticsView, networkingService: networkingService, userDefaultsService: userDefaults)
+
+        let coreDataStack = CoreDataStack()
+        let coreDataService = CoreDataService(coreDataStack: coreDataStack, dataMapper: dataMapper)
+
+        let userDefaults = UserDefaultsService()
+
+        let statisticsViewController = StatisticsViewController(router: router,
+                                                                view: statisticsView,
+                                                                networkingService: networkingService,
+                                                                coreDataService: coreDataService,
+                                                                userDefaultsService: userDefaults)
         return statisticsViewController
     }
     

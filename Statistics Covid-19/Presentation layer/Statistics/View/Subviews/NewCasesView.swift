@@ -8,7 +8,7 @@
 import UIKit
 
 protocol INewCasesView: UIView {
-    func fillNewCasesData(updateDate: String, confirmedToday: Int, confirmedYesterday: Int, dataFormatter: IDataFormatterService)
+    func fillNewCasesData(updateDate: Date?, confirmedToday: Int, confirmedYesterday: Int, dataFormatter: IDataFormatterService)
 }
 
 class NewCasesView: UIView {
@@ -83,16 +83,18 @@ class NewCasesView: UIView {
 // MARK: - INewCasesView
 
 extension NewCasesView: INewCasesView {
-    func fillNewCasesData(updateDate: String, confirmedToday: Int, confirmedYesterday: Int, dataFormatter: IDataFormatterService) {
+    func fillNewCasesData(updateDate: Date?, confirmedToday: Int, confirmedYesterday: Int, dataFormatter: IDataFormatterService) {
         let today = dataFormatter.decimalFormatting(number: confirmedToday)
         let yesterday = dataFormatter.decimalFormatting(number: confirmedYesterday)
         
         casesTodayView.text = "+ \(today)"
         casesYesterdayView.text = "+ \(yesterday) \(StatisticsConstants.casesYesterdayTitle)"
-        
-        let formattedDate = dataFormatter.changeDateFormat(changedDate: updateDate, oldFormat: "yyyy-MM-dd", newFormat: "dd.MM.YYYY")
-        if let date = formattedDate {
-            casesTodayViewTitle.text = "\(StatisticsConstants.casesTodayTitle) \(date)"
-        }
+
+        guard let date = updateDate else { return }
+        let formattedDate = dataFormatter.getStringDate(format: "dd.MM.YYYY", date: date)
+//        let formattedDate = dataFormatter.changeDateFormat(changedDate: updateDate, oldFormat: "yyyy-MM-dd", newFormat: "dd.MM.YYYY")
+//        if let date = formattedDate {
+            casesTodayViewTitle.text = "\(StatisticsConstants.casesTodayTitle) \(formattedDate)"
+//        }
     }
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DBCountry" representedClassName=".DBCountry" syncable="YES">
+        <attribute name="code" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="statistics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBStatistics" inverseName="country" inverseEntity="DBStatistics"/>
+    </entity>
+    <entity name="DBStatistics" representedClassName=".DBStatistics" syncable="YES">
+        <attribute name="confirmedToday" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="confirmedYesterday" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="critical" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="deaths" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="recovered" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="totalConfirmed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="updateDate" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBCountry" inverseName="statistics" inverseEntity="DBCountry"/>
+    </entity>
+    <elements>
+        <element name="DBCountry" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="DBStatistics" positionX="-45" positionY="27" width="128" height="149"/>
+    </elements>
+</model>

@@ -34,8 +34,13 @@ class StatisticsDataMapper: IStatisticsDataMapper {
         }
         
         let data = statistics.data
-        
-        let country = CurrentCountryModel(name: data.name, code: data.code, image: image)
+
+        var countryName = data.name
+        if let name = NSLocale(localeIdentifier: "RU").localizedString(forCountryCode: data.code) {
+            countryName = name
+        }
+
+        let country = CurrentCountryModel(name: countryName, code: data.code, image: image)
         var countryStatistics = CountryStatisticsModel(country: country)
         
         countryStatistics.updateDate = data.updateDate

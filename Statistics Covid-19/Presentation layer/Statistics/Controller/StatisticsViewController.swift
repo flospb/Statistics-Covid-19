@@ -63,7 +63,7 @@ class StatisticsViewController: UIViewController {
     
     // MARK: - Loading data
     
-    func loadStatisticsData() {
+    private func loadStatisticsData() {
         if codeCurrentCountry == nil {
             fillCountryList()
         }
@@ -86,7 +86,7 @@ class StatisticsViewController: UIViewController {
     private func countrySelectionHandler(countryCode: String) {
         self.codeCurrentCountry = countryCode
         userDefaultsService.saveObject(object: countryCode, for: DefaultCountryConstants.valueKey)
-        // TODO selected country
+        markSelectedCountry(code: countryCode)
         loadStatisticsData()
     }
     
@@ -109,6 +109,14 @@ class StatisticsViewController: UIViewController {
             let country = CountryModel(name: name, code: code, selected: countrySelected)
             countryList.append(country)
         }
+    }
+
+    private func markSelectedCountry(code: String) {
+        guard let selected = countryList.firstIndex(where: { $0.code == code }),
+             let previouslySelected = countryList.firstIndex(where: { $0.selected }) else { return }
+
+        countryList[selected].selected = true
+        countryList[previouslySelected].selected = false
     }
 }
 

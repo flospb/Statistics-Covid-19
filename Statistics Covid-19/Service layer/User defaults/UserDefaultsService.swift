@@ -29,7 +29,7 @@ final class UserDefaultsService: IUserDefaultsService {
         self.init(userDefaults: UserDefaults.standard)
     }
 
-    // MARK: - Working with data
+    // MARK: - IUserDefaultsService
     
     func saveObject<T: Encodable>(object: T, for key: String) {
         // TODO change to do catch

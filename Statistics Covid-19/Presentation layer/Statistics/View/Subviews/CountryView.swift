@@ -12,8 +12,10 @@ protocol ICountryView: UIView {
 }
 
 class CountryView: UIView {
+
+    // MARK: - UI
+
     private let contentStackView = UIStackView()
-    
     private let countryImage = UIImageView()
     private let countryName = UILabel()
     private let listOpeningImage = UIImageView()
@@ -35,7 +37,6 @@ class CountryView: UIView {
         layer.cornerRadius = 15
         
         addContentStackView()
-        
         settingCountryImage()
         settingCountryName()
         settingListOpeningImage()
@@ -46,13 +47,12 @@ class CountryView: UIView {
         contentStackView.axis = .horizontal
         contentStackView.spacing = 10.0
         contentStackView.alignment = .fill
-    
+
         contentStackView.addArrangedSubview(countryImage)
         contentStackView.addArrangedSubview(countryName)
         contentStackView.addArrangedSubview(listOpeningImage)
         
         self.addSubview(contentStackView)
-        
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: self.topAnchor),
             contentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
@@ -91,9 +91,6 @@ class CountryView: UIView {
 // MARK: - ICountryView
 
 extension CountryView: ICountryView {
-    
-    // MARK: - Filling data
-    
     func fillCountryData(country: String, image: UIImage?) {
         countryName.text = country
         countryImage.image = image

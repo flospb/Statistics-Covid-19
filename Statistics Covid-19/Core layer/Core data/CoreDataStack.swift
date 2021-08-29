@@ -14,6 +14,9 @@ protocol ICoreDataStack {
 
 // check marks
 class CoreDataStack: ICoreDataStack {
+
+    // MARK: - Models
+
     private let dataBaseName = CoreDataConstants.dataBaseName
 
     // MARK: - ICoreDataStack

@@ -8,6 +8,9 @@
 import UIKit
 
 class InformationCollectionViewCell: UICollectionViewCell {
+
+    // MARK: - UI
+
     private let imageView = UIImageView()
     private let containerView = UIStackView()
     
@@ -30,7 +33,6 @@ class InformationCollectionViewCell: UICollectionViewCell {
         containerView.addArrangedSubview(imageView)
         
         self.addSubview(containerView)
-        
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: self.topAnchor),
             containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),

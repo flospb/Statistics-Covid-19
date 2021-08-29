@@ -7,7 +7,7 @@
 
 import Foundation
 
-// TODO change
+// TODO change service
 
 protocol IUserDefaultsService {
     func saveObject<T: Encodable>(object: T, for key: String)

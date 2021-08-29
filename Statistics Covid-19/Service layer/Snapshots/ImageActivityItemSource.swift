@@ -9,6 +9,9 @@ import UIKit
 import LinkPresentation
 
 class ImageActivityItemSource: NSObject, UIActivityItemSource {
+
+    // MARK: - Models
+
     let image: UIImage
 
     // MARK: - Initialization

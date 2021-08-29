@@ -12,14 +12,17 @@ protocol ICountryListViewController: UITableViewDelegate, UITableViewDataSource,
 }
 
 class CountryListViewController: UIViewController {
+
+    // MARK: - Dependencies
+
     var delegateHandler: ((String) -> Void)?
-    
     private var router: IMainRouter
     private var countryListView: ICountryListView
-    
+
+    // MARK: - Models
+
     private var countryList = [CountryListModel]()
     private var filteredCountryList = [CountryListModel]()
-    
     private let cellId = CellNames.countryListTableCell
     
     // MARK: - Initialization

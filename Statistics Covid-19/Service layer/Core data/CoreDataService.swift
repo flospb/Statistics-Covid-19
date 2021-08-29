@@ -30,6 +30,8 @@ class CoreDataService: ICoreDataService {
 
     func getCountryList(completion: @escaping ([CountryModel]) -> Void) {
         let context = coreDataStack.container.viewContext
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy // check
+
         let request: NSFetchRequest<DBCountry> = DBCountry.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "\(#keyPath(DBCountry.name))", ascending: true)
         request.sortDescriptors = [sortDescriptor]
@@ -52,9 +54,7 @@ class CoreDataService: ICoreDataService {
 
     func getCountryStatistics(countryCode: String, completion: @escaping (CountryStatisticsModel) -> Void) {
         let context = coreDataStack.container.viewContext
-        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-
-        // guard let country = self.getCountryStorageModel(code: countryCode, context: context) else { return }
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy // check
 
         let request: NSFetchRequest<DBStatistics> = DBStatistics.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "\(#keyPath(DBStatistics.updateDate))", ascending: false)
@@ -73,20 +73,9 @@ class CoreDataService: ICoreDataService {
 
     // MARK: - Saving data
 
-    private func saveCountryList(countries: [CountryModel]) {
-        coreDataStack.container.performBackgroundTask { context in
-            // context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-
-            countries.forEach { item in
-                _ = DBCountry(code: item.code, name: item.name, in: context)
-            }
-
-            self.coreDataStack.saveContext(in: context)
-        }
-    }
-
     func saveCountryStatistics(countryStatistics: CountryStatisticsModel) {
         coreDataStack.container.performBackgroundTask { context in
+            context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy // check
             guard let country = self.getCountryStorageModel(code: countryStatistics.country.code, context: context) else { return }
             _ = self.dataMapper.getStatisticsStorageModel(statistics: countryStatistics, country: country, context: context) // check
 
@@ -96,7 +85,19 @@ class CoreDataService: ICoreDataService {
 
     // MARK: - Helpers
 
+    private func saveCountryList(countries: [CountryModel]) {
+        coreDataStack.container.performBackgroundTask { context in
+            context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy // check
+            countries.forEach { item in
+                _ = DBCountry(code: item.code, name: item.name, in: context) // check
+            }
+            self.coreDataStack.saveContext(in: context)
+        }
+    }
+
     private func getCountryStorageModel(code: String, context: NSManagedObjectContext) -> DBCountry? {
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy // check
+        
         let request: NSFetchRequest<DBCountry> = DBCountry.fetchRequest()
         request.predicate = NSPredicate(format: "\(#keyPath(DBCountry.code)) = '\(code)'")
 

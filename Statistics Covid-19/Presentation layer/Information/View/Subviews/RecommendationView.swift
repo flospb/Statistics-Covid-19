@@ -8,6 +8,9 @@
 import UIKit
 
 class RecommendationView: UIView {
+
+    // MARK: - UI
+
     private let mainContentStackView = UIStackView()
     private let rightContentStackView = UIStackView()
     
@@ -43,7 +46,6 @@ class RecommendationView: UIView {
         mainContentStackView.layer.cornerRadius = 5
         
         self.addSubview(mainContentStackView)
-        
         NSLayoutConstraint.activate([
             mainContentStackView.topAnchor.constraint(equalTo: self.topAnchor),
             mainContentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -58,7 +60,6 @@ class RecommendationView: UIView {
         imageView.contentMode = .scaleToFill
         
         self.addSubview(imageView)
-        
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: 30),
             imageView.heightAnchor.constraint(equalToConstant: 30),
@@ -87,7 +88,6 @@ class RecommendationView: UIView {
         rightContentStackView.addArrangedSubview(descriptionView)
         
         self.addSubview(rightContentStackView)
-        
         NSLayoutConstraint.activate([
             rightContentStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             rightContentStackView.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: 10),

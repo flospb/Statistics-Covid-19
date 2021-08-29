@@ -17,7 +17,7 @@
 		B40CC1FF26CFFF1400247152 /* RequestsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC1FE26CFFF1400247152 /* RequestsFactory.swift */; };
 		B40CC20226D0067300247152 /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20126D0067300247152 /* RequestSender.swift */; };
 		B40CC20426D00CE800247152 /* Parsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20326D00CE800247152 /* Parsers.swift */; };
-		B40CC20626D01E6900247152 /* ServiceStatisticsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20526D01E6800247152 /* ServiceStatisticsModels.swift */; };
+		B40CC20626D01E6900247152 /* NetworkingServiceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20526D01E6800247152 /* NetworkingServiceModels.swift */; };
 		B40CC20B26D0437A00247152 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20A26D0437A00247152 /* UserDefaultsService.swift */; };
 		B423F3EB26C835860054C163 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423F3EA26C835860054C163 /* StatisticsView.swift */; };
 		B423F3ED26C849E30054C163 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423F3EC26C849E30054C163 /* CountryView.swift */; };
@@ -86,7 +86,7 @@
 		B40CC1FE26CFFF1400247152 /* RequestsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsFactory.swift; sourceTree = "<group>"; };
 		B40CC20126D0067300247152 /* RequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
 		B40CC20326D00CE800247152 /* Parsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsers.swift; sourceTree = "<group>"; };
-		B40CC20526D01E6800247152 /* ServiceStatisticsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStatisticsModels.swift; sourceTree = "<group>"; };
+		B40CC20526D01E6800247152 /* NetworkingServiceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceModels.swift; sourceTree = "<group>"; };
 		B40CC20A26D0437A00247152 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		B423F3EA26C835860054C163 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		B423F3EC26C849E30054C163 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
@@ -186,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				B40CC1FB26CFF51B00247152 /* NetworkingService.swift */,
+				B40CC20526D01E6800247152 /* NetworkingServiceModels.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -212,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				B423F3F126C84A9F0054C163 /* StatisticsModel.swift */,
-				B40CC20526D01E6800247152 /* ServiceStatisticsModels.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -755,7 +755,7 @@
 				B451BBD726D140D2008A3791 /* CountryListModel.swift in Sources */,
 				B48831ED26DA6A7B00A8017B /* CoreDataService.swift in Sources */,
 				B42BD6CA26C00478007969B7 /* MainRouter.swift in Sources */,
-				B40CC20626D01E6900247152 /* ServiceStatisticsModels.swift in Sources */,
+				B40CC20626D01E6900247152 /* NetworkingServiceModels.swift in Sources */,
 				B4096D4E26DA8494008FCF70 /* DBStatistics+CoreDataClass.swift in Sources */,
 				B4CB879326C96BC300F68893 /* CommandButtonView.swift in Sources */,
 				B499908026D27AB600B5338A /* DataMapper.swift in Sources */,

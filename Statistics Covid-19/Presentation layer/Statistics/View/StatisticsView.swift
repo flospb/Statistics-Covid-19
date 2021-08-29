@@ -13,21 +13,24 @@ protocol IStatisticsView {
 }
 
 class StatisticsView: UIView {
+
+    // MARK: - Dependencies
+
     var delegate: IStatisticsViewController?
-    
+
+    // MARK: - UI
+
     private let statisticsViewTitle = UILabel()
-    // test
-    private let activityIndicatorView = UIActivityIndicatorView()
-    //
+    private let activityIndicatorView = UIActivityIndicatorView() // test
     private let countryView: ICountryView = CountryView(frame: .zero)
-    
     private let newCasesView: INewCasesView = NewCasesView(frame: .zero)
     private let totalCasesView: ITotalCasesView = TotalCasesView(frame: .zero)
-    
     private let buttonsStackView = UIStackView()
     private let shareButtonView = CommandButtonView(type: .system)
     private let refreshButtonView = CommandButtonView(type: .system)
-    
+
+    // MARK: - Models
+
     private let anchorСonstant = CGFloat(20)
     private let doubleAnchorСonstant = CGFloat(40)
     
@@ -52,10 +55,8 @@ class StatisticsView: UIView {
         addNewCasesView()
         addTotalCasesView()
         addButtonsStackView()
-        // test
-        addActivityIndicatorView()
-        //
-        
+        addActivityIndicatorView() // test
+
         settingShareButtonView()
         settingRefreshButtonView()
     }
@@ -66,7 +67,6 @@ class StatisticsView: UIView {
         statisticsViewTitle.font = FontConstants.largeBoldTitle
         
         self.addSubview(statisticsViewTitle)
-            
         NSLayoutConstraint.activate([
             statisticsViewTitle.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: anchorСonstant),
             statisticsViewTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant),
@@ -76,12 +76,10 @@ class StatisticsView: UIView {
     
     private func addCountryView() {
         countryView.translatesAutoresizingMaskIntoConstraints = false
-        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(countryTapped(tapGestureRecognizer:)))
         countryView.addGestureRecognizer(tapGestureRecognizer)
         
         self.addSubview(countryView)
-            
         NSLayoutConstraint.activate([
             countryView.topAnchor.constraint(equalTo: statisticsViewTitle.bottomAnchor, constant: anchorСonstant),
             countryView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant)
@@ -92,7 +90,6 @@ class StatisticsView: UIView {
         newCasesView.translatesAutoresizingMaskIntoConstraints = false
     
         self.addSubview(newCasesView)
-            
         NSLayoutConstraint.activate([
             newCasesView.topAnchor.constraint(equalTo: countryView.bottomAnchor, constant: anchorСonstant),
             newCasesView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant),
@@ -104,7 +101,6 @@ class StatisticsView: UIView {
         totalCasesView.translatesAutoresizingMaskIntoConstraints = false
     
         self.addSubview(totalCasesView)
-            
         NSLayoutConstraint.activate([
             totalCasesView.topAnchor.constraint(equalTo: newCasesView.bottomAnchor, constant: doubleAnchorСonstant),
             totalCasesView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant),
@@ -117,12 +113,11 @@ class StatisticsView: UIView {
         buttonsStackView.axis = .horizontal
         buttonsStackView.spacing = anchorСonstant
         buttonsStackView.distribution = .fillEqually
-    
+
         buttonsStackView.addArrangedSubview(shareButtonView)
         buttonsStackView.addArrangedSubview(refreshButtonView)
         
         self.addSubview(buttonsStackView)
-            
         NSLayoutConstraint.activate([
             buttonsStackView.topAnchor.constraint(equalTo: totalCasesView.bottomAnchor, constant: doubleAnchorСonstant),
             buttonsStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant),
@@ -136,7 +131,6 @@ class StatisticsView: UIView {
         activityIndicatorView.hidesWhenStopped = true
         
         self.addSubview(activityIndicatorView)
-            
         NSLayoutConstraint.activate([
             activityIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             activityIndicatorView.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor, constant: anchorСonstant * 2)
@@ -146,9 +140,9 @@ class StatisticsView: UIView {
     private func settingShareButtonView() {
         shareButtonView.addTarget(self, action: #selector(shareButtonViewAction(_:)), for: .touchUpInside)
         shareButtonView.settingView(title: StatisticsConstants.shareTitle,
-                                      titleColor: UIColor.darkText,
-                                      backgroundColor: ColorsConstants.shareBackground,
-                                      imageName: "Share")
+                                    titleColor: UIColor.darkText,
+                                    backgroundColor: ColorsConstants.shareBackground,
+                                    imageName: StatisticsConstants.shareImageName)
     }
     
     private func settingRefreshButtonView() {
@@ -156,7 +150,7 @@ class StatisticsView: UIView {
         refreshButtonView.settingView(title: StatisticsConstants.refreshTitle,
                                       titleColor: UIColor.white,
                                       backgroundColor: ColorsConstants.refreshBackground,
-                                      imageName: "Refresh")
+                                      imageName: StatisticsConstants.refreshImageName)
     }
 
     // MARK: - Actions

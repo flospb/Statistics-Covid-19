@@ -5,8 +5,6 @@
 //  Created by Сергей Флоря on 09.08.2021.
 //
 
-import Foundation
-
 // MARK: - Symptoms
 
 struct SymptomModel {
@@ -30,7 +28,7 @@ struct Recommendation {
 }
 
 struct RecommendationModel {
-    var recommendations = [Recommendation]()
+    var recommendations = [Recommendation]() // check
     
     init() {
         recommendations.append(Recommendation(title: "Оставайтесь дома",

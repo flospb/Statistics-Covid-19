@@ -5,7 +5,6 @@
 //  Created by Сергей Флоря on 08.08.2021.
 //
 
-import Foundation
 import UIKit
 
 protocol IMainRouter {
@@ -17,6 +16,9 @@ protocol IMainRouter {
 }
 
 final class MainRouter: IMainRouter {
+
+    // MARK: - Dependencies
+
     var tabBarController: UITabBarController
     
     private weak var statisticsNavViewController: UINavigationController?

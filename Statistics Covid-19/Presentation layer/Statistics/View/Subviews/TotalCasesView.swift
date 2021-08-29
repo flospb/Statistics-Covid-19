@@ -12,8 +12,10 @@ protocol ITotalCasesView: UIView {
 }
 
 class TotalCasesView: UIView {
+
+    // MARK: - UI
+
     private let contentStackView = UIStackView()
-    
     private let totalCasesViewTitle = UILabel()
     private let totalCasesView = UILabel()
    
@@ -30,7 +32,9 @@ class TotalCasesView: UIView {
     private let deathsStackView = UIStackView()
     private let deathsViewTitle = UILabel()
     private let deathsView = UILabel()
-    
+
+    // MARK: - Models
+
     private let defaultCasesValue = StatisticsConstants.defaultCasesValue
 
     // MARK: - Initialization
@@ -52,7 +56,6 @@ class TotalCasesView: UIView {
         
         settingCasesTodayViewTitle()
         settingTotalCasesView()
-        
         settingRecoveredViews()
         settingCriticalViews()
         settingDeathsViews()
@@ -60,12 +63,10 @@ class TotalCasesView: UIView {
 
     private func addContentStackView() {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
-
         let subviews = [totalCasesViewTitle, totalCasesView, casesDetailsStackView]
         configureStackView(stackView: contentStackView, axis: .vertical, spacing: 10.0, subviews: subviews, alignment: .fill)
         
         self.addSubview(contentStackView)
-        
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: self.topAnchor),
             contentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -78,7 +79,6 @@ class TotalCasesView: UIView {
         let subviews = [recoveredStackView, criticalStackView, deathsStackView]
         configureStackView(stackView: casesDetailsStackView, axis: .horizontal, spacing: 5.0, subviews: subviews, alignment: .center)
         casesDetailsStackView.distribution = .fillEqually
-        
         contentStackView.addArrangedSubview(casesDetailsStackView)
     }
     

@@ -1,5 +1,5 @@
 //
-//  ServiceStatisticsModels.swift
+//  NetworkingServiceModels.swift
 //  Statistics Covid-19
 //
 //  Created by Сергей Флоря on 20.08.2021.

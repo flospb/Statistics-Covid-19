@@ -13,6 +13,9 @@ protocol INetworkingService {
 }
 
 class NetworkingService: INetworkingService {
+
+    // MARK: - Dependencies
+
     private let requestSender: IRequestSender
     private let dataMapper: IStatisticsDataMapper
     
@@ -37,7 +40,6 @@ class NetworkingService: INetworkingService {
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
-        
         let statisticsConfiguration = RequestsFactory.statisticsConfiguration(countryCode: codeCountry)
         requestSender.send(configuration: statisticsConfiguration) { (result: Result<CountryResponse, NetworkServiceError>) in
             switch result {
@@ -50,7 +52,6 @@ class NetworkingService: INetworkingService {
         }
         
         dispatchGroup.enter()
-        
         let countryImageConfiguration = RequestsFactory.countryImageConfiguration(countryCode: codeCountry)
         requestSender.send(configuration: countryImageConfiguration) { (result: Result<CountryImageResponse, NetworkServiceError>) in
             switch result {

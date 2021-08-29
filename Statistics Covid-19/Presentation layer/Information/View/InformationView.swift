@@ -13,19 +13,26 @@ protocol IInformationView {
 }
 
 class InformationView: UIView {
+
+    // MARK: - Dependencies
+
     var delegate: IInformationViewController?
-        
+
+    // MARK: - UI
+
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let contentViewTitle = UILabel()
     
     private let symptomsViewTitle = UILabel()
     private let symptomsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    private let recommendations = RecommendationModel().recommendations
-    
+
     private let recommendationsViewTitle = UILabel()
     private let recommendationsContainer = UIStackView()
 
+    // MARK: - Models
+    
+    private let recommendations = RecommendationModel().recommendations
     private let anchorСonstant = CGFloat(20)
     
     // MARK: - Initialization
@@ -59,7 +66,6 @@ class InformationView: UIView {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(scrollView)
-        
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: self.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -73,7 +79,6 @@ class InformationView: UIView {
         contentView.backgroundColor = .systemBackground
         
         scrollView.addSubview(contentView)
-        
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
@@ -93,7 +98,6 @@ class InformationView: UIView {
         contentViewTitle.font = FontConstants.largeBoldTitle
         
         contentView.addSubview(contentViewTitle)
-        
         NSLayoutConstraint.activate([
             contentViewTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: anchorСonstant),
             contentViewTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: anchorСonstant),
@@ -107,7 +111,6 @@ class InformationView: UIView {
         symptomsViewTitle.font = FontConstants.mediumBoldTitle
         
         contentView.addSubview(symptomsViewTitle)
-        
         NSLayoutConstraint.activate([
             symptomsViewTitle.topAnchor.constraint(equalTo: contentViewTitle.bottomAnchor, constant: anchorСonstant),
             symptomsViewTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: anchorСonstant),
@@ -125,7 +128,6 @@ class InformationView: UIView {
         symptomsCollectionView.backgroundColor = .systemBackground
 
         contentView.addSubview(symptomsCollectionView)
-        
         NSLayoutConstraint.activate([
             symptomsCollectionView.topAnchor.constraint(equalTo: symptomsViewTitle.bottomAnchor, constant: anchorСonstant),
             symptomsCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -140,7 +142,6 @@ class InformationView: UIView {
         recommendationsViewTitle.font = FontConstants.mediumBoldTitle
         
         contentView.addSubview(recommendationsViewTitle)
-        
         NSLayoutConstraint.activate([
             recommendationsViewTitle.topAnchor.constraint(equalTo: symptomsCollectionView.bottomAnchor, constant: anchorСonstant),
             recommendationsViewTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: anchorСonstant),
@@ -160,7 +161,6 @@ class InformationView: UIView {
         }
         
         contentView.addSubview(recommendationsContainer)
-        
         NSLayoutConstraint.activate([
             recommendationsContainer.topAnchor.constraint(equalTo: recommendationsViewTitle.bottomAnchor, constant: anchorСonstant),
             recommendationsContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: anchorСonstant),

@@ -12,8 +12,14 @@ protocol IRequestSender {
 }
 
 class RequestSender: IRequestSender {
+
+    // MARK: - Dependencies
+    // check dep or models
+
     private let session = URLSession.shared
-    
+
+    // MARK: - IRequestSender
+
     func send<Parser>(configuration: Configuration<Parser>,
                       completion: @escaping (Result<Parser.Model, NetworkServiceError>) -> Void) {
         guard let urlRequest = configuration.request.urlRequest else {

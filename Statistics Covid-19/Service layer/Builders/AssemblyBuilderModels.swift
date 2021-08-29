@@ -5,8 +5,6 @@
 //  Created by Сергей Флоря on 29.08.2021.
 //
 
-import Foundation
-
 protocol IStatisticsServiceFactory {
     var router: IMainRouter { get }
     var networkingService: INetworkingService { get }

@@ -12,9 +12,14 @@ protocol IInformationViewController: UICollectionViewDataSource, UICollectionVie
 }
 
 class InformationViewController: UIViewController {
+
+    // MARK: - Dependencies
+
     private var router: IMainRouter
     private var informationView: IInformationView
-    
+
+    // MARK: - Models
+
     private var cellName = CellNames.informationCollectionCell
     private var symptomsCollection = SymptomModel().imageAddresses
     

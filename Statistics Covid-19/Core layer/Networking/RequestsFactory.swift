@@ -16,10 +16,14 @@ struct Configuration<Parser> where Parser: IParser {
     let parser: Parser
 }
 
-// TODO Refactor IRequest
-
 class StatisticsRequest: IRequest {
+
+    // MARK: - Dependencies
+    // check dep or models
+
     var urlRequest: URLRequest?
+
+    // MARK: - Initialization
     
     init(stringUrl: String) {
         guard let url = URL(string: stringUrl) else { return }
@@ -28,8 +32,14 @@ class StatisticsRequest: IRequest {
 }
 
 class CountryImageRequest: IRequest {
+
+    // MARK: - Dependencies
+    // check dep or models
+
     var urlRequest: URLRequest?
-    
+
+    // MARK: - Initialization
+
     init(stringUrl: String) {
         guard let url = URL(string: stringUrl) else { return }
         self.urlRequest = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)

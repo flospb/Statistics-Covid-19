@@ -5,7 +5,6 @@
 //  Created by Сергей Флоря on 08.08.2021.
 //
 
-import Foundation
 import UIKit
 
 protocol IAssemblyBuilder {
@@ -70,12 +69,6 @@ class AssemblyBuilder: IAssemblyBuilder {
         return statisticsNavViewController
     }
 
-    func makeActivityViewController(image: UIImage) -> UIActivityViewController {
-        let items = [ImageActivityItemSource(image: image)]
-        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        return activityViewController
-    }
-
     // MARK: - Information
     
     private func makeInformationViewController(router: IMainRouter) -> UIViewController {
@@ -103,5 +96,13 @@ class AssemblyBuilder: IAssemblyBuilder {
                                                                   countryList: countryList,
                                                                   countryCode: countryCode)
         return countryListViewController
+    }
+
+    // MARK: - Share
+
+    func makeActivityViewController(image: UIImage) -> UIActivityViewController {
+        let items = [ImageActivityItemSource(image: image)]
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        return activityViewController
     }
 }

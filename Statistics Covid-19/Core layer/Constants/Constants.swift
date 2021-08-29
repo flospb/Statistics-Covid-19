@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: - Text constants
+// MARK: - Tab bar constants
 
 struct TabBarConstants {
     static let statisticsTitle = "Статистика"
@@ -16,6 +16,8 @@ struct TabBarConstants {
     static let informationTitle = "Информация"
     static let informationImage = "info.circle.fill"
 }
+
+// MARK: - Screens constants
 
 struct StatisticsConstants {
     static let statisticsTitle = "Статистика"
@@ -29,6 +31,9 @@ struct StatisticsConstants {
     
     static let shareTitle = "Поделиться"
     static let refreshTitle = "Обновить"
+
+    static let shareImageName = "Share"
+    static let refreshImageName = "Refresh"
     
     static let defaultCountryCode = "RU"
     static let listOpeningImage = "arrowtriangle.down.fill"
@@ -46,10 +51,14 @@ struct CountryListConstants {
     static let selectedCountryImage = "checkmark"
 }
 
+// MARK: - Cells constants
+
 struct CellNames {
     static let informationCollectionCell = "CollectionCell"
     static let countryListTableCell = "TableCell"
 }
+
+// MARK: - API constants
 
 struct AdressesAPIConstants {
     static let statisticsByCountry = "https://corona-api.com/countries/"
@@ -57,10 +66,14 @@ struct AdressesAPIConstants {
     static let countryImageName = "/shiny/64.png"
 }
 
+// MARK: - Alert constants
+
 struct AlertConstants {
     static let alertTitle = "Внимание!"
     static let alertActionOk = "Хорошо"
 }
+
+// MARK: - Storage constants
 
 struct DefaultCountryConstants {
     static let countryCode = "RU"

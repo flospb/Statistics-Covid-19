@@ -12,8 +12,10 @@ protocol INewCasesView: UIView {
 }
 
 class NewCasesView: UIView {
+
+    // MARK: - UI
+
     private let contentStackView = UIStackView()
-    
     private let casesTodayViewTitle = UILabel()
     private let casesTodayView = UILabel()
     private let casesYesterdayView = UILabel()
@@ -33,7 +35,6 @@ class NewCasesView: UIView {
     
     private func settingView() {
         addContentStackView()
-        
         settingCasesTodayViewTitle()
         settingCasesTodayView()
         settingCasesYesterdayView()
@@ -44,13 +45,12 @@ class NewCasesView: UIView {
         contentStackView.axis = .vertical
         contentStackView.spacing = 10.0
         contentStackView.alignment = .fill
-    
+        
         contentStackView.addArrangedSubview(casesTodayViewTitle)
         contentStackView.addArrangedSubview(casesTodayView)
         contentStackView.addArrangedSubview(casesYesterdayView)
         
         self.addSubview(contentStackView)
-        
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: self.topAnchor),
             contentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -92,9 +92,6 @@ extension NewCasesView: INewCasesView {
 
         guard let date = updateDate else { return }
         let formattedDate = dataFormatter.getStringDate(format: "dd.MM.YYYY", date: date)
-//        let formattedDate = dataFormatter.changeDateFormat(changedDate: updateDate, oldFormat: "yyyy-MM-dd", newFormat: "dd.MM.YYYY")
-//        if let date = formattedDate {
-            casesTodayViewTitle.text = "\(StatisticsConstants.casesTodayTitle) \(formattedDate)"
-//        }
+        casesTodayViewTitle.text = "\(StatisticsConstants.casesTodayTitle) \(formattedDate)"
     }
 }

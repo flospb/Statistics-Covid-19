@@ -5,8 +5,6 @@
 //  Created by Сергей Флоря on 21.08.2021.
 //
 
-import Foundation
-
 struct CountryListModel {
     let name: String
     let code: String

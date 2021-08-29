@@ -7,6 +7,11 @@
 
 import UIKit
 
+struct CountryModel {
+    var code: String
+    var name: String
+}
+
 struct CurrentCountryModel {
     var code: String
     var name: String

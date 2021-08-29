@@ -10,7 +10,7 @@ import UIKit
 
 protocol IAssemblyBuilder {
     func makeRootTabBarController() -> UITabBarController
-    func makeCountryListViewController(router: IMainRouter, countryList: [CountryModel]) -> ICountryListViewController
+    func makeCountryListViewController(router: IMainRouter, countryList: [CountryModel], countryCode: String) -> ICountryListViewController
 }
 
 class AssemblyBuilder: IAssemblyBuilder {
@@ -84,9 +84,9 @@ class AssemblyBuilder: IAssemblyBuilder {
     
     // MARK: - Country list
     
-    func makeCountryListViewController(router: IMainRouter, countryList: [CountryModel]) -> ICountryListViewController {
+    func makeCountryListViewController(router: IMainRouter, countryList: [CountryModel], countryCode: String) -> ICountryListViewController {
         let countryListView = CountryListView(frame: UIScreen.main.bounds)
-        let countryListViewController = CountryListViewController(router: router, view: countryListView, countryList: countryList)
+        let countryListViewController = CountryListViewController(router: router, view: countryListView, countryList: countryList, countryCode: countryCode)
         return countryListViewController
     }
 }

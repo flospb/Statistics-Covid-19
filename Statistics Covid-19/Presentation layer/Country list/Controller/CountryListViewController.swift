@@ -17,19 +17,18 @@ class CountryListViewController: UIViewController {
     private var router: IMainRouter
     private var countryListView: ICountryListView
     
-    private var countryList = [CountryModel]()
-    private var filteredCountryList = [CountryModel]()
+    private var countryList = [CountryListModel]()
+    private var filteredCountryList = [CountryListModel]()
     
     private let cellId = CellNames.countryListTableCell
     
     // MARK: - Initialization
     
-    init(router: IMainRouter, view: ICountryListView, countryList: [CountryModel]) {
+    init(router: IMainRouter, view: ICountryListView, countryList: [CountryModel], countryCode: String) {
         self.router = router
         self.countryListView = view
-        self.filteredCountryList = countryList
-        self.countryList = countryList
         super.init(nibName: nil, bundle: nil)
+        self.fillCountyList(countries: countryList, countryCode: countryCode)
     }
     
     required init?(coder: NSCoder) {
@@ -50,6 +49,17 @@ class CountryListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+    }
+
+    // MARK: - Helpers
+
+    private func fillCountyList(countries: [CountryModel], countryCode: String) {
+        countries.forEach { country in
+            let selected = countryCode == country.code
+            let countryListModel = CountryListModel(name: country.name, code: country.code, selected: selected)
+            countryList.append(countryListModel)
+        }
+        filteredCountryList = countryList
     }
 }
 
@@ -73,8 +83,7 @@ extension CountryListViewController: ICountryListViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var country = filteredCountryList[indexPath.row]
-        country.selected = true
+        let country = filteredCountryList[indexPath.row]
         router.closeCountryListViewController()
         delegateHandler?(country.code)
     }

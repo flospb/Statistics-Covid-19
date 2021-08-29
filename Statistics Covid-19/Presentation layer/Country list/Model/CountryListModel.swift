@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CountryModel {
+struct CountryListModel {
     let name: String
     let code: String
     var selected: Bool

@@ -117,58 +117,11 @@ class CoreDataService: ICoreDataService {
 
         for code in countryCodes {
             guard let name = NSLocale(localeIdentifier: countryCode).localizedString(forCountryCode: code) else { continue }
-            let countrySelected = code == countryCode
-            let country = CountryModel(name: name, code: code, selected: countrySelected)
+            let country = CountryModel(code: code, name: name)
             countryList.append(country)
         }
-
+        countryList.sort { $0.name < $1.name }
+        
         return countryList
     }
 }
-// protocol ICountryCoreDataService {
-//    var coreDataStack: CoreDataStack { get }
-//    func saveCountries(countries: [Country], completion: @escaping () -> Void)
-//    func getCountryData(code: String, completion: @escaping (Country) -> Void)
-// }
-//
-// class CompanyCoreDataService: ICountryCoreDataService {
-//    var coreDataStack = CoreDataStack.shared
-//
-//    func saveCountries(countries: [Country], completion: @escaping () -> Void) {
-//        self.coreDataStack.container.performBackgroundTask { context in
-//            context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-//
-//            for country in countries {
-//                let countryObject = DBCountry(context: context)
-//                countryObject.code = country.code
-//                countryObject.name = country.name
-//                countryObject.todayConfirmed = Int32(country.todayConfirmed ?? 0)
-//                countryObject.yesterdayConfirmed = Int32(country.yesterdayConfirmed ?? 0)
-//                countryObject.deaths = Int32(country.deaths ?? 0)
-//                countryObject.confirmed = Int32(country.confirmed ?? 0)
-//                countryObject.recovered = Int32(country.recovered ?? 0)
-//                countryObject.critical = Int32(country.critical ?? 0)
-//                countryObject.updateDate = country.updateDate
-//                self.coreDataStack.saveContext(in: context)
-//            }
-//
-//            DispatchQueue.main.async { completion() }
-//        }
-//    }
-//
-//    func getCountryData(code: String, completion: @escaping (Country) -> Void) {
-//        let context = self.coreDataStack.container.viewContext
-//        let request: NSFetchRequest<DBCountry> = DBCountry.fetchRequest()
-//        let sortDescriptor = NSSortDescriptor(key: "\(#keyPath(DBCountry.updateDate))", ascending: false)
-//        request.sortDescriptors = [sortDescriptor]
-//
-//        do {
-//            let result = try context.fetch(request).compactMap { Country(country: $0) }
-//            if result.count > 0 {
-//                completion(result[0])
-//            }
-//        } catch {
-//            fatalError()
-//        }
-//    }
-// }

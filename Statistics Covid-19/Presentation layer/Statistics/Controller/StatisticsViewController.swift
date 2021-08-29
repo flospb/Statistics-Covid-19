@@ -93,7 +93,6 @@ class StatisticsViewController: UIViewController {
         if countryList.count == 0 {
             coreDataService.getCountryList { [weak self] result in
                 self?.countryList = result
-                // self?.codeCurrentCountry = StatisticsConstants.defaultCountryCode
             }
         }
 
@@ -124,7 +123,7 @@ class StatisticsViewController: UIViewController {
     private func countrySelectionHandler(countryCode: String) {
         self.codeCurrentCountry = countryCode
         userDefaultsService.saveObject(object: countryCode, for: DefaultCountryConstants.valueKey)
-        markSelectedCountry(code: countryCode)
+        fillDefaultValues(code: countryCode)
         loadDataFromStorage()
         loadStatisticsData()
     }
@@ -139,12 +138,8 @@ class StatisticsViewController: UIViewController {
         }
     }
 
-    private func markSelectedCountry(code: String) {
-        guard let selected = countryList.firstIndex(where: { $0.code == code }),
-             let previouslySelected = countryList.firstIndex(where: { $0.selected }) else { return }
-
-        countryList[selected].selected = true
-        countryList[previouslySelected].selected = false
+    private func fillDefaultValues(code: String) {
+        guard let selected = countryList.firstIndex(where: { $0.code == code }) else { return }
 
         let countryModel = CurrentCountryModel(code: countryList[selected].code, name: countryList[selected].name, image: nil)
         let countryStatistics = CountryStatisticsModel(country: countryModel)
@@ -159,7 +154,7 @@ extension StatisticsViewController: IStatisticsViewController {
     // MARK: - View actions
     
     func countryTapped() {
-        let countryListViewController = AssemblyBuilder().makeCountryListViewController(router: router, countryList: countryList)
+        let countryListViewController = AssemblyBuilder().makeCountryListViewController(router: router, countryList: countryList, countryCode: codeCurrentCountry)
         countryListViewController.delegateHandler = countrySelectionHandler
         router.openCountryListViewController(controller: countryListViewController)
     }

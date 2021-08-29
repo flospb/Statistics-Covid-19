@@ -18,7 +18,6 @@ protocol IStatisticsDataMapper {
 
 class StatisticsDataMapper: IStatisticsDataMapper {
     private let dataFormatterService: IDataFormatterService
-    private let defaultCountryCode = StatisticsConstants.defaultCountryCode
 
     init(dataFormatterService: IDataFormatterService) {
         self.dataFormatterService = dataFormatterService
@@ -29,8 +28,7 @@ class StatisticsDataMapper: IStatisticsDataMapper {
 
         for item in countries {
             guard let name = item.name, let code = item.code else { continue }
-            let selectedCountry = item.code == defaultCountryCode
-            let country = CountryModel(name: name, code: code, selected: selectedCountry)
+            let country = CountryModel(code: code, name: name)
             countryList.append(country)
         }
 

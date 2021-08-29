@@ -135,7 +135,11 @@ class TotalCasesView: UIView {
     
     // MARK: - Helpers
     
-    private func configureStackView(stackView: UIStackView, axis: NSLayoutConstraint.Axis, spacing: CGFloat, subviews: [UIView], alignment: UIStackView.Alignment) {
+    private func configureStackView(stackView: UIStackView,
+                                    axis: NSLayoutConstraint.Axis,
+                                    spacing: CGFloat,
+                                    subviews: [UIView],
+                                    alignment: UIStackView.Alignment) {
         stackView.axis = axis
         stackView.spacing = spacing
         stackView.alignment = alignment

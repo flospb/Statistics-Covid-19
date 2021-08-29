@@ -14,11 +14,16 @@ protocol IStatisticsViewController {
 }
 
 class StatisticsViewController: UIViewController {
+
+    // MARK: - Dependencies
+
     private var router: IMainRouter
     private var statisticsView: IStatisticsView
     private var networkingService: INetworkingService
     private var coreDataService: ICoreDataService
     private var userDefaultsService: IUserDefaultsService
+
+    // MARK: - Models
 
     private var countryList = [CountryModel]() // TODO check
     private lazy var codeCurrentCountry: String = {
@@ -87,8 +92,6 @@ class StatisticsViewController: UIViewController {
         }
     }
 
-    // MARK: - Storage
-
     private func loadDataFromStorage() {
         if countryList.count == 0 {
             coreDataService.getCountryList { [weak self] result in
@@ -140,7 +143,6 @@ class StatisticsViewController: UIViewController {
 
     private func fillDefaultValues(code: String) {
         guard let selected = countryList.firstIndex(where: { $0.code == code }) else { return }
-
         let countryModel = CurrentCountryModel(code: countryList[selected].code, name: countryList[selected].name, image: nil)
         let countryStatistics = CountryStatisticsModel(country: countryModel)
         self.statisticsView.fillCountryData(countryStatistics: countryStatistics, dataFormatter: DataFormatterService())
@@ -154,7 +156,10 @@ extension StatisticsViewController: IStatisticsViewController {
     // MARK: - View actions
     
     func countryTapped() {
-        let countryListViewController = AssemblyBuilder().makeCountryListViewController(router: router, countryList: countryList, countryCode: codeCurrentCountry)
+        let builder = AssemblyBuilder()
+        let countryListViewController = builder.makeCountryListViewController(router: router,
+                                                                              countryList: countryList,
+                                                                              countryCode: codeCurrentCountry)
         countryListViewController.delegateHandler = countrySelectionHandler
         router.openCountryListViewController(controller: countryListViewController)
     }

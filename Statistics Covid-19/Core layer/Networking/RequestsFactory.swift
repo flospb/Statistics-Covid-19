@@ -11,7 +11,7 @@ protocol IRequest {
     var urlRequest: URLRequest? { get }
 }
 
-struct RequestConfiguration<Parser> where Parser: IParser {
+struct Configuration<Parser> where Parser: IParser {
     let request: IRequest
     let parser: Parser
 }
@@ -37,18 +37,18 @@ class CountryImageRequest: IRequest {
 }
 
 struct RequestsFactory {
-    static func statisticsConfiguration(countryCode: String) -> RequestConfiguration<StatisticsParser> {
+    static func statisticsConfiguration(countryCode: String) -> Configuration<StatisticsParser> {
         let stringUrl = AdressesAPIConstants.statisticsByCountry + countryCode
         let request = StatisticsRequest(stringUrl: stringUrl)
         let parser = StatisticsParser()
-        return RequestConfiguration<StatisticsParser>(request: request, parser: parser)
+        return Configuration<StatisticsParser>(request: request, parser: parser)
     }
     
-    static func countryImageConfiguration(countryCode: String) -> RequestConfiguration<CountryImageParser> {
+    static func countryImageConfiguration(countryCode: String) -> Configuration<CountryImageParser> {
         let countryImageName = AdressesAPIConstants.countryImageName
         let stringUrl = AdressesAPIConstants.countryImage + countryCode + countryImageName
         let request = CountryImageRequest(stringUrl: stringUrl)
         let parser = CountryImageParser()
-        return RequestConfiguration<CountryImageParser>(request: request, parser: parser)
+        return Configuration<CountryImageParser>(request: request, parser: parser)
     }
 }

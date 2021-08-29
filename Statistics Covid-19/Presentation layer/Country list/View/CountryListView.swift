@@ -81,4 +81,3 @@ extension CountryListView: ICountryListView {
         countryListTableView.register(CountryListTableViewCell.self, forCellReuseIdentifier: CellNames.countryListTableCell)
     }
 }
-

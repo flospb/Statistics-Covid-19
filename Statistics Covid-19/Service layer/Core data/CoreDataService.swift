@@ -87,10 +87,8 @@ class CoreDataService: ICoreDataService {
 
     func saveCountryStatistics(countryStatistics: CountryStatisticsModel) {
         coreDataStack.container.performBackgroundTask { context in
-            // context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-
             guard let country = self.getCountryStorageModel(code: countryStatistics.country.code, context: context) else { return }
-            let db = self.dataMapper.getStatisticsStorageModel(statistics: countryStatistics, country: country, context: context)
+            _ = self.dataMapper.getStatisticsStorageModel(statistics: countryStatistics, country: country, context: context) // check
 
             self.coreDataStack.saveContext(in: context)
         }

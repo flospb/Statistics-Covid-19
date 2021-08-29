@@ -90,7 +90,9 @@ class StatisticsDataMapper: IStatisticsDataMapper {
         return statisticsModel
     }
 
-    func getStatisticsStorageModel(statistics: CountryStatisticsModel, country: DBCountry, context: NSManagedObjectContext) -> DBStatistics {
+    func getStatisticsStorageModel(statistics: CountryStatisticsModel,
+                                   country: DBCountry,
+                                   context: NSManagedObjectContext) -> DBStatistics {
         let storageModel = DBStatistics(context: context)
 
         storageModel.country = country

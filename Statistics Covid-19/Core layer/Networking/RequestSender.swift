@@ -8,13 +8,14 @@
 import Foundation
 
 protocol IRequestSender {
-    func send<Parser>(configuration: RequestConfiguration<Parser>, completion: @escaping (Result<Parser.Model, NetworkServiceError>) -> Void)
+    func send<Parser>(configuration: Configuration<Parser>, completion: @escaping (Result<Parser.Model, NetworkServiceError>) -> Void)
 }
 
 class RequestSender: IRequestSender {
     private let session = URLSession.shared
     
-    func send<Parser>(configuration: RequestConfiguration<Parser>, completion: @escaping (Result<Parser.Model, NetworkServiceError>) -> Void) {
+    func send<Parser>(configuration: Configuration<Parser>,
+                      completion: @escaping (Result<Parser.Model, NetworkServiceError>) -> Void) {
         guard let urlRequest = configuration.request.urlRequest else {
             completion(.failure(.incorrectUrl))
             return

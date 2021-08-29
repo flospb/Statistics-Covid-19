@@ -84,9 +84,14 @@ class AssemblyBuilder: IAssemblyBuilder {
     
     // MARK: - Country list
     
-    func makeCountryListViewController(router: IMainRouter, countryList: [CountryModel], countryCode: String) -> ICountryListViewController {
+    func makeCountryListViewController(router: IMainRouter,
+                                       countryList: [CountryModel],
+                                       countryCode: String) -> ICountryListViewController {
         let countryListView = CountryListView(frame: UIScreen.main.bounds)
-        let countryListViewController = CountryListViewController(router: router, view: countryListView, countryList: countryList, countryCode: countryCode)
+        let countryListViewController = CountryListViewController(router: router,
+                                                                  view: countryListView,
+                                                                  countryList: countryList,
+                                                                  countryCode: countryCode)
         return countryListViewController
     }
 }

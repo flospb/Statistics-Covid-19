@@ -16,6 +16,7 @@ class CountryListViewController: UIViewController {
     // MARK: - Dependencies
 
     var delegateHandler: ((String) -> Void)?
+    
     private var router: IMainRouter
     private var countryListView: ICountryListView
 
@@ -44,14 +45,32 @@ class CountryListViewController: UIViewController {
         self.view = countryListView as? UIView
         countryListView.delegate = self
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         countryListView.setDelegates()
+
+        let showName = UIResponder.keyboardDidShowNotification
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: showName, object: nil)
+
+        let hideName = UIResponder.keyboardWillHideNotification
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHide(_:)), name: hideName, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+    }
+
+    // MARK: - Actions
+
+    @objc func keyboardWasShown(_ notification: NSNotification) {
+        if let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            countryListView.tableViewUp(keyboardHeight: keyboardRect.height)
+        }
+    }
+
+    @objc func keyboardWillBeHide(_ notification: NSNotification) {
+        countryListView.tableViewDown()
     }
 
     // MARK: - Helpers
@@ -98,6 +117,6 @@ extension CountryListViewController: ICountryListViewController {
         if !searchText.isEmpty {
             filteredCountryList = filteredCountryList.filter({$0.name.contains(searchBar.text ?? "")})
         }
-        countryListView.countryListTableView.reloadData()
+        countryListView.reloadTableView()
     }
 }

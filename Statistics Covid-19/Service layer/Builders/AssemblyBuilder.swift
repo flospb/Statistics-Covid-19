@@ -11,6 +11,7 @@ import UIKit
 protocol IAssemblyBuilder {
     func makeRootTabBarController() -> UITabBarController
     func makeCountryListViewController(router: IMainRouter, countryList: [CountryModel], countryCode: String) -> ICountryListViewController
+    func makeActivityViewController(image: UIImage) -> UIActivityViewController
 }
 
 class AssemblyBuilder: IAssemblyBuilder {
@@ -49,13 +50,16 @@ class AssemblyBuilder: IAssemblyBuilder {
         let coreDataStack = CoreDataStack()
         let coreDataService = CoreDataService(coreDataStack: coreDataStack, dataMapper: dataMapper)
 
+        let builder = AssemblyBuilder()
         let userDefaults = UserDefaultsService()
 
-        let statisticsViewController = StatisticsViewController(router: router,
-                                                                view: statisticsView,
+        let statisticsServiceFactory = StatisticsServiceFactory(router: router,
                                                                 networkingService: networkingService,
                                                                 coreDataService: coreDataService,
+                                                                builder: builder,
                                                                 userDefaultsService: userDefaults)
+
+        let statisticsViewController = StatisticsViewController(view: statisticsView, serviceFactory: statisticsServiceFactory)
         return statisticsViewController
     }
     
@@ -64,6 +68,12 @@ class AssemblyBuilder: IAssemblyBuilder {
         statisticsNavViewController.tabBarItem.title = TabBarConstants.statisticsTitle
         statisticsNavViewController.tabBarItem.image = UIImage(systemName: TabBarConstants.statisticsImage)
         return statisticsNavViewController
+    }
+
+    func makeActivityViewController(image: UIImage) -> UIActivityViewController {
+        let items = [ImageActivityItemSource(image: image)]
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        return activityViewController
     }
 
     // MARK: - Information

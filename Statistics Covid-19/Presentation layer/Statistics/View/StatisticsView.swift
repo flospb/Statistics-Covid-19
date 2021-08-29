@@ -170,7 +170,14 @@ class StatisticsView: UIView {
     }
     
     @objc private func shareButtonViewAction(_ sender: UIButton) {
-        delegate?.shareButtonTapped()
+        let snapshot = self.snapshotView(afterScreenUpdates: false)
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
+        snapshot?.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+        UIGraphicsEndImageContext()
+
+        delegate?.shareButtonTapped(image: image)
     }
     
     @objc private func refreshButtonViewAction(_ sender: UIButton) {

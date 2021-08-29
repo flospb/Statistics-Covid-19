@@ -5,7 +5,6 @@
 //  Created by Сергей Флоря on 08.08.2021.
 //
 
-import Foundation
 import UIKit
 
 // MARK: - Text constants
@@ -52,9 +51,8 @@ struct CellNames {
     static let countryListTableCell = "TableCell"
 }
 
-struct AdressesAPIConstants {   // TODO Check
+struct AdressesAPIConstants {
     static let statisticsByCountry = "https://corona-api.com/countries/"
-    // static let countryList = "https://corona-api.com/countries"
     static let countryImage = "https://www.countryflags.io/"
     static let countryImageName = "/shiny/64.png"
 }

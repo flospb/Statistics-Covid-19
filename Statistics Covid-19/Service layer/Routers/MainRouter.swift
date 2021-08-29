@@ -10,6 +10,8 @@ import UIKit
 
 protocol IMainRouter {
     var tabBarController: UITabBarController { get }
+    func setNavigationControllers(statisticsNavigation: UINavigationController, informationNavigation: UINavigationController)
+    func openActivityViewController(activityViewController: UIActivityViewController)
     func openCountryListViewController(controller: ICountryListViewController)
     func closeCountryListViewController()
 }
@@ -25,12 +27,18 @@ final class MainRouter: IMainRouter {
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
     }
-    
+
+    // MARK: - IMainRouter
+
     func setNavigationControllers(statisticsNavigation: UINavigationController, informationNavigation: UINavigationController) {
         statisticsNavViewController = statisticsNavigation
         informationNavViewController = informationNavigation
     }
-    
+
+    func openActivityViewController(activityViewController: UIActivityViewController) {
+        statisticsNavViewController?.present(activityViewController, animated: true, completion: nil)
+    }
+
     func openCountryListViewController(controller: ICountryListViewController) {
         guard let viewController = controller as? UIViewController else { return }
         statisticsNavViewController?.present(viewController, animated: true, completion: nil)

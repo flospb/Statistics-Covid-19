@@ -9,7 +9,7 @@ import UIKit
 
 protocol IStatisticsViewController {
     func countryTapped()
-    func shareButtonTapped()
+    func shareButtonTapped(image: UIImage)
     func refreshButtonTapped()
 }
 
@@ -17,15 +17,16 @@ class StatisticsViewController: UIViewController {
 
     // MARK: - Dependencies
 
-    private var router: IMainRouter
     private var statisticsView: IStatisticsView
+    private var router: IMainRouter
     private var networkingService: INetworkingService
     private var coreDataService: ICoreDataService
+    private var builder: IAssemblyBuilder
     private var userDefaultsService: IUserDefaultsService
 
     // MARK: - Models
 
-    private var countryList = [CountryModel]() // TODO check
+    private var countryList = [CountryModel]()
     private lazy var codeCurrentCountry: String = {
         if let codeCountry: String = userDefaultsService.getObject(for: DefaultCountryConstants.valueKey) {
             return codeCountry
@@ -36,18 +37,13 @@ class StatisticsViewController: UIViewController {
 
     // MARK: - Initialization
 
-    // check change format parameters
-    init(router: IMainRouter,
-         view: IStatisticsView,
-         networkingService: INetworkingService,
-         coreDataService: ICoreDataService,
-         userDefaultsService: IUserDefaultsService) {
-
-        self.router = router
+    init(view: IStatisticsView, serviceFactory: IStatisticsServiceFactory) {
         self.statisticsView = view
-        self.networkingService = networkingService
-        self.coreDataService = coreDataService
-        self.userDefaultsService = userDefaultsService
+        self.router = serviceFactory.router
+        self.networkingService = serviceFactory.networkingService
+        self.coreDataService = serviceFactory.coreDataService
+        self.builder = serviceFactory.builder
+        self.userDefaultsService = serviceFactory.userDefaultsService
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -156,7 +152,6 @@ extension StatisticsViewController: IStatisticsViewController {
     // MARK: - View actions
     
     func countryTapped() {
-        let builder = AssemblyBuilder()
         let countryListViewController = builder.makeCountryListViewController(router: router,
                                                                               countryList: countryList,
                                                                               countryCode: codeCurrentCountry)
@@ -164,8 +159,9 @@ extension StatisticsViewController: IStatisticsViewController {
         router.openCountryListViewController(controller: countryListViewController)
     }
     
-    func shareButtonTapped() {
-        print("Share tapped")
+    func shareButtonTapped(image: UIImage) {
+        let activityController = builder.makeActivityViewController(image: image)
+        router.openActivityViewController(activityViewController: activityController)
     }
     
     func refreshButtonTapped() {

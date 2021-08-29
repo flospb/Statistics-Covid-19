@@ -54,7 +54,7 @@ struct CellNames {
 
 struct AdressesAPIConstants {   // TODO Check
     static let statisticsByCountry = "https://corona-api.com/countries/"
-    static let countryList = "https://corona-api.com/countries"
+    // static let countryList = "https://corona-api.com/countries"
     static let countryImage = "https://www.countryflags.io/"
     static let countryImageName = "/shiny/64.png"
 }

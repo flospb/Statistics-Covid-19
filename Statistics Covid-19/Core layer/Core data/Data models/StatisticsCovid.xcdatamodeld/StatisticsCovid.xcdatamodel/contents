@@ -12,7 +12,7 @@
         <attribute name="deaths" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="recovered" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="totalConfirmed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="updateDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBCountry" inverseName="statistics" inverseEntity="DBCountry"/>
     </entity>
     <elements>

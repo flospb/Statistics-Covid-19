@@ -42,8 +42,6 @@ class CoreDataService: ICoreDataService {
                 completion(countryList)
             } else {
                 let countryList = dataMapper.getCountryListByStorageModel(countries: result)
-
-                print(countryList)
                 completion(countryList)
             }
         } catch {

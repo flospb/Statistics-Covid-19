@@ -8,8 +8,8 @@
 import UIKit
 
 struct CurrentCountryModel {
-    var name: String
     var code: String
+    var name: String
     var image: UIImage?
 }
 

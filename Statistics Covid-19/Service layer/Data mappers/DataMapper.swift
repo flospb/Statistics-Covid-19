@@ -50,7 +50,7 @@ class StatisticsDataMapper: IStatisticsDataMapper {
             countryName = name
         }
 
-        let country = CurrentCountryModel(name: countryName, code: data.code, image: image)
+        let country = CurrentCountryModel(code: data.code, name: countryName, image: image)
         var countryStatistics = CountryStatisticsModel(country: country)
 
 //        countryStatistics.updateDate = dataFormatterService.getDateFromString(format: "yyyy-MM-dd", date: data.updateDate)
@@ -77,7 +77,7 @@ class StatisticsDataMapper: IStatisticsDataMapper {
               let code = statistics.country?.code,
               let date = statistics.updateDate else { return nil }
 
-        let countryModel = CurrentCountryModel(name: name, code: code, image: nil)
+        let countryModel = CurrentCountryModel(code: code, name: name, image: nil)
         var statisticsModel = CountryStatisticsModel(country: countryModel)
 
         statisticsModel.country = countryModel

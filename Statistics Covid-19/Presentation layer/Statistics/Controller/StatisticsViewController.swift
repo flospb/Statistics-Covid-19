@@ -19,14 +19,19 @@ class StatisticsViewController: UIViewController {
     private var networkingService: INetworkingService
     private var coreDataService: ICoreDataService
     private var userDefaultsService: IUserDefaultsService
-    
-    private var codeCurrentCountry: String?
+
     private var countryList = [CountryModel]() // TODO check
-    private var defaultCountryCode = StatisticsConstants.defaultCountryCode
-    
+    private lazy var codeCurrentCountry: String = {
+        if let codeCountry: String = userDefaultsService.getObject(for: DefaultCountryConstants.valueKey) {
+            return codeCountry
+        } else {
+            return StatisticsConstants.defaultCountryCode
+        }
+    }()
+
     // MARK: - Initialization
 
-    // change format parameters
+    // check change format parameters
     init(router: IMainRouter,
          view: IStatisticsView,
          networkingService: INetworkingService,
@@ -55,13 +60,8 @@ class StatisticsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        if let codeCountry: String = userDefaultsService.getObject(for: DefaultCountryConstants.valueKey) {
-            codeCurrentCountry = codeCountry
-        }
-        
         networkingService.statisticsHandler = statisticsHandler
-        downloadDataFromStorage()
+        loadDataFromStorage()
         loadStatisticsData()
     }
     
@@ -73,8 +73,7 @@ class StatisticsViewController: UIViewController {
     // MARK: - Loading data
     
     private func loadStatisticsData() {
-         return
-        if codeCurrentCountry == nil {
+        if countryList.count == 0 {
             fillCountryList()
         } else {
             networkingService.fetchDataByCountry(codeCurrentCountry: codeCurrentCountry)
@@ -84,28 +83,23 @@ class StatisticsViewController: UIViewController {
     private func fillCountryList() {
         coreDataService.getCountryList { [weak self] result in
             self?.countryList = result
-            self?.networkingService.fetchDataByCountry(codeCurrentCountry: self?.defaultCountryCode)
+            self?.networkingService.fetchDataByCountry(codeCurrentCountry: self?.codeCurrentCountry)
         }
     }
 
     // MARK: - Storage
 
-    private func downloadDataFromStorage() {
-        let codeCountry: String
-        if let code = codeCurrentCountry {
-            codeCountry = code
-        } else {
-            codeCountry = defaultCountryCode
-        }
-
+    private func loadDataFromStorage() {
         if countryList.count == 0 {
             coreDataService.getCountryList { [weak self] result in
                 self?.countryList = result
+                // self?.codeCurrentCountry = StatisticsConstants.defaultCountryCode
             }
         }
 
-        coreDataService.getCountryStatistics(countryCode: codeCountry) { result in
-            self.statisticsView.fillCountryData(countryStatistics: result, dataFormatter: DataFormatterService())
+        coreDataService.getCountryStatistics(countryCode: codeCurrentCountry) { [weak self] result in
+            self?.statisticsView.fillCountryData(countryStatistics: result, dataFormatter: DataFormatterService())
+            self?.codeCurrentCountry = result.country.code
         }
     }
 
@@ -131,7 +125,7 @@ class StatisticsViewController: UIViewController {
         self.codeCurrentCountry = countryCode
         userDefaultsService.saveObject(object: countryCode, for: DefaultCountryConstants.valueKey)
         markSelectedCountry(code: countryCode)
-        downloadDataFromStorage()
+        loadDataFromStorage()
         loadStatisticsData()
     }
     
@@ -151,6 +145,10 @@ class StatisticsViewController: UIViewController {
 
         countryList[selected].selected = true
         countryList[previouslySelected].selected = false
+
+        let countryModel = CurrentCountryModel(code: countryList[selected].code, name: countryList[selected].name, image: nil)
+        let countryStatistics = CountryStatisticsModel(country: countryModel)
+        self.statisticsView.fillCountryData(countryStatistics: countryStatistics, dataFormatter: DataFormatterService())
     }
 }
 

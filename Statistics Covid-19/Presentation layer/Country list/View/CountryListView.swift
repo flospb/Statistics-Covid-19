@@ -82,27 +82,3 @@ extension CountryListView: ICountryListView {
     }
 }
 
-/* After change and use
- var viewTranslation = CGPoint(x: 0, y: 0)
- self.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
- @objc func handleDismiss(sender: UIPanGestureRecognizer) {
-     switch sender.state {
-     case .changed:
-         viewTranslation = sender.translation(in: self)
-         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-             self.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
-         })
-     case .ended:
-         if viewTranslation.y < 200 {
-             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                 self.transform = .identity
-             })
-         } else {
-             delegate?.verticalSwipeAction()
-             // dismiss(animated: true, completion: nil)
-         }
-     default:
-         break
-     }
- }
- */

@@ -43,3 +43,9 @@ struct CountryStatisticsModel {
         self.totalDeaths = defaultValue
     }
 }
+
+struct TotalCasesModel {
+    let recovered: CGFloat
+    let critical: CGFloat
+    let deaths: CGFloat
+}

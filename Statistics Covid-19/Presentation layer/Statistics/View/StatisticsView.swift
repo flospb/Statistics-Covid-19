@@ -60,7 +60,7 @@ class StatisticsView: UIView {
         settingShareButtonView()
         settingRefreshButtonView()
     }
-    
+
     private func addStatisticsViewTitle() {
         statisticsViewTitle.translatesAutoresizingMaskIntoConstraints = false
         statisticsViewTitle.text = StatisticsConstants.statisticsTitle
@@ -136,7 +136,7 @@ class StatisticsView: UIView {
             activityIndicatorView.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor, constant: anchorСonstant * 2)
         ])
     }
-    
+
     private func settingShareButtonView() {
         shareButtonView.addTarget(self, action: #selector(shareButtonViewAction(_:)), for: .touchUpInside)
         shareButtonView.settingView(title: StatisticsConstants.shareTitle,

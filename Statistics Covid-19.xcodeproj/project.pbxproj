@@ -42,6 +42,7 @@
 		B451BBD526D139FB008A3791 /* CountryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451BBD426D139FB008A3791 /* CountryListView.swift */; };
 		B451BBD726D140D2008A3791 /* CountryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451BBD626D140D2008A3791 /* CountryListModel.swift */; };
 		B451BBD926D161AB008A3791 /* CountryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */; };
+		B483502426DFF0EE006772B4 /* StatisticsGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483502326DFF0EE006772B4 /* StatisticsGraphView.swift */; };
 		B48831DF26DA657D00A8017B /* StatisticsCovid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B48831DD26DA657D00A8017B /* StatisticsCovid.xcdatamodeld */; };
 		B48831EA26DA66CE00A8017B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48831E926DA66CE00A8017B /* CoreDataStack.swift */; };
 		B48831ED26DA6A7B00A8017B /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48831EC26DA6A7B00A8017B /* CoreDataService.swift */; };
@@ -117,6 +118,7 @@
 		B451BBD426D139FB008A3791 /* CountryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListView.swift; sourceTree = "<group>"; };
 		B451BBD626D140D2008A3791 /* CountryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListModel.swift; sourceTree = "<group>"; };
 		B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableViewCell.swift; sourceTree = "<group>"; };
+		B483502326DFF0EE006772B4 /* StatisticsGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsGraphView.swift; sourceTree = "<group>"; };
 		B48831DE26DA657D00A8017B /* StatisticsCovid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StatisticsCovid.xcdatamodel; sourceTree = "<group>"; };
 		B48831E926DA66CE00A8017B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B48831EC26DA6A7B00A8017B /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				B423F3F326C864CC0054C163 /* NewCasesView.swift */,
 				B4CB879026C93A8D00F68893 /* TotalCasesView.swift */,
 				B4CB879226C96BC300F68893 /* CommandButtonView.swift */,
+				B483502326DFF0EE006772B4 /* StatisticsGraphView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 			files = (
 				B48831EA26DA66CE00A8017B /* CoreDataStack.swift in Sources */,
 				B498B4EE26C46FBF003409B7 /* RecommendationView.swift in Sources */,
+				B483502426DFF0EE006772B4 /* StatisticsGraphView.swift in Sources */,
 				B423F3F426C864CC0054C163 /* NewCasesView.swift in Sources */,
 				B451BBD526D139FB008A3791 /* CountryListView.swift in Sources */,
 				B4096D4F26DA8494008FCF70 /* DBStatistics+CoreDataProperties.swift in Sources */,

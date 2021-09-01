@@ -15,6 +15,8 @@ class TotalCasesView: UIView {
 
     // MARK: - UI
 
+    private let casesGraphView: IStatisticsGraphView = StatisticsGraphView(frame: .zero)
+    
     private let contentStackView = UIStackView()
     private let totalCasesViewTitle = UILabel()
     private let totalCasesView = UILabel()
@@ -59,11 +61,12 @@ class TotalCasesView: UIView {
         settingRecoveredViews()
         settingCriticalViews()
         settingDeathsViews()
+        settingGraphView()
     }
 
     private func addContentStackView() {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        let subviews = [totalCasesViewTitle, totalCasesView, casesDetailsStackView]
+        let subviews = [totalCasesViewTitle, totalCasesView, casesGraphView, casesDetailsStackView]
         configureStackView(stackView: contentStackView, axis: .vertical, spacing: 10.0, subviews: subviews, alignment: .fill)
         
         self.addSubview(contentStackView)
@@ -132,6 +135,16 @@ class TotalCasesView: UIView {
         let subviews = [deathsViewTitle, deathsView]
         configureStackView(stackView: deathsStackView, axis: .vertical, spacing: 2.0, subviews: subviews, alignment: .center)
     }
+
+    private func settingGraphView() {
+        casesGraphView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            casesGraphView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            casesGraphView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            casesGraphView.heightAnchor.constraint(equalToConstant: 10)
+        ])
+    }
     
     // MARK: - Helpers
     
@@ -158,5 +171,8 @@ extension TotalCasesView: ITotalCasesView {
         recoveredView.text = dataFormatter.decimalFormatting(number: recovered)
         criticalView.text = dataFormatter.decimalFormatting(number: critical)
         deathsView.text = dataFormatter.decimalFormatting(number: deaths)
+
+        casesGraphView.updateStatisticsData(recovered: recovered, critical: critical, deaths: deaths)
+        casesGraphView.setNeedsDisplay()
     }
 }

@@ -13,8 +13,7 @@ protocol IRequestSender {
 
 class RequestSender: IRequestSender {
 
-    // MARK: - Dependencies
-    // check dep or models
+    // MARK: - Models
 
     private let session = URLSession.shared
 

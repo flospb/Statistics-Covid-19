@@ -10,6 +10,7 @@ import UIKit
 protocol IStatisticsView {
     var delegate: IStatisticsViewController? { get set }
     func fillCountryData(countryStatistics: CountryStatisticsModel, dataFormatter: IDataFormatterService)
+    func updateStatActivityIndicator(run: Bool)
 }
 
 class StatisticsView: UIView {
@@ -21,18 +22,18 @@ class StatisticsView: UIView {
     // MARK: - UI
 
     private let statisticsViewTitle = UILabel()
-    private let activityIndicatorView = UIActivityIndicatorView() // test
-    private let countryView: ICountryView = CountryView(frame: .zero)
-    private let newCasesView: INewCasesView = NewCasesView(frame: .zero)
-    private let totalCasesView: ITotalCasesView = TotalCasesView(frame: .zero)
+    private let activityIndicatorView = UIActivityIndicatorView()
+    private let countryView: ICountryView = CountryView()
+    private let newCasesView: INewCasesView = NewCasesView()
+    private let totalCasesView: ITotalCasesView = TotalCasesView()
     private let buttonsStackView = UIStackView()
-    private let shareButtonView = CommandButtonView(type: .system)
-    private let refreshButtonView = CommandButtonView(type: .system)
+    private let shareButtonView = CommandButtonView(type: .system) // todo
+    private let refreshButtonView = CommandButtonView(type: .system) // todo
 
     // MARK: - Models
 
-    private let anchorСonstant = CGFloat(20)
-    private let doubleAnchorСonstant = CGFloat(40)
+    private let anchorСonstant: CGFloat = 20
+    private let doubleAnchorСonstant: CGFloat = 40 // todo
     
     // MARK: - Initialization
     
@@ -49,13 +50,13 @@ class StatisticsView: UIView {
     
     private func settingView() {
         self.backgroundColor = .systemBackground
-        
+
         addStatisticsViewTitle()
         addCountryView()
         addNewCasesView()
         addTotalCasesView()
         addButtonsStackView()
-        addActivityIndicatorView() // test
+        addActivityIndicatorView()
 
         settingShareButtonView()
         settingRefreshButtonView()
@@ -208,8 +209,13 @@ extension StatisticsView: IStatisticsView {
                                           critical: countryStatistics.totalCritical,
                                           deaths: countryStatistics.totalDeaths,
                                           dataFormatter: dataFormatter)
-        // test
-        activityIndicatorView.stopAnimating()
-        //
+    }
+
+    func updateStatActivityIndicator(run: Bool) {
+        if run {
+            activityIndicatorView.startAnimating()
+        } else {
+            activityIndicatorView.stopAnimating()
+        }
     }
 }

@@ -52,13 +52,12 @@ class AssemblyBuilder: IAssemblyBuilder {
         let builder = AssemblyBuilder()
         let userDefaults = UserDefaultsService()
 
-        let statisticsServiceFactory = StatisticsServiceFactory(router: router,
-                                                                networkingService: networkingService,
-                                                                coreDataService: coreDataService,
-                                                                builder: builder,
-                                                                userDefaultsService: userDefaults)
-
-        let statisticsViewController = StatisticsViewController(view: statisticsView, serviceFactory: statisticsServiceFactory)
+        let statisticsViewController = StatisticsViewController(view: statisticsView,
+                                                            router: router,
+                                                            networkingService: networkingService,
+                                                            coreDataService: coreDataService,
+                                                            builder: builder,
+                                                            userDefaultsService: userDefaults)
         return statisticsViewController
     }
     

@@ -33,7 +33,7 @@ class InformationView: UIView {
     // MARK: - Models
     
     private let recommendations = RecommendationModel().recommendations
-    private let anchorСonstant = CGFloat(20)
+    private let anchorСonstant: CGFloat = 20 // todo
     
     // MARK: - Initialization
     

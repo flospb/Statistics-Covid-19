@@ -12,7 +12,7 @@ protocol ICoreDataStack {
     func saveContext(in context: NSManagedObjectContext)
 }
 
-// check marks
+// todo marks
 class CoreDataStack: ICoreDataStack {
 
     // MARK: - Models

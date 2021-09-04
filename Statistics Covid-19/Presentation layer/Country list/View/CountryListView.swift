@@ -28,7 +28,7 @@ class CountryListView: UIView {
 
     // MARK: - Models
 
-    private let anchorСonstant = CGFloat(10)
+    private let anchorСonstant: CGFloat = 10 // todo
     
     // MARK: - Initialization
     

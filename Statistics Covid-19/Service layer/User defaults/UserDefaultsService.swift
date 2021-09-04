@@ -34,7 +34,7 @@ final class UserDefaultsService: IUserDefaultsService {
 
     // MARK: - IUserDefaultsService
     
-    func saveObject<T: Encodable>(object: T, for key: String) { // check to try? in one row
+    func saveObject<T: Encodable>(object: T, for key: String) { // todo need to try? in one row
         do {
             let data = try encoder.encode(object)
             defaults.setValue(data, forKey: key)

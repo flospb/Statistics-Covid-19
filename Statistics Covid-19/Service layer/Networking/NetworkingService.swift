@@ -30,7 +30,7 @@ class NetworkingService: INetworkingService {
     
     // MARK: - Fetching data
     
-    func fetchDataByCountry(codeCurrentCountry: String?) { // Check
+    func fetchDataByCountry(codeCurrentCountry: String?) { // todo
         let codeCountry = codeCurrentCountry ?? DefaultCountryConstants.countryCode
         
         var countryImageResponse: CountryImageResponse?
@@ -58,12 +58,12 @@ class NetworkingService: INetworkingService {
             case .success(let imageData):
                 countryImageResponse = imageData
             case .failure(let error):
-                // TODO change
+                // TODO not image
                 print(error)
             }
             dispatchGroup.leave()
         }
-        
+
         dispatchGroup.notify(queue: DispatchQueue.global()) {
             guard let countryResponse = countryResponse else {
                 self.statisticsHandler?(.failure(errorResult))

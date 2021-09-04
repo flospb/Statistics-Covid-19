@@ -28,7 +28,7 @@ struct Recommendation {
 }
 
 struct RecommendationModel {
-    var recommendations = [Recommendation]() // check
+    var recommendations = [Recommendation]() // todo
     
     init() {
         recommendations.append(Recommendation(title: "Оставайтесь дома",

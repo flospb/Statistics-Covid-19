@@ -36,14 +36,20 @@ class StatisticsViewController: UIViewController {
     }()
 
     // MARK: - Initialization
+    
+    init(view: IStatisticsView,
+         router: IMainRouter,
+         networkingService: INetworkingService,
+         coreDataService: ICoreDataService,
+         builder: IAssemblyBuilder,
+         userDefaultsService: IUserDefaultsService) {
 
-    init(view: IStatisticsView, serviceFactory: IStatisticsServiceFactory) {
         self.statisticsView = view
-        self.router = serviceFactory.router
-        self.networkingService = serviceFactory.networkingService
-        self.coreDataService = serviceFactory.coreDataService
-        self.builder = serviceFactory.builder
-        self.userDefaultsService = serviceFactory.userDefaultsService
+        self.router = router
+        self.networkingService = networkingService
+        self.coreDataService = coreDataService
+        self.builder = builder
+        self.userDefaultsService = userDefaultsService
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -74,6 +80,7 @@ class StatisticsViewController: UIViewController {
     // MARK: - Loading data
     
     private func loadStatisticsData() {
+        statisticsView.updateStatActivityIndicator(run: true)
         if countryList.count == 0 {
             fillCountryList()
         } else {
@@ -112,7 +119,8 @@ class StatisticsViewController: UIViewController {
         case .success(let countryStatistics):
             DispatchQueue.main.async {
                 self.statisticsView.fillCountryData(countryStatistics: countryStatistics, dataFormatter: DataFormatterService())
-                self.saveDataToStorage(countryStatistics: countryStatistics)
+                self.statisticsView.updateStatActivityIndicator(run: false)
+                self.saveDataToStorage(countryStatistics: countryStatistics) // todo мб вынести из DQ
             }
         case .failure(let error):
             self.showAlert(for: error)
@@ -134,6 +142,7 @@ class StatisticsViewController: UIViewController {
             let alert = UIAlertController(title: AlertConstants.alertTitle, message: error.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: AlertConstants.alertActionOk, style: .default, handler: nil))
             self.present(alert, animated: true)
+            self.statisticsView.updateStatActivityIndicator(run: false)
         }
     }
 
@@ -153,8 +162,8 @@ extension StatisticsViewController: IStatisticsViewController {
     
     func countryTapped() {
         let countryListViewController = builder.makeCountryListViewController(router: router,
-                                                                              countryList: countryList,
-                                                                              countryCode: codeCurrentCountry)
+                                                                        countryList: countryList,
+                                                                        countryCode: codeCurrentCountry)
         countryListViewController.delegateHandler = countrySelectionHandler
         router.openCountryListViewController(controller: countryListViewController)
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 class CommandButtonView: UIButton {
-    
+
     // MARK: - Setting view
     
     func settingView(title: String, titleColor: UIColor, backgroundColor: UIColor, imageName: String) {

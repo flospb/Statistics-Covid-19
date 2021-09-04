@@ -12,7 +12,7 @@ import UIKit
 struct TabBarConstants {
     static let statisticsTitle = "Статистика"
     static let statisticsImage = "chart.pie.fill"
-    
+
     static let informationTitle = "Информация"
     static let informationImage = "info.circle.fill"
 }

@@ -18,8 +18,7 @@ struct Configuration<Parser> where Parser: IParser {
 
 class StatisticsRequest: IRequest {
 
-    // MARK: - Dependencies
-    // check dep or models
+    // MARK: - Models
 
     var urlRequest: URLRequest?
 
@@ -33,8 +32,7 @@ class StatisticsRequest: IRequest {
 
 class CountryImageRequest: IRequest {
 
-    // MARK: - Dependencies
-    // check dep or models
+    // MARK: - Models
 
     var urlRequest: URLRequest?
 

@@ -19,8 +19,6 @@ final class UserDefaultsService: IUserDefaultsService {
     // MARK: - Dependencies
 
     private let defaults: UserDefaults
-    private let encoder = JSONEncoder()
-    private let decoder = JSONDecoder()
 
     // MARK: - Initialization
 
@@ -36,7 +34,7 @@ final class UserDefaultsService: IUserDefaultsService {
 
     func saveObject<T: Encodable>(object: T, for key: String) { // todo need to try? in one row
         do {
-            let data = try encoder.encode(object)
+            let data = try JSONEncoder().encode(object)
             defaults.setValue(data, forKey: key)
         } catch {
             return
@@ -46,7 +44,7 @@ final class UserDefaultsService: IUserDefaultsService {
     func getObject<T: Decodable>(for key: String) -> T? {
         guard let data = defaults.data(forKey: key) else { return nil }
         do {
-            let data = try decoder.decode(T.self, from: data)
+            let data = try JSONDecoder().decode(T.self, from: data)
             return data
         } catch {
             return nil

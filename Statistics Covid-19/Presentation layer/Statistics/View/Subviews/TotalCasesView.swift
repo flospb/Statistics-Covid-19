@@ -54,8 +54,7 @@ class TotalCasesView: UIView {
 
     private func settingView() {
         addContentStackView()
-        addCasesDetailsStackView()
-
+        settingCasesDetailsStackView()
         settingCasesTodayViewTitle()
         settingTotalCasesView()
         settingRecoveredViews()
@@ -78,7 +77,7 @@ class TotalCasesView: UIView {
         ])
     }
 
-    private func addCasesDetailsStackView() {
+    private func settingCasesDetailsStackView() {
         let subviews = [recoveredStackView, criticalStackView, deathsStackView]
         configureStackView(stackView: casesDetailsStackView, axis: .horizontal, spacing: 5.0, subviews: subviews, alignment: .center)
         casesDetailsStackView.distribution = .fillEqually

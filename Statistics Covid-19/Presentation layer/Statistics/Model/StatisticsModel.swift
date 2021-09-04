@@ -23,20 +23,20 @@ struct CountryStatisticsModel {
     var updateDate: Date?
     var confirmedToday: Int
     var confirmedYesterday: Int
-    
+
     var totalConfirmed: Int
     var totalRecovered: Int
     var totalCritical: Int
     var totalDeaths: Int
-    
+
     init(country: CurrentCountryModel) {
         self.country = country
-        
+
         let defaultValue = 0
-    
+
         self.confirmedToday = defaultValue
         self.confirmedYesterday = defaultValue
-        
+
         self.totalConfirmed = defaultValue
         self.totalRecovered = defaultValue
         self.totalCritical = defaultValue

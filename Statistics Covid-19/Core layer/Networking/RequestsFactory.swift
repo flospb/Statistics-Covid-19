@@ -23,7 +23,7 @@ class StatisticsRequest: IRequest {
     var urlRequest: URLRequest?
 
     // MARK: - Initialization
-    
+
     init(stringUrl: String) {
         guard let url = URL(string: stringUrl) else { return }
         self.urlRequest = URLRequest(url: url)
@@ -51,7 +51,7 @@ struct RequestsFactory {
         let parser = StatisticsParser()
         return Configuration<StatisticsParser>(request: request, parser: parser)
     }
-    
+
     static func countryImageConfiguration(countryCode: String) -> Configuration<CountryImageParser> {
         let countryImageName = AdressesAPIConstants.countryImageName
         let stringUrl = AdressesAPIConstants.countryImage + countryCode + countryImageName

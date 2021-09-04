@@ -36,7 +36,7 @@ class CoreDataService: ICoreDataService {
 
         do {
             let result = try context.fetch(request)
-            if result.count == 0 {
+            if result.isEmpty {
                 let countryList = fillCountryList()
                 saveCountryList(countries: countryList)
                 completion(countryList)
@@ -45,7 +45,7 @@ class CoreDataService: ICoreDataService {
                 completion(countryList)
             }
         } catch {
-            fatalError()
+            fatalError("d")
             // todo
         }
     }
@@ -64,7 +64,7 @@ class CoreDataService: ICoreDataService {
             guard let statistics = dataMapper.getStatisticsModelByStorageModel(statistics: result) else { return }
             completion(statistics)
         } catch {
-            print("")
+           // print("")
             // todo
         }
     }
@@ -95,7 +95,7 @@ class CoreDataService: ICoreDataService {
 
     private func getCountryStorageModel(code: String, context: NSManagedObjectContext) -> DBCountry? {
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy // todo
-        
+
         let request: NSFetchRequest<DBCountry> = DBCountry.fetchRequest()
         request.predicate = NSPredicate(format: "\(#keyPath(DBCountry.code)) = '\(code)'")
 
@@ -103,7 +103,7 @@ class CoreDataService: ICoreDataService {
             guard let country = try context.fetch(request).first else { return nil }
             return country
         } catch {
-            fatalError()
+            fatalError("todo")
         }
     }
 
@@ -118,7 +118,7 @@ class CoreDataService: ICoreDataService {
             countryList.append(country)
         }
         countryList.sort { $0.name < $1.name }
-        
+
         return countryList
     }
 }

@@ -16,21 +16,21 @@ class TotalCasesView: UIView {
     // MARK: - UI
 
     private let casesGraphView: IStatisticsGraphView = StatisticsGraphView(frame: .zero)
-    
+
     private let contentStackView = UIStackView()
     private let totalCasesViewTitle = UILabel()
     private let totalCasesView = UILabel()
-   
+
     private let casesDetailsStackView = UIStackView()
-    
+
     private let recoveredStackView = UIStackView()
     private let recoveredViewTitle = UILabel()
     private let recoveredView = UILabel()
-    
+
     private let criticalStackView = UIStackView()
     private let criticalViewTitle = UILabel()
     private let criticalView = UILabel()
-    
+
     private let deathsStackView = UIStackView()
     private let deathsViewTitle = UILabel()
     private let deathsView = UILabel()
@@ -40,22 +40,22 @@ class TotalCasesView: UIView {
     private let defaultCasesValue = StatisticsConstants.defaultCasesValue
 
     // MARK: - Initialization
-    
+
     init() {
         super.init(frame: .zero)
         settingView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Setting view
-    
+
     private func settingView() {
         addContentStackView()
         addCasesDetailsStackView()
-        
+
         settingCasesTodayViewTitle()
         settingTotalCasesView()
         settingRecoveredViews()
@@ -68,7 +68,7 @@ class TotalCasesView: UIView {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         let subviews = [totalCasesViewTitle, totalCasesView, casesGraphView, casesDetailsStackView]
         configureStackView(stackView: contentStackView, axis: .vertical, spacing: 10.0, subviews: subviews, alignment: .fill)
-        
+
         self.addSubview(contentStackView)
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -77,61 +77,61 @@ class TotalCasesView: UIView {
             contentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
-    
+
     private func addCasesDetailsStackView() {
         let subviews = [recoveredStackView, criticalStackView, deathsStackView]
         configureStackView(stackView: casesDetailsStackView, axis: .horizontal, spacing: 5.0, subviews: subviews, alignment: .center)
         casesDetailsStackView.distribution = .fillEqually
         contentStackView.addArrangedSubview(casesDetailsStackView)
     }
-    
+
     private func settingCasesTodayViewTitle() {
         totalCasesViewTitle.translatesAutoresizingMaskIntoConstraints = false
         totalCasesViewTitle.text = StatisticsConstants.casesTotalTitle
         totalCasesViewTitle.font = FontConstants.smallText
     }
-    
+
     private func settingTotalCasesView() {
         totalCasesView.translatesAutoresizingMaskIntoConstraints = false
         totalCasesView.text = defaultCasesValue
         totalCasesView.font = FontConstants.totalCases
     }
-    
+
     private func settingRecoveredViews() {
         recoveredViewTitle.translatesAutoresizingMaskIntoConstraints = false
         recoveredViewTitle.text = StatisticsConstants.recoveredTitle
         recoveredViewTitle.font = FontConstants.smallText
         recoveredViewTitle.textColor = ColorsConstants.recovered
-        
+
         recoveredView.font = FontConstants.detailsCases
         recoveredView.text = defaultCasesValue
-        
+
         let subviews = [recoveredViewTitle, recoveredView]
         configureStackView(stackView: recoveredStackView, axis: .vertical, spacing: 2.0, subviews: subviews, alignment: .center)
     }
-    
+
     private func settingCriticalViews() {
         criticalViewTitle.translatesAutoresizingMaskIntoConstraints = false
         criticalViewTitle.text = StatisticsConstants.criticalTitle
         criticalViewTitle.font = FontConstants.smallText
         criticalViewTitle.textColor = ColorsConstants.critical
-        
+
         criticalView.font = FontConstants.detailsCases
         criticalView.text = defaultCasesValue
-        
+
         let subviews = [criticalViewTitle, criticalView]
         configureStackView(stackView: criticalStackView, axis: .vertical, spacing: 2.0, subviews: subviews, alignment: .center)
     }
-    
+
     private func settingDeathsViews() {
         deathsViewTitle.translatesAutoresizingMaskIntoConstraints = false
         deathsViewTitle.text = StatisticsConstants.deathsTitle
         deathsViewTitle.font = FontConstants.smallText
         deathsViewTitle.textColor = ColorsConstants.deaths
-        
+
         deathsView.font = FontConstants.detailsCases
         deathsView.text = defaultCasesValue
-        
+
         let subviews = [deathsViewTitle, deathsView]
         configureStackView(stackView: deathsStackView, axis: .vertical, spacing: 2.0, subviews: subviews, alignment: .center)
     }
@@ -145,9 +145,9 @@ class TotalCasesView: UIView {
             casesGraphView.heightAnchor.constraint(equalToConstant: 10)
         ])
     }
-    
+
     // MARK: - Helpers
-    
+
     private func configureStackView(stackView: UIStackView,
                                     axis: NSLayoutConstraint.Axis,
                                     spacing: CGFloat,
@@ -156,7 +156,7 @@ class TotalCasesView: UIView {
         stackView.axis = axis
         stackView.spacing = spacing
         stackView.alignment = alignment
-        
+
         for subview in subviews {
             stackView.addArrangedSubview(subview)
         }

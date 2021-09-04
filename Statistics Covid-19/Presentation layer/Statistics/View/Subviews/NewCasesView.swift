@@ -19,20 +19,20 @@ class NewCasesView: UIView {
     private let casesTodayViewTitle = UILabel()
     private let casesTodayView = UILabel()
     private let casesYesterdayView = UILabel()
-    
+
     // MARK: - Initialization
-    
+
     init() {
         super.init(frame: .zero)
         settingView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Setting view
-    
+
     private func settingView() {
         addContentStackView()
         settingCasesTodayViewTitle()
@@ -45,11 +45,11 @@ class NewCasesView: UIView {
         contentStackView.axis = .vertical
         contentStackView.spacing = 10.0
         contentStackView.alignment = .fill
-        
+
         contentStackView.addArrangedSubview(casesTodayViewTitle)
         contentStackView.addArrangedSubview(casesTodayView)
         contentStackView.addArrangedSubview(casesYesterdayView)
-        
+
         self.addSubview(contentStackView)
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -58,20 +58,20 @@ class NewCasesView: UIView {
             contentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
-    
+
     private func settingCasesTodayViewTitle() {
         casesTodayViewTitle.translatesAutoresizingMaskIntoConstraints = false
         casesTodayViewTitle.text = StatisticsConstants.casesTodayTitle
         casesTodayViewTitle.font = FontConstants.smallText
-        
+
     }
-    
+
     private func settingCasesTodayView() {
         casesTodayView.translatesAutoresizingMaskIntoConstraints = false
         casesTodayView.font = FontConstants.casesToday
         casesTodayView.textColor = ColorsConstants.casesToday
     }
-    
+
     private func settingCasesYesterdayView() {
         casesYesterdayView.translatesAutoresizingMaskIntoConstraints = false
         casesYesterdayView.text = "\(StatisticsConstants.defaultCasesValue) \(StatisticsConstants.casesYesterdayTitle)"
@@ -86,7 +86,7 @@ extension NewCasesView: INewCasesView {
     func fillNewCasesData(updateDate: Date?, confirmedToday: Int, confirmedYesterday: Int, dataFormatter: IDataFormatterService) {
         let today = dataFormatter.decimalFormatting(number: confirmedToday)
         let yesterday = dataFormatter.decimalFormatting(number: confirmedYesterday)
-        
+
         casesTodayView.text = "+ \(today)"
         casesYesterdayView.text = "+ \(yesterday) \(StatisticsConstants.casesYesterdayTitle)"
 

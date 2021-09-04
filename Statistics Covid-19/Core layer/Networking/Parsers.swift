@@ -34,7 +34,7 @@ class CountryImageParser: IParser {
     typealias Model = CountryImageResponse
 
     // MARK: - IParser
-    
+
     func parse(data: Data) -> Model? {
         let model: Model? = CountryImageResponse(data: data)
         return model

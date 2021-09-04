@@ -14,29 +14,29 @@ protocol IAssemblyBuilder {
 }
 
 class AssemblyBuilder: IAssemblyBuilder {
-    
+
     // MARK: - Tab bar
-    
+
     func makeRootTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
         let router = MainRouter(tabBarController: tabBarController)
 
         let statisticsViewController = makeStatisticsViewController(router: router)
         let statisticsNavViewController = makeStatisticsNavViewController(rootViewController: statisticsViewController)
-        
+
         let informationViewController = makeInformationViewController(router: router)
         let informationNavViewController = makeInformationNavViewController(rootViewController: informationViewController)
 
         tabBarController.setViewControllers([statisticsNavViewController, informationNavViewController], animated: true)
-        
+
         router.setNavigationControllers(statisticsNavigation: statisticsNavViewController,
                                         informationNavigation: informationNavViewController)
-        
+
         return tabBarController
     }
-    
+
     // MARK: - Statistics
-    
+
     private func makeStatisticsViewController(router: IMainRouter) -> UIViewController {
         let statisticsView = StatisticsView(frame: UIScreen.main.bounds)
 
@@ -60,7 +60,7 @@ class AssemblyBuilder: IAssemblyBuilder {
                                                             userDefaultsService: userDefaults)
         return statisticsViewController
     }
-    
+
     private func makeStatisticsNavViewController(rootViewController: UIViewController) -> UINavigationController {
         let statisticsNavViewController = UINavigationController(rootViewController: rootViewController)
         statisticsNavViewController.tabBarItem.title = TabBarConstants.statisticsTitle
@@ -69,13 +69,13 @@ class AssemblyBuilder: IAssemblyBuilder {
     }
 
     // MARK: - Information
-    
+
     private func makeInformationViewController(router: IMainRouter) -> UIViewController {
         let informationView = InformationView(frame: UIScreen.main.bounds)
         let informationViewController = InformationViewController(router: router, view: informationView)
         return informationViewController
     }
-    
+
     private func makeInformationNavViewController(rootViewController: UIViewController) -> UINavigationController {
         let informationNavViewController = UINavigationController(rootViewController: rootViewController)
         informationNavViewController.isNavigationBarHidden = true
@@ -83,9 +83,9 @@ class AssemblyBuilder: IAssemblyBuilder {
         informationNavViewController.tabBarItem.image = UIImage(systemName: TabBarConstants.informationImage)
         return informationNavViewController
     }
-    
+
     // MARK: - Country list
-    
+
     func makeCountryListViewController(router: IMainRouter,
                                        countryList: [CountryModel],
                                        countryCode: String) -> ICountryListViewController {

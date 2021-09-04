@@ -30,7 +30,7 @@ struct CountryData: Decodable {
     let updateDate: String
     let totalData: TotalData?
     let timeLine: [TimeLine]
-    
+
     private enum CodingKeys: String, CodingKey {
         case name
         case code

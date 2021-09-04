@@ -22,26 +22,26 @@ class InformationViewController: UIViewController {
 
     private var cellName = CellNames.informationCollectionCell
     private var symptomsCollection = SymptomModel().imageAddresses
-    
+
     // MARK: - Initialization
-    
+
     init(router: IMainRouter, view: IInformationView) {
         self.router = router
         self.informationView = view
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Lifecycle
-    
+
     override func loadView() {
         self.view = informationView as? UIView
         informationView.delegate = self
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         informationView.setDelegateCollectionView()
@@ -54,7 +54,7 @@ extension InformationViewController: IInformationViewController {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         symptomsCollection.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName,
                                                             for: indexPath) as? InformationCollectionViewCell else {
@@ -64,7 +64,7 @@ extension InformationViewController: IInformationViewController {
         cell.configureCell(imageName: imageName)
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {

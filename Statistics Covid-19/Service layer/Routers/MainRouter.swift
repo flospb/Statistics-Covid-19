@@ -20,12 +20,12 @@ final class MainRouter: IMainRouter {
     // MARK: - Dependencies
 
     var tabBarController: UITabBarController
-    
+
     private weak var statisticsNavViewController: UINavigationController?
     private weak var informationNavViewController: UINavigationController?
-    
+
     // MARK: - Initialization
-    
+
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
     }
@@ -45,7 +45,7 @@ final class MainRouter: IMainRouter {
         guard let viewController = controller as? UIViewController else { return }
         statisticsNavViewController?.present(viewController, animated: true, completion: nil)
     }
-    
+
     func closeCountryListViewController() {
         statisticsNavViewController?.dismiss(animated: true, completion: nil)
     }

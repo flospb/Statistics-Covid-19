@@ -10,16 +10,16 @@ import UIKit
 class CommandButtonView: UIButton {
 
     // MARK: - Setting view
-    
+
     func settingView(title: String, titleColor: UIColor, backgroundColor: UIColor, imageName: String) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        
+
         self.backgroundColor = backgroundColor
         self.layer.cornerRadius = 5
-        
+
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
-        
+
         guard let image = UIImage(named: imageName) else { return }
         self.setImage(image, for: .normal)
         self.imageView?.contentMode = .scaleAspectFit

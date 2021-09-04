@@ -29,27 +29,27 @@ class CountryListView: UIView {
     // MARK: - Models
 
     private let anchorСonstant: CGFloat = 10 // todo
-    
+
     // MARK: - Initialization
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         settingView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Setting view
-    
+
     private func settingView() {
         self.backgroundColor = .systemBackground
-        
+
         addSearchBarView()
         addCountryListTableView()
     }
-    
+
     private func addSearchBarView() {
         searchBarView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -60,10 +60,10 @@ class CountryListView: UIView {
             searchBarView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -anchorСonstant)
         ])
     }
-    
+
     private func addCountryListTableView() {
         countryListTableView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         self.addSubview(countryListTableView)
         NSLayoutConstraint.activate([
             countryListTableView.topAnchor.constraint(equalTo: self.searchBarView.bottomAnchor, constant: anchorСonstant),
@@ -72,7 +72,7 @@ class CountryListView: UIView {
             countryListTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -anchorСonstant)
         ])
     }
-    
+
 }
 
 // MARK: - ICountryListView
@@ -81,10 +81,10 @@ extension CountryListView: ICountryListView {
     func setDelegates() {
         guard let controller = delegate else { return }
         searchBarView.delegate = controller
-        
+
         countryListTableView.delegate = controller
         countryListTableView.dataSource = controller
-        
+
         countryListTableView.register(CountryListTableViewCell.self, forCellReuseIdentifier: CellNames.countryListTableCell)
     }
 

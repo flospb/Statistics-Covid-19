@@ -20,7 +20,7 @@ class DataFormatterService: IDataFormatterService {
         let dateString = getStringDate(format: newFormat, date: date)
         return dateString
     }
-    
+
     func getDateFromString(format: String, date: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
@@ -32,7 +32,7 @@ class DataFormatterService: IDataFormatterService {
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: date)
     }
-    
+
     func decimalFormatting(number: Int) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.decimal
@@ -42,7 +42,7 @@ class DataFormatterService: IDataFormatterService {
         if let formattedNumber = formatter.string(for: number) {
             return formattedNumber
         }
-        
+
         return String(number)
     }
 }

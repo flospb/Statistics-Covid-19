@@ -17,13 +17,13 @@ protocol IUserDefaultsService {
 final class UserDefaultsService: IUserDefaultsService {
 
     // MARK: - Dependencies
-    
+
     private let defaults: UserDefaults
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
 
     // MARK: - Initialization
-    
+
     init(userDefaults: UserDefaults) {
         self.defaults = userDefaults
     }
@@ -33,7 +33,7 @@ final class UserDefaultsService: IUserDefaultsService {
     }
 
     // MARK: - IUserDefaultsService
-    
+
     func saveObject<T: Encodable>(object: T, for key: String) { // todo need to try? in one row
         do {
             let data = try encoder.encode(object)

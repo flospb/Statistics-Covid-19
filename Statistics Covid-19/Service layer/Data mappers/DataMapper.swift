@@ -33,13 +33,13 @@ class StatisticsDataMapper: IStatisticsDataMapper {
 
         return countryList
     }
-    
+
     func getStatisticsModelByCountry(statistics: CountryResponse, countryImage: CountryImageResponse?) -> CountryStatisticsModel {
         var image: UIImage?
         if let countryImageResponse = countryImage {
             image = UIImage(data: countryImageResponse.data)
         }
-        
+
         let data = statistics.data
 
         var countryName = data.name
@@ -58,14 +58,14 @@ class StatisticsDataMapper: IStatisticsDataMapper {
             countryStatistics.totalCritical = totalData.critical ?? 0
             countryStatistics.totalDeaths = totalData.deaths ?? 0
         }
-        
+
         let timeLine = data.timeLine
-        if timeLine.count != 0 {
+        if !timeLine.isEmpty {
             countryStatistics.updateDate = dataFormatterService.getDateFromString(format: "yyyy-MM-dd", date: timeLine[0].date)
             countryStatistics.confirmedToday = timeLine[0].newConfirmed ?? 0
             countryStatistics.confirmedYesterday = timeLine[1].newConfirmed ?? 0
         }
-        
+
         return countryStatistics
     }
 

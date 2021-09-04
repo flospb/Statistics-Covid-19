@@ -13,25 +13,25 @@ class InformationCollectionViewCell: UICollectionViewCell {
 
     private let imageView = UIImageView()
     private let containerView = UIStackView()
-    
+
     // MARK: - Initialization
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         settingView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Setting view
-    
+
     private func settingView() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.axis = .horizontal
         containerView.addArrangedSubview(imageView)
-        
+
         self.addSubview(containerView)
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -40,7 +40,7 @@ class InformationCollectionViewCell: UICollectionViewCell {
             containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
-    
+
     func configureCell(imageName: String) {
         guard let image = UIImage(named: imageName) else { return }
         imageView.image = image

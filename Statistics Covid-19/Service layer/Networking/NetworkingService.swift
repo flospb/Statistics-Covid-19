@@ -18,27 +18,27 @@ class NetworkingService: INetworkingService {
 
     private let requestSender: IRequestSender
     private let dataMapper: IStatisticsDataMapper
-    
+
     var statisticsHandler: ((Result<CountryStatisticsModel, NetworkServiceError>) -> Void)?
 
     // MARK: - Initialization
-    
+
     init(requestSender: IRequestSender, dataMapper: IStatisticsDataMapper) {
         self.requestSender = requestSender
         self.dataMapper = dataMapper
     }
-    
+
     // MARK: - Fetching data
-    
+
     func fetchDataByCountry(codeCurrentCountry: String?) { // todo
         let codeCountry = codeCurrentCountry ?? DefaultCountryConstants.countryCode
-        
+
         var countryImageResponse: CountryImageResponse?
         var countryResponse: CountryResponse?
         var errorResult = NetworkServiceError.unknown
-        
+
         let dispatchGroup = DispatchGroup()
-        
+
         dispatchGroup.enter()
         let statisticsConfiguration = RequestsFactory.statisticsConfiguration(countryCode: codeCountry)
         requestSender.send(configuration: statisticsConfiguration) { (result: Result<CountryResponse, NetworkServiceError>) in
@@ -50,7 +50,7 @@ class NetworkingService: INetworkingService {
             }
             dispatchGroup.leave()
         }
-        
+
         dispatchGroup.enter()
         let countryImageConfiguration = RequestsFactory.countryImageConfiguration(countryCode: codeCountry)
         requestSender.send(configuration: countryImageConfiguration) { (result: Result<CountryImageResponse, NetworkServiceError>) in
@@ -59,7 +59,7 @@ class NetworkingService: INetworkingService {
                 countryImageResponse = imageData
             case .failure(let error):
                 // TODO not image
-                print(error)
+               print(error)
             }
             dispatchGroup.leave()
         }

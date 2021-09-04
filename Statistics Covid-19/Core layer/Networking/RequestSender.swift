@@ -25,21 +25,21 @@ class RequestSender: IRequestSender {
             completion(.failure(.incorrectUrl))
             return
         }
-        
+
         let task = session.dataTask(with: urlRequest) { (data: Data?, _, error: Error?) in
             if error != nil {
                 completion(.failure(.networking))
                 return
             }
-            
+
             guard let data = data, let parsedModel: Parser.Model = configuration.parser.parse(data: data) else {
                 completion(.failure(.decoding))
                 return
             }
-            
+
             completion(.success(parsedModel))
         }
-        
+
         task.resume()
     }
 }

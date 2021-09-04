@@ -36,7 +36,7 @@ class StatisticsViewController: UIViewController {
     }()
 
     // MARK: - Initialization
-    
+
     init(view: IStatisticsView,
          router: IMainRouter,
          networkingService: INetworkingService,
@@ -50,38 +50,38 @@ class StatisticsViewController: UIViewController {
         self.coreDataService = coreDataService
         self.builder = builder
         self.userDefaultsService = userDefaultsService
-        
+
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Lifecycle
-    
+
     override func loadView() {
         self.view = statisticsView as? UIView
         statisticsView.delegate = self
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         networkingService.statisticsHandler = statisticsHandler
         loadDataFromStorage()
         loadStatisticsData()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
+
     // MARK: - Loading data
-    
+
     private func loadStatisticsData() {
         statisticsView.updateStatActivityIndicator(run: true)
-        if countryList.count == 0 {
+        if countryList.isEmpty {
             fillCountryList()
         } else {
             networkingService.fetchDataByCountry(codeCurrentCountry: codeCurrentCountry)
@@ -96,7 +96,7 @@ class StatisticsViewController: UIViewController {
     }
 
     private func loadDataFromStorage() {
-        if countryList.count == 0 {
+        if countryList.isEmpty {
             coreDataService.getCountryList { [weak self] result in
                 self?.countryList = result
             }
@@ -113,7 +113,7 @@ class StatisticsViewController: UIViewController {
     }
 
     // MARK: - Handlers
-    
+
     private func statisticsHandler(result: Result<CountryStatisticsModel, NetworkServiceError>) {
         switch result {
         case .success(let countryStatistics):
@@ -134,9 +134,9 @@ class StatisticsViewController: UIViewController {
         loadDataFromStorage()
         loadStatisticsData()
     }
-    
+
     // MARK: - Helpers
-    
+
     private func showAlert(for error: NetworkServiceError) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: AlertConstants.alertTitle, message: error.message, preferredStyle: .alert)
@@ -157,9 +157,9 @@ class StatisticsViewController: UIViewController {
 // MARK: - IStatisticsViewController
 
 extension StatisticsViewController: IStatisticsViewController {
-    
+
     // MARK: - View actions
-    
+
     func countryTapped() {
         let countryListViewController = builder.makeCountryListViewController(router: router,
                                                                         countryList: countryList,
@@ -167,12 +167,12 @@ extension StatisticsViewController: IStatisticsViewController {
         countryListViewController.delegateHandler = countrySelectionHandler
         router.openCountryListViewController(controller: countryListViewController)
     }
-    
+
     func shareButtonTapped(image: UIImage) {
         let activityController = builder.makeActivityViewController(image: image)
         router.openActivityViewController(activityViewController: activityController)
     }
-    
+
     func refreshButtonTapped() {
         countryList.removeAll()
         loadStatisticsData()

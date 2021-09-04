@@ -8,14 +8,14 @@
 import XCTest
 @testable import Statistics_Covid_19
 
-class Statistics_Covid_19Tests: XCTestCase {
+class StatisticsCovid19Tests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try super.tearDownWithError()
     }
 
     func testExample() throws {

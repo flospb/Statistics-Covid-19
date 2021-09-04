@@ -19,29 +19,29 @@ class CountryView: UIView {
     private let countryImage = UIImageView()
     private let countryName = UILabel()
     private let listOpeningImage = UIImageView()
-    
+
     // MARK: - Initialization
-    
+
     init() {
         super.init(frame: .zero)
         settingView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Setting view
-    
+
     private func settingView() {
         layer.cornerRadius = 15
-        
+
         addContentStackView()
         settingCountryImage()
         settingCountryName()
         settingListOpeningImage()
     }
-    
+
     private func addContentStackView() {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         contentStackView.axis = .horizontal
@@ -51,7 +51,7 @@ class CountryView: UIView {
         contentStackView.addArrangedSubview(countryImage)
         contentStackView.addArrangedSubview(countryName)
         contentStackView.addArrangedSubview(listOpeningImage)
-        
+
         self.addSubview(contentStackView)
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -60,7 +60,7 @@ class CountryView: UIView {
             contentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
-    
+
     private func settingCountryImage() {
         countryImage.translatesAutoresizingMaskIntoConstraints = false
         countryImage.layer.borderWidth = 1.5
@@ -69,18 +69,18 @@ class CountryView: UIView {
         countryImage.layer.masksToBounds = true
         countryImage.contentMode = .scaleAspectFill
         countryImage.clipsToBounds = true
-        
+
         NSLayoutConstraint.activate([
             countryImage.heightAnchor.constraint(equalToConstant: 40),
             countryImage.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
-    
+
     private func settingCountryName() {
         countryName.text = "-"
         countryName.font = FontConstants.mediumBoldTitle
     }
-    
+
     private func settingListOpeningImage() {
         listOpeningImage.translatesAutoresizingMaskIntoConstraints = false
         listOpeningImage.image = UIImage(systemName: StatisticsConstants.listOpeningImage)

@@ -15,6 +15,9 @@ struct TabBarConstants {
 
     static let informationTitle = "Информация"
     static let informationImage = "info.circle.fill"
+
+    static let vaccinationTitle = "Вакцинация"
+    static let vaccinationImage = ""
 }
 
 // MARK: - Screens constants
@@ -49,6 +52,13 @@ struct InformationConstants {
 
 struct CountryListConstants {
     static let selectedCountryImage = "checkmark"
+}
+
+struct VaccinationConstants {
+    static let vaccinationTitle = "Вакцинация"
+    static let choiceCertificateTitle = "Выбрать сертификат о вакцинации"
+    static let clearCertificateButton = "Очистить"
+    static let contactsTitle = "Полезные контакты"
 }
 
 // MARK: - Cells constants
@@ -95,6 +105,7 @@ struct FontConstants {
     static let largeBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(36))
     static let mediumBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(20))
     static let smallBoldTitle = UIFont.boldSystemFont(ofSize: CGFloat(16))
+    static let smallBoldText = UIFont.boldSystemFont(ofSize: CGFloat(14))
 
     static let mediumText = UIFont.systemFont(ofSize: CGFloat(18))
     static let smallText = UIFont.systemFont(ofSize: CGFloat(14))

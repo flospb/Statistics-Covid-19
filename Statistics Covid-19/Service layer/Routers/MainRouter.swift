@@ -9,7 +9,9 @@ import UIKit
 
 protocol IMainRouter {
     var tabBarController: UITabBarController { get }
-    func setNavigationControllers(statisticsNavigation: UINavigationController, informationNavigation: UINavigationController)
+    func setNavigationControllers(statisticsNavigation: UINavigationController,
+                                  informationNavigation: UINavigationController,
+                                  vaccinationNavigation: UINavigationController) // todo
     func openActivityViewController(activityViewController: UIActivityViewController)
     func openCountryListViewController(controller: ICountryListViewController)
     func closeCountryListViewController()
@@ -23,6 +25,7 @@ final class MainRouter: IMainRouter {
 
     private weak var statisticsNavViewController: UINavigationController?
     private weak var informationNavViewController: UINavigationController?
+    private weak var vaccinationViewController: UINavigationController?
 
     // MARK: - Initialization
 
@@ -32,9 +35,12 @@ final class MainRouter: IMainRouter {
 
     // MARK: - IMainRouter
 
-    func setNavigationControllers(statisticsNavigation: UINavigationController, informationNavigation: UINavigationController) {
+    func setNavigationControllers(statisticsNavigation: UINavigationController,
+                                  informationNavigation: UINavigationController,
+                                  vaccinationNavigation: UINavigationController) {
         statisticsNavViewController = statisticsNavigation
         informationNavViewController = informationNavigation
+        vaccinationViewController = vaccinationNavigation
     }
 
     func openActivityViewController(activityViewController: UIActivityViewController) {

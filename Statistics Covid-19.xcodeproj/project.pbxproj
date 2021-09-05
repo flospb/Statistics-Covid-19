@@ -19,6 +19,9 @@
 		B40CC20426D00CE800247152 /* Parsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20326D00CE800247152 /* Parsers.swift */; };
 		B40CC20626D01E6900247152 /* NetworkingServiceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20526D01E6800247152 /* NetworkingServiceModels.swift */; };
 		B40CC20B26D0437A00247152 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20A26D0437A00247152 /* UserDefaultsService.swift */; };
+		B421DB7226E5401900951A64 /* PhoneContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421DB7126E5401900951A64 /* PhoneContactView.swift */; };
+		B421DB7426E54A9900951A64 /* VaccinationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421DB7326E54A9900951A64 /* VaccinationModel.swift */; };
+		B421DB7726E54BC800951A64 /* LinkContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421DB7626E54BC800951A64 /* LinkContactView.swift */; };
 		B423F3EB26C835860054C163 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423F3EA26C835860054C163 /* StatisticsView.swift */; };
 		B423F3ED26C849E30054C163 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423F3EC26C849E30054C163 /* CountryView.swift */; };
 		B423F3F226C84A9F0054C163 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423F3F126C84A9F0054C163 /* StatisticsModel.swift */; };
@@ -37,6 +40,8 @@
 		B42BD6D026C013DF007969B7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6CF26C013DF007969B7 /* InformationView.swift */; };
 		B42BD6D226C02BB8007969B7 /* InformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6D126C02BB8007969B7 /* InformationCollectionViewCell.swift */; };
 		B447911926DBCFCB00A8CEA6 /* ImageActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447911826DBCFCB00A8CEA6 /* ImageActivityItemSource.swift */; };
+		B449E8ED26E3E3700089815B /* VaccinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B449E8EC26E3E3700089815B /* VaccinationView.swift */; };
+		B449E8EF26E3E3850089815B /* VaccinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B449E8EE26E3E3850089815B /* VaccinationViewController.swift */; };
 		B451BBD226D138FB008A3791 /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451BBD126D138FB008A3791 /* CountryListViewController.swift */; };
 		B451BBD526D139FB008A3791 /* CountryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451BBD426D139FB008A3791 /* CountryListView.swift */; };
 		B451BBD726D140D2008A3791 /* CountryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451BBD626D140D2008A3791 /* CountryListModel.swift */; };
@@ -88,6 +93,9 @@
 		B40CC20326D00CE800247152 /* Parsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsers.swift; sourceTree = "<group>"; };
 		B40CC20526D01E6800247152 /* NetworkingServiceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceModels.swift; sourceTree = "<group>"; };
 		B40CC20A26D0437A00247152 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		B421DB7126E5401900951A64 /* PhoneContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactView.swift; sourceTree = "<group>"; };
+		B421DB7326E54A9900951A64 /* VaccinationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationModel.swift; sourceTree = "<group>"; };
+		B421DB7626E54BC800951A64 /* LinkContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkContactView.swift; sourceTree = "<group>"; };
 		B423F3EA26C835860054C163 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		B423F3EC26C849E30054C163 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		B423F3F126C84A9F0054C163 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
@@ -112,6 +120,8 @@
 		B42BD6CF26C013DF007969B7 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		B42BD6D126C02BB8007969B7 /* InformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCollectionViewCell.swift; sourceTree = "<group>"; };
 		B447911826DBCFCB00A8CEA6 /* ImageActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageActivityItemSource.swift; sourceTree = "<group>"; };
+		B449E8EC26E3E3700089815B /* VaccinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationView.swift; sourceTree = "<group>"; };
+		B449E8EE26E3E3850089815B /* VaccinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationViewController.swift; sourceTree = "<group>"; };
 		B451BBD126D138FB008A3791 /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
 		B451BBD426D139FB008A3791 /* CountryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListView.swift; sourceTree = "<group>"; };
 		B451BBD626D140D2008A3791 /* CountryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListModel.swift; sourceTree = "<group>"; };
@@ -209,6 +219,14 @@
 			path = "User defaults";
 			sourceTree = "<group>";
 		};
+		B421DB7526E54A9C00951A64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B421DB7326E54A9900951A64 /* VaccinationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B423F3EE26C84A600054C163 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +311,7 @@
 			children = (
 				B42BD6CE26C012EE007969B7 /* Statistics */,
 				B42BD6CD26C012D5007969B7 /* Information */,
+				B449E8EB26E3E3280089815B /* Vaccination */,
 				B451BBD326D13900008A3791 /* Country list */,
 			);
 			path = "Presentation layer";
@@ -365,6 +384,34 @@
 				B447911826DBCFCB00A8CEA6 /* ImageActivityItemSource.swift */,
 			);
 			path = Snapshots;
+			sourceTree = "<group>";
+		};
+		B449E8EB26E3E3280089815B /* Vaccination */ = {
+			isa = PBXGroup;
+			children = (
+				B421DB7526E54A9C00951A64 /* Model */,
+				B449E8F126E3E3920089815B /* Controller */,
+				B449E8F026E3E38C0089815B /* View */,
+			);
+			path = Vaccination;
+			sourceTree = "<group>";
+		};
+		B449E8F026E3E38C0089815B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B449E8EC26E3E3700089815B /* VaccinationView.swift */,
+				B421DB7126E5401900951A64 /* PhoneContactView.swift */,
+				B421DB7626E54BC800951A64 /* LinkContactView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B449E8F126E3E3920089815B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B449E8EE26E3E3850089815B /* VaccinationViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		B451BBD326D13900008A3791 /* Country list */ = {
@@ -745,6 +792,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B449E8EF26E3E3850089815B /* VaccinationViewController.swift in Sources */,
 				B48831EA26DA66CE00A8017B /* CoreDataStack.swift in Sources */,
 				B498B4EE26C46FBF003409B7 /* RecommendationView.swift in Sources */,
 				B483502426DFF0EE006772B4 /* StatisticsGraphView.swift in Sources */,
@@ -758,8 +806,10 @@
 				B42BD6CA26C00478007969B7 /* MainRouter.swift in Sources */,
 				B40CC20626D01E6900247152 /* NetworkingServiceModels.swift in Sources */,
 				B4096D4E26DA8494008FCF70 /* DBStatistics+CoreDataClass.swift in Sources */,
+				B421DB7726E54BC800951A64 /* LinkContactView.swift in Sources */,
 				B4CB879326C96BC300F68893 /* CommandButtonView.swift in Sources */,
 				B499908026D27AB600B5338A /* DataMapper.swift in Sources */,
+				B449E8ED26E3E3700089815B /* VaccinationView.swift in Sources */,
 				B42BD6C126BFF568007969B7 /* AssemblyBuilder.swift in Sources */,
 				B42BD6D226C02BB8007969B7 /* InformationCollectionViewCell.swift in Sources */,
 				B451BBD226D138FB008A3791 /* CountryListViewController.swift in Sources */,
@@ -768,12 +818,14 @@
 				B40CC20B26D0437A00247152 /* UserDefaultsService.swift in Sources */,
 				B48831DF26DA657D00A8017B /* StatisticsCovid.xcdatamodeld in Sources */,
 				B4C27F2C26C1BF84005738F6 /* InformationModels.swift in Sources */,
+				B421DB7426E54A9900951A64 /* VaccinationModel.swift in Sources */,
 				B423F3F226C84A9F0054C163 /* StatisticsModel.swift in Sources */,
 				B42BD6C626C00021007969B7 /* Constants.swift in Sources */,
 				B4096D4C26DA8494008FCF70 /* DBCountry+CoreDataClass.swift in Sources */,
 				B451BBD926D161AB008A3791 /* CountryListTableViewCell.swift in Sources */,
 				B4096D4D26DA8494008FCF70 /* DBCountry+CoreDataProperties.swift in Sources */,
 				B42BD6C326BFF6E5007969B7 /* StatisticsViewController.swift in Sources */,
+				B421DB7226E5401900951A64 /* PhoneContactView.swift in Sources */,
 				B447911926DBCFCB00A8CEA6 /* ImageActivityItemSource.swift in Sources */,
 				B42BD68926BFDF02007969B7 /* AppDelegate.swift in Sources */,
 				B42BD6D026C013DF007969B7 /* InformationView.swift in Sources */,

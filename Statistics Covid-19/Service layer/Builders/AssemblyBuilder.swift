@@ -27,10 +27,15 @@ class AssemblyBuilder: IAssemblyBuilder {
         let informationViewController = makeInformationViewController(router: router)
         let informationNavViewController = makeInformationNavViewController(rootViewController: informationViewController)
 
-        tabBarController.setViewControllers([statisticsNavViewController, informationNavViewController], animated: true)
+        let vaccinationViewController = makeVaccinationViewController(router: router)
+        let vaccinationNavViewController = makeVaccinationNavViewController(rootViewController: vaccinationViewController)
+
+        let viewControllers = [statisticsNavViewController, informationNavViewController, vaccinationNavViewController]
+        tabBarController.setViewControllers(viewControllers, animated: true)
 
         router.setNavigationControllers(statisticsNavigation: statisticsNavViewController,
-                                        informationNavigation: informationNavViewController)
+                                        informationNavigation: informationNavViewController,
+                                        vaccinationNavigation: vaccinationNavViewController)
 
         return tabBarController
     }
@@ -53,11 +58,11 @@ class AssemblyBuilder: IAssemblyBuilder {
         let userDefaults = UserDefaultsService()
 
         let statisticsViewController = StatisticsViewController(view: statisticsView,
-                                                            router: router,
-                                                            networkingService: networkingService,
-                                                            coreDataService: coreDataService,
-                                                            builder: builder,
-                                                            userDefaultsService: userDefaults)
+                                                                router: router,
+                                                                networkingService: networkingService,
+                                                                coreDataService: coreDataService,
+                                                                builder: builder,
+                                                                userDefaultsService: userDefaults)
         return statisticsViewController
     }
 
@@ -95,6 +100,22 @@ class AssemblyBuilder: IAssemblyBuilder {
                                                                   countryList: countryList,
                                                                   countryCode: countryCode)
         return countryListViewController
+    }
+
+    // MARK: - Vaccination
+
+    private func makeVaccinationViewController(router: IMainRouter) -> UIViewController {
+        let vaccinationView = VaccinationView(frame: UIScreen.main.bounds)
+        let informationViewController = VaccinationViewController(router: router, view: vaccinationView)
+        return informationViewController
+    }
+
+    private func makeVaccinationNavViewController(rootViewController: UIViewController) -> UINavigationController {
+        let vaccinationNavViewController = UINavigationController(rootViewController: rootViewController)
+        vaccinationNavViewController.isNavigationBarHidden = true
+        vaccinationNavViewController.tabBarItem.title = TabBarConstants.vaccinationTitle
+        vaccinationNavViewController.tabBarItem.image = UIImage(systemName: TabBarConstants.vaccinationImage)
+        return vaccinationNavViewController
     }
 
     // MARK: - Share

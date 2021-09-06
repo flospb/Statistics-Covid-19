@@ -9,7 +9,7 @@ import UIKit
 
 protocol IVaccinationView {
     var delegate: IVaccinationViewController? { get set }
-    func setSelectedImage(image: UIImage)
+    func setImage(image: UIImage)
 }
 
 class VaccinationView: UIView {
@@ -166,6 +166,7 @@ class VaccinationView: UIView {
     }
 
     @objc func clearCertificateButtonAction() {
+        delegate?.clearCertificateButtonTapped()
         qrCertificateCode.image = nil
         clearCertificateButton.isHidden = true
         choiceCertificateTitle.isHidden = false
@@ -179,7 +180,7 @@ class VaccinationView: UIView {
 // MARK: - IVaccinationView
 
 extension VaccinationView: IVaccinationView {
-    func setSelectedImage(image: UIImage) {
+    func setImage(image: UIImage) {
         qrCertificateCode.image = image
         clearCertificateButton.isHidden = false
         choiceCertificateTitle.isHidden = true

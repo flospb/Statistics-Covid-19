@@ -59,6 +59,7 @@ struct VaccinationConstants {
     static let choiceCertificateTitle = "Выбрать сертификат о вакцинации"
     static let clearCertificateButton = "Очистить"
     static let contactsTitle = "Полезные контакты"
+    static let certificateName = "certificateImage"
 }
 
 // MARK: - Cells constants

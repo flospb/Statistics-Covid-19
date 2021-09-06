@@ -106,7 +106,10 @@ class AssemblyBuilder: IAssemblyBuilder {
 
     private func makeVaccinationViewController(router: IMainRouter) -> UIViewController {
         let vaccinationView = VaccinationView(frame: UIScreen.main.bounds)
-        let informationViewController = VaccinationViewController(router: router, view: vaccinationView)
+        let imageStorageService = ImageStorageService()
+        let informationViewController = VaccinationViewController(view: vaccinationView,
+                                                                  router: router,
+                                                                  imageStorageService: imageStorageService)
         return informationViewController
     }
 

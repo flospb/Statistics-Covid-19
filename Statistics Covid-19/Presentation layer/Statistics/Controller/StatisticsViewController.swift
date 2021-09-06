@@ -123,7 +123,9 @@ class StatisticsViewController: UIViewController {
                 self.saveDataToStorage(countryStatistics: countryStatistics) // todo мб вынести из DQ
             }
         case .failure(let error):
-            self.showAlert(for: error)
+            DispatchQueue.main.async {
+                self.showAlert(for: error)
+            }
         }
     }
 
@@ -138,12 +140,10 @@ class StatisticsViewController: UIViewController {
     // MARK: - Helpers
 
     private func showAlert(for error: NetworkServiceError) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: AlertConstants.alertTitle, message: error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: AlertConstants.alertActionOk, style: .default, handler: nil))
-            self.present(alert, animated: true)
-            self.statisticsView.updateStatActivityIndicator(run: false)
-        }
+        let alert = UIAlertController(title: AlertConstants.alertTitle, message: error.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: AlertConstants.alertActionOk, style: .default, handler: nil))
+        self.present(alert, animated: true)
+        self.statisticsView.updateStatActivityIndicator(run: false)
     }
 
     private func fillDefaultValues(code: String) {

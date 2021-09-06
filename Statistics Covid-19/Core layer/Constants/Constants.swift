@@ -17,7 +17,7 @@ struct TabBarConstants {
     static let informationImage = "info.circle.fill"
 
     static let vaccinationTitle = "Вакцинация"
-    static let vaccinationImage = ""
+    static let vaccinationImage = "pills.fill"
 }
 
 // MARK: - Screens constants

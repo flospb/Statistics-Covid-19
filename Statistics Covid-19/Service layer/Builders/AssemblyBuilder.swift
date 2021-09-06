@@ -24,13 +24,13 @@ class AssemblyBuilder: IAssemblyBuilder {
         let statisticsViewController = makeStatisticsViewController(router: router)
         let statisticsNavViewController = makeStatisticsNavViewController(rootViewController: statisticsViewController)
 
-        let informationViewController = makeInformationViewController(router: router)
-        let informationNavViewController = makeInformationNavViewController(rootViewController: informationViewController)
-
         let vaccinationViewController = makeVaccinationViewController(router: router)
         let vaccinationNavViewController = makeVaccinationNavViewController(rootViewController: vaccinationViewController)
 
-        let viewControllers = [statisticsNavViewController, informationNavViewController, vaccinationNavViewController]
+        let informationViewController = makeInformationViewController(router: router)
+        let informationNavViewController = makeInformationNavViewController(rootViewController: informationViewController)
+
+        let viewControllers = [statisticsNavViewController, vaccinationNavViewController, informationNavViewController]
         tabBarController.setViewControllers(viewControllers, animated: true)
 
         router.setNavigationControllers(statisticsNavigation: statisticsNavViewController,

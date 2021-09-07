@@ -88,10 +88,9 @@ extension VaccinationViewController: IVaccinationViewController {
     }
 
     func linkContactTapped(link: String) {
-        print(link)
-        // TODO
-        guard let url = URL(string: link) else { return }
-        UIApplication.shared.open(url)
+//        guard let url = URL(string: link) else { return }
+//        UIApplication.shared.open(url)
+        self.navigationController?.pushViewController(WebViewController(url: link), animated: true)
     }
 
     func clearCertificateButtonTapped() {

@@ -19,6 +19,7 @@
 		B40CC20426D00CE800247152 /* Parsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20326D00CE800247152 /* Parsers.swift */; };
 		B40CC20626D01E6900247152 /* NetworkingServiceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20526D01E6800247152 /* NetworkingServiceModels.swift */; };
 		B40CC20B26D0437A00247152 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20A26D0437A00247152 /* UserDefaultsService.swift */; };
+		B4210F0426E8048100369644 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4210F0326E8048100369644 /* WebViewController.swift */; };
 		B421DB7226E5401900951A64 /* PhoneContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421DB7126E5401900951A64 /* PhoneContactView.swift */; };
 		B421DB7426E54A9900951A64 /* VaccinationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421DB7326E54A9900951A64 /* VaccinationModel.swift */; };
 		B421DB7726E54BC800951A64 /* LinkContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421DB7626E54BC800951A64 /* LinkContactView.swift */; };
@@ -94,6 +95,7 @@
 		B40CC20326D00CE800247152 /* Parsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsers.swift; sourceTree = "<group>"; };
 		B40CC20526D01E6800247152 /* NetworkingServiceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceModels.swift; sourceTree = "<group>"; };
 		B40CC20A26D0437A00247152 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		B4210F0326E8048100369644 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		B421DB7126E5401900951A64 /* PhoneContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactView.swift; sourceTree = "<group>"; };
 		B421DB7326E54A9900951A64 /* VaccinationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationModel.swift; sourceTree = "<group>"; };
 		B421DB7626E54BC800951A64 /* LinkContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkContactView.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				B449E8EE26E3E3850089815B /* VaccinationViewController.swift */,
+				B4210F0326E8048100369644 /* WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				B4C27F2C26C1BF84005738F6 /* InformationModels.swift in Sources */,
 				B421DB7426E54A9900951A64 /* VaccinationModel.swift in Sources */,
 				B423F3F226C84A9F0054C163 /* StatisticsModel.swift in Sources */,
+				B4210F0426E8048100369644 /* WebViewController.swift in Sources */,
 				B42BD6C626C00021007969B7 /* Constants.swift in Sources */,
 				B4096D4C26DA8494008FCF70 /* DBCountry+CoreDataClass.swift in Sources */,
 				B451BBD926D161AB008A3791 /* CountryListTableViewCell.swift in Sources */,

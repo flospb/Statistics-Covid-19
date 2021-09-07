@@ -35,8 +35,8 @@ struct StatisticsConstants {
     static let shareTitle = "Поделиться"
     static let refreshTitle = "Обновить"
 
-    static let shareImageName = "Share"
-    static let refreshImageName = "Refresh"
+    static let shareImageName = "square.and.arrow.up"
+    static let refreshImageName = "arrow.counterclockwise.circle"
 
     static let defaultCountryCode = "RU"
     static let listOpeningImage = "arrowtriangle.down.fill"

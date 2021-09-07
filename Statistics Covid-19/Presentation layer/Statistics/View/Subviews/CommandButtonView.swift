@@ -20,10 +20,14 @@ class CommandButtonView: UIButton {
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
 
-        guard let image = UIImage(named: imageName) else { return }
-        self.setImage(image, for: .normal)
+        let symbolConfiguration = UIImage.SymbolConfiguration(scale: .medium)
+        guard let image = UIImage(systemName: imageName, withConfiguration: symbolConfiguration) else { return }
+
+        let imageWithColor = image.withTintColor(titleColor, renderingMode: .alwaysOriginal)
+        self.setImage(imageWithColor, for: .normal)
+
         self.imageView?.contentMode = .scaleAspectFit
         self.imageEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 20)
-        self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+        self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
 }

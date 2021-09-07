@@ -20,6 +20,7 @@
 		B40CC20626D01E6900247152 /* NetworkingServiceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20526D01E6800247152 /* NetworkingServiceModels.swift */; };
 		B40CC20B26D0437A00247152 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20A26D0437A00247152 /* UserDefaultsService.swift */; };
 		B4210F0426E8048100369644 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4210F0326E8048100369644 /* WebViewController.swift */; };
+		B4210F0826E80EAF00369644 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4210F0726E80EAF00369644 /* Media.xcassets */; };
 		B421DB7226E5401900951A64 /* PhoneContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421DB7126E5401900951A64 /* PhoneContactView.swift */; };
 		B421DB7426E54A9900951A64 /* VaccinationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421DB7326E54A9900951A64 /* VaccinationModel.swift */; };
 		B421DB7726E54BC800951A64 /* LinkContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421DB7626E54BC800951A64 /* LinkContactView.swift */; };
@@ -29,7 +30,6 @@
 		B423F3F426C864CC0054C163 /* NewCasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423F3F326C864CC0054C163 /* NewCasesView.swift */; };
 		B42BD68926BFDF02007969B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD68826BFDF02007969B7 /* AppDelegate.swift */; };
 		B42BD68B26BFDF02007969B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD68A26BFDF02007969B7 /* SceneDelegate.swift */; };
-		B42BD69526BFDF03007969B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B42BD69426BFDF03007969B7 /* Assets.xcassets */; };
 		B42BD69826BFDF03007969B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B42BD69626BFDF03007969B7 /* LaunchScreen.storyboard */; };
 		B42BD6A326BFDF04007969B7 /* Statistics_Covid_19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6A226BFDF04007969B7 /* Statistics_Covid_19Tests.swift */; };
 		B42BD6AE26BFDF04007969B7 /* Statistics_Covid_19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6AD26BFDF04007969B7 /* Statistics_Covid_19UITests.swift */; };
@@ -96,6 +96,7 @@
 		B40CC20526D01E6800247152 /* NetworkingServiceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceModels.swift; sourceTree = "<group>"; };
 		B40CC20A26D0437A00247152 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		B4210F0326E8048100369644 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		B4210F0726E80EAF00369644 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		B421DB7126E5401900951A64 /* PhoneContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactView.swift; sourceTree = "<group>"; };
 		B421DB7326E54A9900951A64 /* VaccinationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationModel.swift; sourceTree = "<group>"; };
 		B421DB7626E54BC800951A64 /* LinkContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkContactView.swift; sourceTree = "<group>"; };
@@ -106,7 +107,6 @@
 		B42BD68526BFDF02007969B7 /* Statistics Covid-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Statistics Covid-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B42BD68826BFDF02007969B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B42BD68A26BFDF02007969B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B42BD69426BFDF03007969B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B42BD69726BFDF03007969B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B42BD69926BFDF03007969B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B42BD69E26BFDF04007969B7 /* Statistics Covid-19Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Statistics Covid-19Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,7 +304,7 @@
 		B42BD6BC26BFE455007969B7 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				B42BD69426BFDF03007969B7 /* Assets.xcassets */,
+				B4210F0726E80EAF00369644 /* Media.xcassets */,
 				B42BD69926BFDF03007969B7 /* Info.plist */,
 			);
 			path = "Supporting files";
@@ -694,8 +694,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4210F0826E80EAF00369644 /* Media.xcassets in Resources */,
 				B42BD69826BFDF03007969B7 /* LaunchScreen.storyboard in Resources */,
-				B42BD69526BFDF03007969B7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

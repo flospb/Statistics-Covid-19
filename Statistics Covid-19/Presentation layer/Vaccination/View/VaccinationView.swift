@@ -162,6 +162,7 @@ class VaccinationView: UIView {
     // MARK: - Actions
 
     @objc func qrCertificateCodeTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        animationTap(view: qrCertificateCode)
         delegate?.qrCertificateCodeTapped()
     }
 
@@ -173,7 +174,22 @@ class VaccinationView: UIView {
     }
 
     @objc func linkContactTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        animationTap(view: linkContactView)
         delegate?.linkContactTapped(url: linkContactView.link)
+    }
+
+    // MARK: - Animations
+
+    private func animationTap(view: UIView) {
+        UIView.animate(withDuration: 0.1) {
+            view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            view.backgroundColor = .systemGray3
+        } completion: { _ in
+            UIView.animate(withDuration: 0.1) {
+                view.transform = CGAffineTransform.identity
+                view.backgroundColor = .systemGray6
+            }
+        }
     }
 }
 

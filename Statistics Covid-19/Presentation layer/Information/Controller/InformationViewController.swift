@@ -13,7 +13,6 @@ class InformationViewController: UIViewController {
 
     // MARK: - Dependencies
 
-    private var router: IMainRouter
     private var informationView: IInformationView
 
     // MARK: - Models
@@ -23,8 +22,7 @@ class InformationViewController: UIViewController {
 
     // MARK: - Initialization
 
-    init(router: IMainRouter, view: IInformationView) {
-        self.router = router
+    init(view: IInformationView) {
         self.informationView = view
         super.init(nibName: nil, bundle: nil)
     }

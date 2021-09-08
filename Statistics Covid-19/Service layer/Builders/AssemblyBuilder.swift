@@ -77,8 +77,8 @@ class AssemblyBuilder: IAssemblyBuilder {
     // MARK: - Information
 
     private func makeInformationViewController(router: IMainRouter) -> UIViewController {
-        let informationView = InformationView(frame: UIScreen.main.bounds)
-        let informationViewController = InformationViewController(router: router, view: informationView)
+        let informationView = InformationView(recommendations: RecommendationModel.recommendations)
+        let informationViewController = InformationViewController(view: informationView)
         return informationViewController
     }
 

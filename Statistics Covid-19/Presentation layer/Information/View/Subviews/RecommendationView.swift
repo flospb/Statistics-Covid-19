@@ -35,6 +35,9 @@ class RecommendationView: UIView {
         addMainContentStackView()
         addImageView(imageName: imageName)
         addRightContentStackView(title: title, content: content)
+
+        settingTitleView(title: title)
+        settingDescriptionView(content: content)
     }
 
     private func addMainContentStackView() {
@@ -69,16 +72,6 @@ class RecommendationView: UIView {
     }
 
     private func addRightContentStackView(title: String, content: String) {
-        titleView.font = FontConstants.mediumBoldTitle
-        titleView.numberOfLines = 0
-        titleView.text = title
-        titleView.font = FontConstants.smallBoldTitle
-
-        descriptionView.font = FontConstants.smallText
-        descriptionView.numberOfLines = 0
-        descriptionView.text = content
-        descriptionView.textColor = ColorsConstants.recommendationDescription
-
         rightContentStackView.translatesAutoresizingMaskIntoConstraints = false
         rightContentStackView.axis = .vertical
         rightContentStackView.spacing = 5.0
@@ -94,5 +87,19 @@ class RecommendationView: UIView {
             rightContentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             rightContentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
         ])
+    }
+
+    private func settingTitleView(title: String) {
+        titleView.font = FontConstants.mediumBoldTitle
+        titleView.numberOfLines = 0
+        titleView.text = title
+        titleView.font = FontConstants.smallBoldTitle
+    }
+
+    private func settingDescriptionView(content: String) {
+        descriptionView.font = FontConstants.smallText
+        descriptionView.numberOfLines = 0
+        descriptionView.text = content
+        descriptionView.textColor = ColorsConstants.recommendationDescription
     }
 }

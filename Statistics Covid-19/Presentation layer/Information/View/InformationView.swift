@@ -17,6 +17,7 @@ class InformationView: UIView {
     // MARK: - Dependencies
 
     var delegate: IInformationViewController?
+    private let recommendations: [Recommendation]
 
     // MARK: - UI
 
@@ -32,13 +33,13 @@ class InformationView: UIView {
 
     // MARK: - Models
 
-    private let recommendations = RecommendationModel.recommendations
-    private let anchorСonstant: CGFloat = 20 
+    private let anchorСonstant: CGFloat = 20
 
     // MARK: - Initialization
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(recommendations: [Recommendation]) {
+        self.recommendations = recommendations
+        super.init(frame: .zero)
         settingView()
     }
 

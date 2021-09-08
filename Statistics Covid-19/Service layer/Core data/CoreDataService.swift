@@ -72,7 +72,7 @@ class CoreDataService: ICoreDataService {
     func saveCountryStatistics(countryStatistics: CountryStatisticsModel) {
         coreDataStack.container.performBackgroundTask { context in
             guard let country = self.getCountryStorageModel(code: countryStatistics.country.code, context: context) else { return }
-            _ = self.dataMapper.getStatisticsStorageModel(statistics: countryStatistics, country: country, context: context) 
+            _ = self.dataMapper.getStatisticsStorageModel(statistics: countryStatistics, country: country, context: context)
 
             self.coreDataStack.saveContext(in: context)
         }
@@ -97,7 +97,7 @@ class CoreDataService: ICoreDataService {
             guard let country = try context.fetch(request).first else { return nil }
             return country
         } catch {
-            fatalError() // TODO
+            fatalError("f") // TODO
         }
     }
 

@@ -8,20 +8,21 @@
 import UIKit
 
 protocol IMainRouter {
-    var tabBarController: UITabBarController { get }
     func setNavigationControllers(statisticsNavigation: UINavigationController,
                                   informationNavigation: UINavigationController,
-                                  vaccinationNavigation: UINavigationController) // todo
+                                  vaccinationNavigation: UINavigationController)
     func openActivityViewController(activityViewController: UIActivityViewController)
     func openCountryListViewController(controller: ICountryListViewController)
     func closeCountryListViewController()
+    func openWebViewController(controller: UIViewController)
+    func openImagePickerController(controller: IVaccinationViewController)
 }
 
 final class MainRouter: IMainRouter {
 
     // MARK: - Dependencies
 
-    var tabBarController: UITabBarController
+    private let tabBarController: UITabBarController
 
     private weak var statisticsNavViewController: UINavigationController?
     private weak var informationNavViewController: UINavigationController?
@@ -43,6 +44,8 @@ final class MainRouter: IMainRouter {
         vaccinationViewController = vaccinationNavigation
     }
 
+    // MARK: - Statistics
+
     func openActivityViewController(activityViewController: UIActivityViewController) {
         statisticsNavViewController?.present(activityViewController, animated: true, completion: nil)
     }
@@ -54,5 +57,17 @@ final class MainRouter: IMainRouter {
 
     func closeCountryListViewController() {
         statisticsNavViewController?.dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: - Vaccination
+
+    func openWebViewController(controller: UIViewController) {
+        vaccinationViewController?.present(controller, animated: true, completion: nil)
+    }
+
+    func openImagePickerController(controller: IVaccinationViewController) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = controller
+        vaccinationViewController?.present(imagePickerController, animated: true, completion: nil)
     }
 }

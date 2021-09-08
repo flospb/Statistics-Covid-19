@@ -7,9 +7,9 @@
 
 import UIKit
 
-protocol IVaccinationViewController {
+protocol IVaccinationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func qrCertificateCodeTapped()
-    func linkContactTapped(link: String)
+    func linkContactTapped(url: String)
     func clearCertificateButtonTapped()
 }
 
@@ -19,13 +19,15 @@ class VaccinationViewController: UIViewController {
 
     private var vaccinationView: IVaccinationView
     private var router: IMainRouter
+    private var builder: IAssemblyBuilder
     private var imageStorageService: IImageStorageService
 
     // MARK: - Initialization
 
-    init(view: IVaccinationView, router: IMainRouter, imageStorageService: IImageStorageService) {
+    init(view: IVaccinationView, router: IMainRouter, builder: IAssemblyBuilder, imageStorageService: IImageStorageService) {
         self.vaccinationView = view
         self.router = router
+        self.builder = builder
         self.imageStorageService = imageStorageService
         super.init(nibName: nil, bundle: nil)
     }
@@ -82,30 +84,23 @@ class VaccinationViewController: UIViewController {
 
 extension VaccinationViewController: IVaccinationViewController {
     func qrCertificateCodeTapped() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
+        router.openImagePickerController(controller: self)
     }
 
-    func linkContactTapped(link: String) {
-//        guard let url = URL(string: link) else { return }
-//        UIApplication.shared.open(url)
-        self.navigationController?.pushViewController(WebViewController(url: link), animated: true)
+    func linkContactTapped(url: String) {
+        let webViewController = builder.makeWebViewController(url: url)
+        router.openWebViewController(controller: webViewController)
     }
 
     func clearCertificateButtonTapped() {
         imageStorageService.clearImage(imageName: VaccinationConstants.certificateName)
     }
-}
 
-// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
-
-extension VaccinationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         vaccinationView.setImage(image: selectedImage)
         saveImage(image: selectedImage)
-        self.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
 }

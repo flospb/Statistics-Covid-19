@@ -31,7 +31,7 @@ class VaccinationView: UIView {
     // MARK: - Models
 
     private let anchorСonstant: CGFloat = 20
-    private let doubleAnchorСonstant: CGFloat = 40 // todo
+    private let doubleAnchorСonstant: CGFloat = 40
 
     // MARK: - Initialization
 
@@ -173,7 +173,7 @@ class VaccinationView: UIView {
     }
 
     @objc func linkContactTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        delegate?.linkContactTapped(link: linkContactView.link)
+        delegate?.linkContactTapped(url: linkContactView.link)
     }
 }
 

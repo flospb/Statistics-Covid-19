@@ -11,6 +11,7 @@ protocol IAssemblyBuilder {
     func makeRootTabBarController() -> UITabBarController
     func makeCountryListViewController(router: IMainRouter, countryList: [CountryModel], countryCode: String) -> ICountryListViewController
     func makeActivityViewController(image: UIImage) -> UIActivityViewController
+    func makeWebViewController(url: String) -> UIViewController
 }
 
 class AssemblyBuilder: IAssemblyBuilder {
@@ -109,6 +110,7 @@ class AssemblyBuilder: IAssemblyBuilder {
         let imageStorageService = ImageStorageService()
         let informationViewController = VaccinationViewController(view: vaccinationView,
                                                                   router: router,
+                                                                  builder: self,
                                                                   imageStorageService: imageStorageService)
         return informationViewController
     }
@@ -119,6 +121,13 @@ class AssemblyBuilder: IAssemblyBuilder {
         vaccinationNavViewController.tabBarItem.title = TabBarConstants.vaccinationTitle
         vaccinationNavViewController.tabBarItem.image = UIImage(systemName: TabBarConstants.vaccinationImage)
         return vaccinationNavViewController
+    }
+
+    // MARK: - WebView
+
+    func makeWebViewController(url: String) -> UIViewController {
+        let webViewController = WebViewController(url: url)
+        return webViewController
     }
 
     // MARK: - Share

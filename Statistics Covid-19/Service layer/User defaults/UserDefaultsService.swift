@@ -7,8 +7,6 @@
 
 import Foundation
 
-// TODO need for asynchron
-
 protocol IUserDefaultsService {
     func saveObject<T: Encodable>(object: T, for key: String)
     func getObject<T: Decodable>(for key: String) -> T?
@@ -32,22 +30,14 @@ final class UserDefaultsService: IUserDefaultsService {
 
     // MARK: - IUserDefaultsService
 
-    func saveObject<T: Encodable>(object: T, for key: String) { // todo need to try? in one row
-        do {
-            let data = try JSONEncoder().encode(object)
-            defaults.setValue(data, forKey: key)
-        } catch {
-            return
-        }
+    func saveObject<T: Encodable>(object: T, for key: String) {
+        guard let data = try? JSONEncoder().encode(object) else { return }
+        defaults.setValue(data, forKey: key)
     }
 
     func getObject<T: Decodable>(for key: String) -> T? {
-        guard let data = defaults.data(forKey: key) else { return nil }
-        do {
-            let data = try JSONDecoder().decode(T.self, from: data)
-            return data
-        } catch {
-            return nil
-        }
+        guard let data = defaults.data(forKey: key),
+              let result = try? JSONDecoder().decode(T.self, from: data) else { return nil }
+        return result
     }
 }

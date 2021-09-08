@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol IInformationViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    // TODO 
-}
+protocol IInformationViewController: UICollectionViewDataSource, UICollectionViewDelegate {}
 
 class InformationViewController: UIViewController {
 
@@ -21,7 +19,7 @@ class InformationViewController: UIViewController {
     // MARK: - Models
 
     private var cellName = CellNames.informationCollectionCell
-    private var symptomsCollection = SymptomModel().imageAddresses
+    private var symptomsCollection = SymptomModel.imageAddresses
 
     // MARK: - Initialization
 

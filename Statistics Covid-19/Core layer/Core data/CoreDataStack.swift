@@ -12,23 +12,17 @@ protocol ICoreDataStack {
     func saveContext(in context: NSManagedObjectContext)
 }
 
-// todo marks
 class CoreDataStack: ICoreDataStack {
 
-    // MARK: - Models
-
-    private let dataBaseName = CoreDataConstants.dataBaseName
-
-    // MARK: - ICoreDataStack
-
     lazy var container: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: dataBaseName)
+        let container = NSPersistentContainer(name: CoreDataConstants.dataBaseName)
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("something went wrong \(error) \(error.userInfo)")
             }
         }
         container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return container
     }()
 

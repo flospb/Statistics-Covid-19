@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ICountryListViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate { // TODO 
+protocol ICountryListViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     var delegateHandler: ((_ countryCode: String) -> Void)? { get set }
 }
 

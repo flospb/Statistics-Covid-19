@@ -50,8 +50,6 @@ class StatisticsDataMapper: IStatisticsDataMapper {
         let country = CurrentCountryModel(code: data.code, name: countryName, image: image)
         var countryStatistics = CountryStatisticsModel(country: country)
 
-//        countryStatistics.updateDate = dataFormatterService.getDateFromString(format: "yyyy-MM-dd", date: data.updateDate)
-
         if let totalData = data.totalData {
             countryStatistics.totalConfirmed = totalData.confirmed ?? 0
             countryStatistics.totalRecovered = totalData.recovered ?? 0
@@ -77,7 +75,6 @@ class StatisticsDataMapper: IStatisticsDataMapper {
         let countryModel = CurrentCountryModel(code: code, name: name, image: nil)
         var statisticsModel = CountryStatisticsModel(country: countryModel)
 
-        statisticsModel.country = countryModel
         statisticsModel.updateDate = date
         statisticsModel.confirmedToday = Int(statistics.confirmedToday)
         statisticsModel.confirmedYesterday = Int(statistics.confirmedYesterday)

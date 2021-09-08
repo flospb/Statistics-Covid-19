@@ -8,15 +8,7 @@
 // MARK: - Symptoms
 
 struct SymptomModel {
-    var imageAddresses = [String]()
-
-    init() {
-        self.imageAddresses.append("Temperature")
-        self.imageAddresses.append("Cough")
-        self.imageAddresses.append("Fatigue")
-        self.imageAddresses.append("Dyspnea")
-        self.imageAddresses.append("MusclePain")
-    }
+    static var imageAddresses: [String] = ["Temperature", "Cough", "Fatigue", "Dyspnea", "MusclePain"]
 }
 
 // MARK: - Recommendations
@@ -28,35 +20,27 @@ struct Recommendation {
 }
 
 struct RecommendationModel {
-    var recommendations = [Recommendation]() // todo
-
-    init() {
-        recommendations.append(Recommendation(title: "Оставайтесь дома",
-                                              content: "Карантин - Способ остановить распространение коронавируса",
-                                              imageAddress: "StayHome"))
-
-        recommendations.append(Recommendation(title: "Ограничьте личные контакты с людьми",
-                                              content: "Меньше контактов - меньше вероятность заражения",
-                                              imageAddress: "LimitContacts"))
-
-        recommendations.append(Recommendation(title: "Соблюдайте дистанцию",
-                                              content: "На улице постарайтесь держаться на расстоянии 2 метров от окружающих",
-                                              imageAddress: "KeepDistance"))
-
-        recommendations.append(Recommendation(title: "Еще чаще мойте руки",
-                                              content: "После каждого выхода на улицу обрабатывайте телефон ключи и банковскую карту",
-                                              imageAddress: "WashHands"))
-
-        recommendations.append(Recommendation(title: "Используйте средства защиты",
-                                              content: "Надевайте маску, если вы чувствуете себя заболевшим",
-                                              imageAddress: "MeansOfProtection"))
-
-        recommendations.append(Recommendation(title: "Сохраняйте спокойствие",
-                                              content: "Высыпайтесь, ешьте полезное и занимайтесь спортом дома",
-                                              imageAddress: "KeepingCalm"))
-
-        recommendations.append(Recommendation(title: "Будьте на связи с близкими",
-                                              content: "Говорите с друзьями и близкими, сохраняйте с ними контакт",
-                                              imageAddress: "StayConnected"))
-    }
+    static let recommendations: [Recommendation] = [
+        Recommendation(title: "Оставайтесь дома",
+                       content: "Карантин - Способ остановить распространение коронавируса",
+                       imageAddress: "StayHome"),
+        Recommendation(title: "Ограничьте личные контакты с людьми",
+                       content: "Меньше контактов - меньше вероятность заражения",
+                       imageAddress: "LimitContacts"),
+        Recommendation(title: "Соблюдайте дистанцию",
+                       content: "На улице постарайтесь держаться на расстоянии 2 метров от окружающих",
+                       imageAddress: "KeepDistance"),
+        Recommendation(title: "Еще чаще мойте руки",
+                       content: "После каждого выхода на улицу обрабатывайте телефон ключи и банковскую карту",
+                       imageAddress: "WashHands"),
+        Recommendation(title: "Используйте средства защиты",
+                       content: "Надевайте маску, если вы чувствуете себя заболевшим",
+                       imageAddress: "MeansOfProtection"),
+        Recommendation(title: "Сохраняйте спокойствие",
+                       content: "Высыпайтесь, ешьте полезное и занимайтесь спортом дома",
+                       imageAddress: "KeepingCalm"),
+        Recommendation(title: "Будьте на связи с близкими",
+                       content: "Говорите с друзьями и близкими, сохраняйте с ними контакт",
+                       imageAddress: "StayConnected")
+    ]
 }

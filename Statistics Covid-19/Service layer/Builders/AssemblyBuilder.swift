@@ -44,7 +44,7 @@ class AssemblyBuilder: IAssemblyBuilder {
     // MARK: - Statistics
 
     private func makeStatisticsViewController(router: IMainRouter) -> UIViewController {
-        let statisticsView = StatisticsView(frame: UIScreen.main.bounds)
+        let statisticsView = StatisticsView()
 
         let dataFormatterService = DataFormatterService()
         let dataMapper = StatisticsDataMapper(dataFormatterService: dataFormatterService)

@@ -8,18 +8,18 @@
 import UIKit
 
 struct CountryModel {
-    var code: String
-    var name: String
+    let code: String
+    let name: String
 }
 
 struct CurrentCountryModel {
-    var code: String
-    var name: String
-    var image: UIImage?
+    let code: String
+    let name: String
+    let image: UIImage?
 }
 
 struct CountryStatisticsModel {
-    var country: CurrentCountryModel
+    let country: CurrentCountryModel
     var updateDate: Date?
     var confirmedToday: Int
     var confirmedYesterday: Int

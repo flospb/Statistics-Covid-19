@@ -8,8 +8,8 @@
 import Foundation
 
 protocol INetworkingService {
-    var statisticsHandler: ((Result<CountryStatisticsModel, NetworkServiceError>) -> Void)? { get set }
-    func fetchDataByCountry(codeCurrentCountry: String?)
+    func fetchDataByCountry(codeCurrentCountry: String?,
+                            completion: @escaping (Result<CountryStatisticsModel, NetworkServiceError>) -> Void)
 }
 
 class NetworkingService: INetworkingService {
@@ -18,8 +18,6 @@ class NetworkingService: INetworkingService {
 
     private let requestSender: IRequestSender
     private let dataMapper: IStatisticsDataMapper
-
-    var statisticsHandler: ((Result<CountryStatisticsModel, NetworkServiceError>) -> Void)?
 
     // MARK: - Initialization
 
@@ -30,7 +28,9 @@ class NetworkingService: INetworkingService {
 
     // MARK: - Fetching data
 
-    func fetchDataByCountry(codeCurrentCountry: String?) { // todo
+    func fetchDataByCountry(codeCurrentCountry: String?,
+                            completion: @escaping (Result<CountryStatisticsModel, NetworkServiceError>) -> Void) {
+
         let codeCountry = codeCurrentCountry ?? DefaultCountryConstants.countryCode
 
         var countryImageResponse: CountryImageResponse?
@@ -58,20 +58,19 @@ class NetworkingService: INetworkingService {
             case .success(let imageData):
                 countryImageResponse = imageData
             case .failure(let error):
-                // TODO not image
-               print(error)
+                errorResult = error
             }
             dispatchGroup.leave()
         }
 
         dispatchGroup.notify(queue: DispatchQueue.global()) {
             guard let countryResponse = countryResponse else {
-                self.statisticsHandler?(.failure(errorResult))
+                completion(.failure(errorResult))
                 return
             }
             let countryStatistics = self.dataMapper.getStatisticsModelByCountry(statistics: countryResponse,
                                                                                 countryImage: countryImageResponse)
-            self.statisticsHandler?(.success(countryStatistics))
+            completion(.success(countryStatistics))
         }
     }
 }

@@ -27,18 +27,18 @@ class StatisticsView: UIView {
     private let newCasesView: INewCasesView = NewCasesView()
     private let totalCasesView: ITotalCasesView = TotalCasesView()
     private let buttonsStackView = UIStackView()
-    private let shareButtonView = CommandButtonView(type: .system) // todo
-    private let refreshButtonView = CommandButtonView(type: .system) // todo
+    private let shareButtonView = CommandButtonView(type: .system)
+    private let refreshButtonView = CommandButtonView(type: .system)
 
     // MARK: - Models
 
     private let anchorСonstant: CGFloat = 20
-    private let doubleAnchorСonstant: CGFloat = 40 // todo
+    private let doubleAnchorСonstant: CGFloat = 40
 
     // MARK: - Initialization
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         settingView()
     }
 
@@ -139,7 +139,7 @@ class StatisticsView: UIView {
     }
 
     private func settingShareButtonView() {
-        shareButtonView.addTarget(self, action: #selector(shareButtonViewAction(_:)), for: .touchUpInside)
+        shareButtonView.addTarget(self, action: #selector(shareButtonViewAction), for: .touchUpInside)
         shareButtonView.settingView(title: StatisticsConstants.shareTitle,
                                     titleColor: UIColor.darkText,
                                     backgroundColor: ColorsConstants.shareBackground,
@@ -147,7 +147,7 @@ class StatisticsView: UIView {
     }
 
     private func settingRefreshButtonView() {
-        refreshButtonView.addTarget(self, action: #selector(refreshButtonViewAction(_:)), for: .touchUpInside)
+        refreshButtonView.addTarget(self, action: #selector(refreshButtonViewAction), for: .touchUpInside)
         refreshButtonView.settingView(title: StatisticsConstants.refreshTitle,
                                       titleColor: UIColor.white,
                                       backgroundColor: ColorsConstants.refreshBackground,
@@ -166,10 +166,10 @@ class StatisticsView: UIView {
 
     @objc private func shareButtonViewAction(_ sender: UIButton) {
         let snapshot = self.snapshotView(afterScreenUpdates: false)
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0)
         snapshot?.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
 
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+        let image = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
         UIGraphicsEndImageContext()
 
         delegate?.shareButtonTapped(image: image)

@@ -67,7 +67,6 @@ class StatisticsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkingService.statisticsHandler = statisticsHandler
         loadDataFromStorage()
         loadStatisticsData()
     }
@@ -84,14 +83,15 @@ class StatisticsViewController: UIViewController {
         if countryList.isEmpty {
             fillCountryList()
         } else {
-            networkingService.fetchDataByCountry(codeCurrentCountry: codeCurrentCountry)
+            networkingService.fetchDataByCountry(codeCurrentCountry: codeCurrentCountry, completion: statisticsHandler)
         }
     }
 
     private func fillCountryList() {
         coreDataService.getCountryList { [weak self] result in
-            self?.countryList = result
-            self?.networkingService.fetchDataByCountry(codeCurrentCountry: self?.codeCurrentCountry)
+            guard let self = self else { return }
+            self.countryList = result
+            self.networkingService.fetchDataByCountry(codeCurrentCountry: self.codeCurrentCountry, completion: self.statisticsHandler)
         }
     }
 
@@ -103,8 +103,9 @@ class StatisticsViewController: UIViewController {
         }
 
         coreDataService.getCountryStatistics(countryCode: codeCurrentCountry) { [weak self] result in
-            self?.statisticsView.fillCountryData(countryStatistics: result, dataFormatter: DataFormatterService())
-            self?.codeCurrentCountry = result.country.code
+            guard let self = self else { return }
+            self.statisticsView.fillCountryData(countryStatistics: result, dataFormatter: DataFormatterService())
+            self.codeCurrentCountry = result.country.code
         }
     }
 
@@ -117,10 +118,10 @@ class StatisticsViewController: UIViewController {
     private func statisticsHandler(result: Result<CountryStatisticsModel, NetworkServiceError>) {
         switch result {
         case .success(let countryStatistics):
+            self.saveDataToStorage(countryStatistics: countryStatistics)
             DispatchQueue.main.async {
                 self.statisticsView.fillCountryData(countryStatistics: countryStatistics, dataFormatter: DataFormatterService())
                 self.statisticsView.updateStatActivityIndicator(run: false)
-                self.saveDataToStorage(countryStatistics: countryStatistics) // todo мб вынести из DQ
             }
         case .failure(let error):
             DispatchQueue.main.async {

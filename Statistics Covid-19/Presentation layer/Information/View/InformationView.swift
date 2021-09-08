@@ -32,8 +32,8 @@ class InformationView: UIView {
 
     // MARK: - Models
 
-    private let recommendations = RecommendationModel().recommendations // todo model in view
-    private let anchorСonstant: CGFloat = 20 // todo
+    private let recommendations = RecommendationModel.recommendations
+    private let anchorСonstant: CGFloat = 20 
 
     // MARK: - Initialization
 

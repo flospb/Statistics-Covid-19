@@ -12,7 +12,6 @@ class PhoneContactView: UIView {
     // MARK: - UI
 
     private let contentStackView = UIStackView()
-
     private let titleView = UILabel()
     private let descriptionView = UILabel()
 

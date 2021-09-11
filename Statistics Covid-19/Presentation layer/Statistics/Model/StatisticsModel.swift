@@ -33,10 +33,8 @@ struct CountryStatisticsModel {
         self.country = country
 
         let defaultValue = 0
-
         self.confirmedToday = defaultValue
         self.confirmedYesterday = defaultValue
-
         self.totalConfirmed = defaultValue
         self.totalRecovered = defaultValue
         self.totalCritical = defaultValue

@@ -32,8 +32,8 @@ class CountryListView: UIView {
 
     // MARK: - Initialization
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         settingView()
     }
 
@@ -84,7 +84,6 @@ extension CountryListView: ICountryListView {
 
         countryListTableView.delegate = controller
         countryListTableView.dataSource = controller
-
         countryListTableView.register(CountryListTableViewCell.self, forCellReuseIdentifier: CellNames.countryListTableCell)
     }
 

@@ -13,7 +13,6 @@ class RecommendationView: UIView {
 
     private let mainContentStackView = UIStackView()
     private let rightContentStackView = UIStackView()
-
     private let imageView = UIImageView()
     private let titleView = UILabel()
     private let descriptionView = UILabel()

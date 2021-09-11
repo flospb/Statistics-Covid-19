@@ -12,9 +12,10 @@ class LinkContactView: UIView {
     // MARK: - UI
 
     private let contentStackView = UIStackView()
-
     private let titleView = UILabel()
     private let descriptionView = UILabel()
+
+    // MARK: - Models
 
     let link = LinkContactModel.link
 

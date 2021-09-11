@@ -27,7 +27,6 @@ class InformationView: UIView {
 
     private let symptomsViewTitle = UILabel()
     private let symptomsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-
     private let recommendationsViewTitle = UILabel()
     private let recommendationsContainer = UIStackView()
 
@@ -58,7 +57,6 @@ class InformationView: UIView {
 
         addSymptomsViewTitle()
         addSymptomsCollectionView()
-
         addRecommendationsViewTitle()
         addRecommendationsContainer()
     }

@@ -95,7 +95,7 @@ final class AssemblyBuilder: IAssemblyBuilder {
     func makeCountryListViewController(router: IMainRouter,
                                        countryList: [CountryModel],
                                        countryCode: String) -> ICountryListViewController {
-        let countryListView = CountryListView(frame: UIScreen.main.bounds)
+        let countryListView = CountryListView()
         let countryListViewController = CountryListViewController(router: router,
                                                                   view: countryListView,
                                                                   countryList: countryList,
@@ -106,7 +106,7 @@ final class AssemblyBuilder: IAssemblyBuilder {
     // MARK: - Vaccination
 
     private func makeVaccinationViewController(router: IMainRouter) -> UIViewController {
-        let vaccinationView = VaccinationView(frame: UIScreen.main.bounds)
+        let vaccinationView = VaccinationView()
         let imageStorageService = ImageStorageService()
         let informationViewController = VaccinationViewController(view: vaccinationView,
                                                                   router: router,

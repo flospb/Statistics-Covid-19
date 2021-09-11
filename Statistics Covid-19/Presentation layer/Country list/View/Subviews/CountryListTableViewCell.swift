@@ -8,6 +8,9 @@
 import UIKit
 
 class CountryListTableViewCell: UITableViewCell {
+
+    // MARK: - UI
+
     private let containerView = UIStackView()
     private let countryNameView = UILabel()
     private let selectedCountryImageView = UIImageView()
@@ -27,7 +30,6 @@ class CountryListTableViewCell: UITableViewCell {
 
     private func settingView() {
         addContainerView()
-
         settingCountryNameView()
         settingSelectedCountryImageView()
     }
@@ -42,7 +44,6 @@ class CountryListTableViewCell: UITableViewCell {
         containerView.addArrangedSubview(selectedCountryImageView)
 
         self.addSubview(self.containerView)
-
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),

@@ -79,6 +79,7 @@ class CountryView: UIView {
     private func settingCountryName() {
         countryName.text = "-"
         countryName.font = FontConstants.mediumBoldTitle
+        countryName.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
 
     private func settingListOpeningImage() {

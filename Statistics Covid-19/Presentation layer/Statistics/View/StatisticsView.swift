@@ -83,7 +83,8 @@ class StatisticsView: UIView {
         self.addSubview(countryView)
         NSLayoutConstraint.activate([
             countryView.topAnchor.constraint(equalTo: statisticsViewTitle.bottomAnchor, constant: anchorСonstant),
-            countryView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant)
+            countryView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant),
+            countryView.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor, constant: -anchorСonstant)
         ])
     }
 

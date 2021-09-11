@@ -13,12 +13,11 @@ protocol ICoreDataStack {
 }
 
 class CoreDataStack: ICoreDataStack {
-
     lazy var container: NSPersistentContainer = {
         let container = NSPersistentContainer(name: CoreDataConstants.dataBaseName)
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
-                fatalError("something went wrong \(error) \(error.userInfo)")
+                fatalError("Unresolved error \(error) \(error.userInfo)")
             }
         }
         container.viewContext.automaticallyMergesChangesFromParent = true

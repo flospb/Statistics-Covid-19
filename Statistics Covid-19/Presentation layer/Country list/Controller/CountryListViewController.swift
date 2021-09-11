@@ -73,7 +73,7 @@ class CountryListViewController: UIViewController {
         countryListView.tableViewDown()
     }
 
-    // MARK: - Helpers
+    // MARK: - Private
 
     private func fillCountyList(countries: [CountryModel], countryCode: String) {
         countries.forEach { country in

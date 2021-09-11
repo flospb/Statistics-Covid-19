@@ -15,6 +15,9 @@ protocol IDataFormatterService {
 }
 
 class DataFormatterService: IDataFormatterService {
+
+    // MARK: - Date formatting
+
     func changeDateFormat(changedDate: String, oldFormat: String, newFormat: String) -> String? {
         guard let date = getDateFromString(format: oldFormat, date: changedDate) else { return nil }
         let dateString = getStringDate(format: newFormat, date: date)
@@ -32,6 +35,8 @@ class DataFormatterService: IDataFormatterService {
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: date)
     }
+
+    // MARK: - String formatting
 
     func decimalFormatting(number: Int) -> String {
         let formatter = NumberFormatter()

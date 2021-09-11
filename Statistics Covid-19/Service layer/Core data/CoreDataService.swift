@@ -14,6 +14,9 @@ protocol ICoreDataService {
 }
 
 class CoreDataService: ICoreDataService {
+
+    // MARK: - Dependencies
+
     private let coreDataStack: ICoreDataStack
     private let dataMapper: IStatisticsDataMapper
 
@@ -44,8 +47,7 @@ class CoreDataService: ICoreDataService {
                 completion(countryList)
             }
         } catch {
-            fatalError("d")
-            // todo
+            completion([CountryModel]())
         }
     }
 
@@ -57,14 +59,10 @@ class CoreDataService: ICoreDataService {
         request.sortDescriptors = [sortDescriptor]
         request.predicate = NSPredicate(format: "\(#keyPath(DBStatistics.country.code)) = '\(countryCode)'")
 
-        do {
-            guard let result = try context.fetch(request).first else { return }
-            guard let statistics = dataMapper.getStatisticsModelByStorageModel(statistics: result) else { return }
-            completion(statistics)
-        } catch {
-           // print("")
-            // todo
-        }
+        guard let result = try? context.fetch(request).first else { return }
+        guard let statistics = dataMapper.getStatisticsModelByStorageModel(statistics: result) else { return }
+
+        completion(statistics)
     }
 
     // MARK: - Saving data
@@ -73,12 +71,11 @@ class CoreDataService: ICoreDataService {
         coreDataStack.container.performBackgroundTask { context in
             guard let country = self.getCountryStorageModel(code: countryStatistics.country.code, context: context) else { return }
             _ = self.dataMapper.getStatisticsStorageModel(statistics: countryStatistics, country: country, context: context)
-
             self.coreDataStack.saveContext(in: context)
         }
     }
 
-    // MARK: - Helpers
+    // MARK: - Private
 
     private func saveCountryList(countries: [CountryModel]) {
         coreDataStack.container.performBackgroundTask { context in
@@ -92,13 +89,8 @@ class CoreDataService: ICoreDataService {
     private func getCountryStorageModel(code: String, context: NSManagedObjectContext) -> DBCountry? {
         let request: NSFetchRequest<DBCountry> = DBCountry.fetchRequest()
         request.predicate = NSPredicate(format: "\(#keyPath(DBCountry.code)) = '\(code)'")
-
-        do {
-            guard let country = try context.fetch(request).first else { return nil }
-            return country
-        } catch {
-            fatalError("f") // TODO
-        }
+        guard let country = try? context.fetch(request).first else { return nil }
+        return country
     }
 
     private func fillCountryList() -> [CountryModel] {

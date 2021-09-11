@@ -16,11 +16,18 @@ protocol IStatisticsDataMapper {
 }
 
 class StatisticsDataMapper: IStatisticsDataMapper {
+
+    // MARK: - Dependencies
+
     private let dataFormatterService: IDataFormatterService
+
+    // MARK: - Initialization
 
     init(dataFormatterService: IDataFormatterService) {
         self.dataFormatterService = dataFormatterService
     }
+
+    // MARK: - Converting
 
     func getCountryListByStorageModel(countries: [DBCountry]) -> [CountryModel] {
         var countryList = [CountryModel]()
@@ -41,7 +48,6 @@ class StatisticsDataMapper: IStatisticsDataMapper {
         }
 
         let data = statistics.data
-
         var countryName = data.name
         if let name = NSLocale(localeIdentifier: "RU").localizedString(forCountryCode: data.code) {
             countryName = name
@@ -49,7 +55,6 @@ class StatisticsDataMapper: IStatisticsDataMapper {
 
         let country = CurrentCountryModel(code: data.code, name: countryName, image: image)
         var countryStatistics = CountryStatisticsModel(country: country)
-
         if let totalData = data.totalData {
             countryStatistics.totalConfirmed = totalData.confirmed ?? 0
             countryStatistics.totalRecovered = totalData.recovered ?? 0

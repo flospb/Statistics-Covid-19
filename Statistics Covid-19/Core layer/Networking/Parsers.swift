@@ -15,8 +15,6 @@ protocol IParser {
 class StatisticsParser: IParser {
     typealias Model = CountryResponse
 
-    // MARK: - IParser
-
     func parse(data: Data) -> Model? {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -32,8 +30,6 @@ class StatisticsParser: IParser {
 
 class CountryImageParser: IParser {
     typealias Model = CountryImageResponse
-
-    // MARK: - IParser
 
     func parse(data: Data) -> Model? {
         let model: Model? = CountryImageResponse(data: data)

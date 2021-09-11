@@ -113,7 +113,7 @@ class StatisticsViewController: UIViewController {
         coreDataService.saveCountryStatistics(countryStatistics: countryStatistics)
     }
 
-    // MARK: - Handlers
+    // MARK: - Private
 
     private func statisticsHandler(result: Result<CountryStatisticsModel, NetworkServiceError>) {
         switch result {
@@ -137,8 +137,6 @@ class StatisticsViewController: UIViewController {
         loadDataFromStorage()
         loadStatisticsData()
     }
-
-    // MARK: - Helpers
 
     private func showAlert(for error: NetworkServiceError) {
         let alert = UIAlertController(title: AlertConstants.alertTitle, message: error.message, preferredStyle: .alert)

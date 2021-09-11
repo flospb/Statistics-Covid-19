@@ -14,7 +14,7 @@ protocol IAssemblyBuilder {
     func makeWebViewController(url: String) -> UIViewController
 }
 
-class AssemblyBuilder: IAssemblyBuilder {
+final class AssemblyBuilder: IAssemblyBuilder {
 
     // MARK: - Tab bar
 

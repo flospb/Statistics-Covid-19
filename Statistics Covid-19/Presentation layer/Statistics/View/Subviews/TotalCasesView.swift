@@ -145,7 +145,7 @@ class TotalCasesView: UIView {
         ])
     }
 
-    // MARK: - Helpers
+    // MARK: - Private
 
     private func configureStackView(stackView: UIStackView,
                                     axis: NSLayoutConstraint.Axis,

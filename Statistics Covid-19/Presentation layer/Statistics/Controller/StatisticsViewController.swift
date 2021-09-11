@@ -131,7 +131,7 @@ class StatisticsViewController: UIViewController {
     }
 
     private func countrySelectionHandler(countryCode: String) {
-        self.codeCurrentCountry = countryCode
+        codeCurrentCountry = countryCode
         userDefaultsService.saveObject(object: countryCode, for: DefaultCountryConstants.valueKey)
         fillDefaultValues(code: countryCode)
         loadDataFromStorage()

@@ -106,8 +106,8 @@ extension CountryListViewController: ICountryListViewController {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let country = filteredCountryList[indexPath.row]
-        router.closeCountryListViewController()
         delegateHandler?(country.code)
+        router.closeCountryListViewController()
     }
 
     // MARK: - Search bar

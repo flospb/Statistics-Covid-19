@@ -31,7 +31,6 @@
 		B42BD68926BFDF02007969B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD68826BFDF02007969B7 /* AppDelegate.swift */; };
 		B42BD68B26BFDF02007969B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD68A26BFDF02007969B7 /* SceneDelegate.swift */; };
 		B42BD69826BFDF03007969B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B42BD69626BFDF03007969B7 /* LaunchScreen.storyboard */; };
-		B42BD6A326BFDF04007969B7 /* Statistics_Covid_19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6A226BFDF04007969B7 /* Statistics_Covid_19Tests.swift */; };
 		B42BD6AE26BFDF04007969B7 /* Statistics_Covid_19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6AD26BFDF04007969B7 /* Statistics_Covid_19UITests.swift */; };
 		B42BD6C126BFF568007969B7 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6C026BFF568007969B7 /* AssemblyBuilder.swift */; };
 		B42BD6C326BFF6E5007969B7 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6C226BFF6E5007969B7 /* StatisticsViewController.swift */; };
@@ -51,6 +50,7 @@
 		B45F286626EE0E73008C04F1 /* UserDefaultsServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F286526EE0E73008C04F1 /* UserDefaultsServiceTest.swift */; };
 		B45F286B26EE0FA2008C04F1 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20A26D0437A00247152 /* UserDefaultsService.swift */; };
 		B45F286D26EE35B2008C04F1 /* UserDefaultsServiceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F286C26EE35B2008C04F1 /* UserDefaultsServiceMocks.swift */; };
+		B45F287226EE37C1008C04F1 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC1FB26CFF51B00247152 /* NetworkingService.swift */; };
 		B483502426DFF0EE006772B4 /* StatisticsGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483502326DFF0EE006772B4 /* StatisticsGraphView.swift */; };
 		B48831DF26DA657D00A8017B /* StatisticsCovid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B48831DD26DA657D00A8017B /* StatisticsCovid.xcdatamodeld */; };
 		B48831EA26DA66CE00A8017B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48831E926DA66CE00A8017B /* CoreDataStack.swift */; };
@@ -113,7 +113,6 @@
 		B42BD69726BFDF03007969B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B42BD69926BFDF03007969B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B42BD69E26BFDF04007969B7 /* Statistics Covid-19Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Statistics Covid-19Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B42BD6A226BFDF04007969B7 /* Statistics_Covid_19Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics_Covid_19Tests.swift; sourceTree = "<group>"; };
 		B42BD6A426BFDF04007969B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B42BD6A926BFDF04007969B7 /* Statistics Covid-19UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Statistics Covid-19UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B42BD6AD26BFDF04007969B7 /* Statistics_Covid_19UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics_Covid_19UITests.swift; sourceTree = "<group>"; };
@@ -280,10 +279,9 @@
 		B42BD6A126BFDF04007969B7 /* Statistics Covid-19Tests */ = {
 			isa = PBXGroup;
 			children = (
-				B42BD6A226BFDF04007969B7 /* Statistics_Covid_19Tests.swift */,
+				B45F286F26EE362C008C04F1 /* Networking */,
+				B45F286E26EE3619008C04F1 /* User defaults */,
 				B42BD6A426BFDF04007969B7 /* Info.plist */,
-				B45F286526EE0E73008C04F1 /* UserDefaultsServiceTest.swift */,
-				B45F286C26EE35B2008C04F1 /* UserDefaultsServiceMocks.swift */,
 			);
 			path = "Statistics Covid-19Tests";
 			sourceTree = "<group>";
@@ -476,6 +474,22 @@
 				B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		B45F286E26EE3619008C04F1 /* User defaults */ = {
+			isa = PBXGroup;
+			children = (
+				B45F286526EE0E73008C04F1 /* UserDefaultsServiceTest.swift */,
+				B45F286C26EE35B2008C04F1 /* UserDefaultsServiceMocks.swift */,
+			);
+			path = "User defaults";
+			sourceTree = "<group>";
+		};
+		B45F286F26EE362C008C04F1 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		B461A93826C999E500231FD7 /* View */ = {
@@ -863,10 +877,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B45F287226EE37C1008C04F1 /* NetworkingService.swift in Sources */,
 				B45F286B26EE0FA2008C04F1 /* UserDefaultsService.swift in Sources */,
 				B45F286626EE0E73008C04F1 /* UserDefaultsServiceTest.swift in Sources */,
 				B45F286D26EE35B2008C04F1 /* UserDefaultsServiceMocks.swift in Sources */,
-				B42BD6A326BFDF04007969B7 /* Statistics_Covid_19Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

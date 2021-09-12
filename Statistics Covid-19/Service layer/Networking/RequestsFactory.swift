@@ -7,15 +7,6 @@
 
 import Foundation
 
-protocol IRequest {
-    var urlRequest: URLRequest? { get }
-}
-
-struct Configuration<Parser> where Parser: IParser {
-    let request: IRequest
-    let parser: Parser
-}
-
 class StatisticsRequest: IRequest {
 
     // MARK: - Models

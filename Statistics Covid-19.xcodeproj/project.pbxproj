@@ -50,7 +50,11 @@
 		B45F286626EE0E73008C04F1 /* UserDefaultsServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F286526EE0E73008C04F1 /* UserDefaultsServiceTest.swift */; };
 		B45F286B26EE0FA2008C04F1 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20A26D0437A00247152 /* UserDefaultsService.swift */; };
 		B45F286D26EE35B2008C04F1 /* UserDefaultsServiceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F286C26EE35B2008C04F1 /* UserDefaultsServiceMocks.swift */; };
-		B45F287226EE37C1008C04F1 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC1FB26CFF51B00247152 /* NetworkingService.swift */; };
+		B45F288226EE5FE0008C04F1 /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F288126EE5FE0008C04F1 /* NetworkingErrors.swift */; };
+		B45F288426EE6158008C04F1 /* RequestSenderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F288326EE6158008C04F1 /* RequestSenderTest.swift */; };
+		B45F288526EE6304008C04F1 /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CC20126D0067300247152 /* RequestSender.swift */; };
+		B45F288626EE6313008C04F1 /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F288126EE5FE0008C04F1 /* NetworkingErrors.swift */; };
+		B45F288826EE781B008C04F1 /* RequestSenderMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F288726EE781B008C04F1 /* RequestSenderMocks.swift */; };
 		B483502426DFF0EE006772B4 /* StatisticsGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483502326DFF0EE006772B4 /* StatisticsGraphView.swift */; };
 		B48831DF26DA657D00A8017B /* StatisticsCovid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B48831DD26DA657D00A8017B /* StatisticsCovid.xcdatamodeld */; };
 		B48831EA26DA66CE00A8017B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48831E926DA66CE00A8017B /* CoreDataStack.swift */; };
@@ -134,6 +138,9 @@
 		B451BBD826D161AB008A3791 /* CountryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableViewCell.swift; sourceTree = "<group>"; };
 		B45F286526EE0E73008C04F1 /* UserDefaultsServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsServiceTest.swift; sourceTree = "<group>"; };
 		B45F286C26EE35B2008C04F1 /* UserDefaultsServiceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsServiceMocks.swift; sourceTree = "<group>"; };
+		B45F288126EE5FE0008C04F1 /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
+		B45F288326EE6158008C04F1 /* RequestSenderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSenderTest.swift; sourceTree = "<group>"; };
+		B45F288726EE781B008C04F1 /* RequestSenderMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSenderMocks.swift; sourceTree = "<group>"; };
 		B483502326DFF0EE006772B4 /* StatisticsGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsGraphView.swift; sourceTree = "<group>"; };
 		B48831DE26DA657D00A8017B /* StatisticsCovid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StatisticsCovid.xcdatamodel; sourceTree = "<group>"; };
 		B48831E926DA66CE00A8017B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -205,6 +212,9 @@
 			children = (
 				B40CC1FB26CFF51B00247152 /* NetworkingService.swift */,
 				B40CC20526D01E6800247152 /* NetworkingServiceModels.swift */,
+				B45F288126EE5FE0008C04F1 /* NetworkingErrors.swift */,
+				B40CC20326D00CE800247152 /* Parsers.swift */,
+				B40CC1FE26CFFF1400247152 /* RequestsFactory.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -212,9 +222,7 @@
 		B40CC20026CFFFDF00247152 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				B40CC1FE26CFFF1400247152 /* RequestsFactory.swift */,
 				B40CC20126D0067300247152 /* RequestSender.swift */,
-				B40CC20326D00CE800247152 /* Parsers.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -488,6 +496,8 @@
 		B45F286F26EE362C008C04F1 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				B45F288326EE6158008C04F1 /* RequestSenderTest.swift */,
+				B45F288726EE781B008C04F1 /* RequestSenderMocks.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -853,6 +863,7 @@
 				B4C27F2C26C1BF84005738F6 /* InformationModels.swift in Sources */,
 				B421DB7426E54A9900951A64 /* VaccinationModel.swift in Sources */,
 				B423F3F226C84A9F0054C163 /* StatisticsModel.swift in Sources */,
+				B45F288226EE5FE0008C04F1 /* NetworkingErrors.swift in Sources */,
 				B4210F0426E8048100369644 /* WebViewController.swift in Sources */,
 				B42BD6C626C00021007969B7 /* Constants.swift in Sources */,
 				B4096D4C26DA8494008FCF70 /* DBCountry+CoreDataClass.swift in Sources */,
@@ -877,8 +888,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B45F287226EE37C1008C04F1 /* NetworkingService.swift in Sources */,
+				B45F288426EE6158008C04F1 /* RequestSenderTest.swift in Sources */,
 				B45F286B26EE0FA2008C04F1 /* UserDefaultsService.swift in Sources */,
+				B45F288826EE781B008C04F1 /* RequestSenderMocks.swift in Sources */,
+				B45F288626EE6313008C04F1 /* NetworkingErrors.swift in Sources */,
+				B45F288526EE6304008C04F1 /* RequestSender.swift in Sources */,
 				B45F286626EE0E73008C04F1 /* UserDefaultsServiceTest.swift in Sources */,
 				B45F286D26EE35B2008C04F1 /* UserDefaultsServiceMocks.swift in Sources */,
 			);

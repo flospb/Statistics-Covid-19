@@ -115,7 +115,7 @@ class StatisticsViewController: UIViewController {
 
     // MARK: - Private
 
-    private func statisticsHandler(result: Result<CountryStatisticsModel, NetworkServiceError>) {
+    private func statisticsHandler(result: Result<CountryStatisticsModel, NetworkingError>) {
         switch result {
         case .success(let countryStatistics):
             self.saveDataToStorage(countryStatistics: countryStatistics)
@@ -138,7 +138,7 @@ class StatisticsViewController: UIViewController {
         loadStatisticsData()
     }
 
-    private func showAlert(for error: NetworkServiceError) {
+    private func showAlert(for error: NetworkingError) {
         let alert = UIAlertController(title: AlertConstants.alertTitle, message: error.message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: AlertConstants.alertActionOk, style: .default, handler: nil))
         self.present(alert, animated: true)

@@ -9,7 +9,7 @@ import Foundation
 
 protocol INetworkingService {
     func fetchDataByCountry(codeCurrentCountry: String?,
-                            completion: @escaping (Result<CountryStatisticsModel, NetworkServiceError>) -> Void)
+                            completion: @escaping (Result<CountryStatisticsModel, NetworkingError>) -> Void)
 }
 
 class NetworkingService: INetworkingService {
@@ -29,19 +29,19 @@ class NetworkingService: INetworkingService {
     // MARK: - Fetching data
 
     func fetchDataByCountry(codeCurrentCountry: String?,
-                            completion: @escaping (Result<CountryStatisticsModel, NetworkServiceError>) -> Void) {
+                            completion: @escaping (Result<CountryStatisticsModel, NetworkingError>) -> Void) {
 
         let codeCountry = codeCurrentCountry ?? DefaultCountryConstants.countryCode
 
         var countryImageResponse: CountryImageResponse?
         var countryResponse: CountryResponse?
-        var errorResult = NetworkServiceError.unknown
+        var errorResult = NetworkingError.unknown
 
         let dispatchGroup = DispatchGroup()
 
         dispatchGroup.enter()
         let statisticsConfiguration = RequestsFactory.statisticsConfiguration(countryCode: codeCountry)
-        requestSender.send(configuration: statisticsConfiguration) { (result: Result<CountryResponse, NetworkServiceError>) in
+        requestSender.send(configuration: statisticsConfiguration) { (result: Result<CountryResponse, NetworkingError>) in
             switch result {
             case .success(let country):
                 countryResponse = country
@@ -53,7 +53,7 @@ class NetworkingService: INetworkingService {
 
         dispatchGroup.enter()
         let countryImageConfiguration = RequestsFactory.countryImageConfiguration(countryCode: codeCountry)
-        requestSender.send(configuration: countryImageConfiguration) { (result: Result<CountryImageResponse, NetworkServiceError>) in
+        requestSender.send(configuration: countryImageConfiguration) { (result: Result<CountryImageResponse, NetworkingError>) in
             switch result {
             case .success(let imageData):
                 countryImageResponse = imageData
@@ -71,28 +71,6 @@ class NetworkingService: INetworkingService {
             let countryStatistics = self.dataMapper.getStatisticsModelByCountry(statistics: countryResponse,
                                                                                 countryImage: countryImageResponse)
             completion(.success(countryStatistics))
-        }
-    }
-}
-
-// MARK: - Errors
-
-enum NetworkServiceError: Error {
-    case incorrectUrl
-    case networking
-    case decoding
-    case unknown
-
-    var message: String {
-        switch self {
-        case .incorrectUrl:
-            return "Использован некорректный URL. Повторите попытку позже."
-        case .networking:
-            return "Ошибка соединения. Повторите попытку позже."
-        case .decoding:
-            return "Ошибка получения данных. Повторите попытку позже."
-        case .unknown:
-            return "Неизвестная ошибка. Повторите попытку позже."
         }
     }
 }

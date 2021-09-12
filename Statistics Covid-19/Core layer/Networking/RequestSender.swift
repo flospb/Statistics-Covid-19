@@ -7,20 +7,40 @@
 
 import Foundation
 
+protocol IRequest {
+    var urlRequest: URLRequest? { get }
+}
+
+protocol IParser {
+    associatedtype Model
+    func parse(data: Data) -> Model?
+}
+
+struct Configuration<Parser> where Parser: IParser {
+    let request: IRequest
+    let parser: Parser
+}
+
 protocol IRequestSender {
-    func send<Parser>(configuration: Configuration<Parser>, completion: @escaping (Result<Parser.Model, NetworkServiceError>) -> Void)
+    func send<Parser>(configuration: Configuration<Parser>, completion: @escaping (Result<Parser.Model, NetworkingError>) -> Void)
 }
 
 class RequestSender: IRequestSender {
 
-    // MARK: - Models
+    // MARK: - Dependencies
 
-    private let session = URLSession.shared
+    private let session: URLSession
+
+    // MARK: - Initialization
+
+    init(session: URLSession = URLSession.shared) {
+        self.session = session
+    }
 
     // MARK: - IRequestSender
 
     func send<Parser>(configuration: Configuration<Parser>,
-                      completion: @escaping (Result<Parser.Model, NetworkServiceError>) -> Void) {
+                      completion: @escaping (Result<Parser.Model, NetworkingError>) -> Void) {
         guard let urlRequest = configuration.request.urlRequest else {
             completion(.failure(.incorrectUrl))
             return

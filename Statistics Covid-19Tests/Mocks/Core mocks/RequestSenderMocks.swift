@@ -13,7 +13,6 @@ class URLSessionDataTaskMock: URLSessionDataTask {
     init(closure: @escaping () -> Void) {
         self.closure = closure
     }
-
     override func resume() {
         closure()
     }
@@ -35,7 +34,7 @@ class URLSessionMock: URLSession {
     }
 }
 
-class MockRequest: IRequest {
+class RequestMock: IRequest {
     var urlRequest: URLRequest?
 
     init(url: URL) {
@@ -43,7 +42,7 @@ class MockRequest: IRequest {
     }
 }
 
-class MockParser: IParser {
+class ParserMock: IParser {
     typealias Model = Data
 
     var data: Data

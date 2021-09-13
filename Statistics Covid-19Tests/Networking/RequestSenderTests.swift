@@ -1,5 +1,5 @@
 //
-//  RequestSenderTest.swift
+//  RequestSenderTests.swift
 //  Statistics Covid-19Tests
 //
 //  Created by Сергей Флоря on 12.09.2021.
@@ -11,9 +11,9 @@ import XCTest
 class RequestSenderTest: XCTestCase {
     var sut: IRequestSender!
     var session: URLSessionMock!
-    var request: MockRequest!
-    var parser: MockParser!
-    var result: Result<MockParser.Model, NetworkingError>!
+    var request: RequestMock!
+    var parser: ParserMock!
+    var result: Result<ParserMock.Model, NetworkingError>!
 
     let data = Data([1])
     let error = NetworkingError.networking
@@ -21,8 +21,8 @@ class RequestSenderTest: XCTestCase {
     override func setUp() {
         super.setUp()
         session = URLSessionMock()
-        request = MockRequest(url: URL(fileURLWithPath: "testUrl"))
-        parser = MockParser(data: data)
+        request = RequestMock(url: URL(fileURLWithPath: "testUrl"))
+        parser = ParserMock(data: data)
         sut = RequestSender(session: session)
     }
 

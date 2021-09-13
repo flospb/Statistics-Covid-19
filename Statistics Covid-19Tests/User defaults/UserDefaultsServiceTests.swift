@@ -1,5 +1,5 @@
 //
-//  UserDefaultsServiceTest.swift
+//  UserDefaultsServiceTests.swift
 //  Statistics Covid-19Tests
 //
 //  Created by Сергей Флоря on 12.09.2021.
@@ -24,6 +24,7 @@ class UserDefaultsServiceTest: XCTestCase {
         super.tearDown()
         sut = nil
         userDefaultsMock = nil
+        testKey = nil
     }
 
     func testThatCheckSavingData() {

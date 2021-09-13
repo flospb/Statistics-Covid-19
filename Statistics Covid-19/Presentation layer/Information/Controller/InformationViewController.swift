@@ -18,12 +18,13 @@ class InformationViewController: UIViewController {
     // MARK: - Models
 
     private var cellName = CellNames.informationCollectionCell
-    private var symptomsCollection = SymptomModel.imageAddresses
+    private var symptomsCollection: [String]
 
     // MARK: - Initialization
 
-    init(view: IInformationView) {
+    init(view: IInformationView, symptomsCollection: [String] = SymptomModel.imageAddresses) {
         self.informationView = view
+        self.symptomsCollection = symptomsCollection
         super.init(nibName: nil, bundle: nil)
     }
 

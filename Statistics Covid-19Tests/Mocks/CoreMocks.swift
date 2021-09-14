@@ -1,5 +1,5 @@
 //
-//  RequestSenderMocks.swift
+//  CoreMocks.swift
 //  Statistics Covid-19Tests
 //
 //  Created by Сергей Флоря on 12.09.2021.

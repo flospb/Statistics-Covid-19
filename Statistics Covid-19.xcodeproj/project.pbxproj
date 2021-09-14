@@ -69,6 +69,8 @@
 		B4AFDD0926F11D98001E640B /* DataFormatterServiceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AFDD0826F11D98001E640B /* DataFormatterServiceMocks.swift */; };
 		B4AFDD0D26F12590001E640B /* CountryListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AFDD0C26F12590001E640B /* CountryListControllerTests.swift */; };
 		B4AFDD0F26F12623001E640B /* CountryListControllerMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AFDD0E26F12623001E640B /* CountryListControllerMocks.swift */; };
+		B4AFDD1126F1328A001E640B /* NetworkingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AFDD1026F1328A001E640B /* NetworkingServiceTests.swift */; };
+		B4AFDD1326F13E0B001E640B /* DataMapperMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AFDD1226F13E0B001E640B /* DataMapperMocks.swift */; };
 		B4C27F2C26C1BF84005738F6 /* InformationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C27F2B26C1BF84005738F6 /* InformationModels.swift */; };
 		B4CB879126C93A8D00F68893 /* TotalCasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CB879026C93A8D00F68893 /* TotalCasesView.swift */; };
 		B4CB879326C96BC300F68893 /* CommandButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CB879226C96BC300F68893 /* CommandButtonView.swift */; };
@@ -211,6 +213,8 @@
 		B4AFDD0826F11D98001E640B /* DataFormatterServiceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatterServiceMocks.swift; sourceTree = "<group>"; };
 		B4AFDD0C26F12590001E640B /* CountryListControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListControllerTests.swift; sourceTree = "<group>"; };
 		B4AFDD0E26F12623001E640B /* CountryListControllerMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListControllerMocks.swift; sourceTree = "<group>"; };
+		B4AFDD1026F1328A001E640B /* NetworkingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceTests.swift; sourceTree = "<group>"; };
+		B4AFDD1226F13E0B001E640B /* DataMapperMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapperMocks.swift; sourceTree = "<group>"; };
 		B4C27F2B26C1BF84005738F6 /* InformationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationModels.swift; sourceTree = "<group>"; };
 		B4CB879026C93A8D00F68893 /* TotalCasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCasesView.swift; sourceTree = "<group>"; };
 		B4CB879226C96BC300F68893 /* CommandButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandButtonView.swift; sourceTree = "<group>"; };
@@ -693,6 +697,7 @@
 				B45F288326EE6158008C04F1 /* RequestSenderTests.swift */,
 				B45F286526EE0E73008C04F1 /* UserDefaultsServiceTests.swift */,
 				B4AFDD0626F11D12001E640B /* DataMapperTests.swift */,
+				B4AFDD1026F1328A001E640B /* NetworkingServiceTests.swift */,
 			);
 			path = "Services tests";
 			sourceTree = "<group>";
@@ -707,6 +712,7 @@
 				B4CD732626EFF65000C218CF /* AssemblyBuilderMocks.swift */,
 				B4AFDD0426F115F9001E640B /* ImageStorageServiceMocks.swift */,
 				B4AFDD0826F11D98001E640B /* DataFormatterServiceMocks.swift */,
+				B4AFDD1226F13E0B001E640B /* DataMapperMocks.swift */,
 			);
 			path = "Services mocks";
 			sourceTree = "<group>";
@@ -1003,6 +1009,7 @@
 				B4CD72EC26EFBC0B00C218CF /* InformationViewController.swift in Sources */,
 				B4CD730C26EFF18700C218CF /* LinkContactView.swift in Sources */,
 				B4AFDD0126F11205001E640B /* VaccinationControllerMocks.swift in Sources */,
+				B4AFDD1126F1328A001E640B /* NetworkingServiceTests.swift in Sources */,
 				B45F288426EE6158008C04F1 /* RequestSenderTests.swift in Sources */,
 				B4CD72FA26EFC74400C218CF /* StatisticsModel.swift in Sources */,
 				B45F286B26EE0FA2008C04F1 /* UserDefaultsService.swift in Sources */,
@@ -1026,6 +1033,7 @@
 				B4CD72F726EFC61F00C218CF /* DataMapper.swift in Sources */,
 				B4CD72F826EFC6AD00C218CF /* DBCountry+CoreDataClass.swift in Sources */,
 				B4CD72F426EFC25200C218CF /* StatisticsViewControllerTests.swift in Sources */,
+				B4AFDD1326F13E0B001E640B /* DataMapperMocks.swift in Sources */,
 				B45F288626EE6313008C04F1 /* NetworkingErrors.swift in Sources */,
 				B4CD732526EFF5E100C218CF /* CoreDataServiceMocks.swift in Sources */,
 				B4CD731226EFF21800C218CF /* CoreDataStack.swift in Sources */,

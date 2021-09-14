@@ -67,6 +67,8 @@
 		B4AFDD0526F115F9001E640B /* ImageStorageServiceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AFDD0426F115F9001E640B /* ImageStorageServiceMocks.swift */; };
 		B4AFDD0726F11D12001E640B /* DataMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AFDD0626F11D12001E640B /* DataMapperTests.swift */; };
 		B4AFDD0926F11D98001E640B /* DataFormatterServiceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AFDD0826F11D98001E640B /* DataFormatterServiceMocks.swift */; };
+		B4AFDD0D26F12590001E640B /* CountryListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AFDD0C26F12590001E640B /* CountryListControllerTests.swift */; };
+		B4AFDD0F26F12623001E640B /* CountryListControllerMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AFDD0E26F12623001E640B /* CountryListControllerMocks.swift */; };
 		B4C27F2C26C1BF84005738F6 /* InformationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C27F2B26C1BF84005738F6 /* InformationModels.swift */; };
 		B4CB879126C93A8D00F68893 /* TotalCasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CB879026C93A8D00F68893 /* TotalCasesView.swift */; };
 		B4CB879326C96BC300F68893 /* CommandButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CB879226C96BC300F68893 /* CommandButtonView.swift */; };
@@ -207,6 +209,8 @@
 		B4AFDD0426F115F9001E640B /* ImageStorageServiceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorageServiceMocks.swift; sourceTree = "<group>"; };
 		B4AFDD0626F11D12001E640B /* DataMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapperTests.swift; sourceTree = "<group>"; };
 		B4AFDD0826F11D98001E640B /* DataFormatterServiceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatterServiceMocks.swift; sourceTree = "<group>"; };
+		B4AFDD0C26F12590001E640B /* CountryListControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListControllerTests.swift; sourceTree = "<group>"; };
+		B4AFDD0E26F12623001E640B /* CountryListControllerMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListControllerMocks.swift; sourceTree = "<group>"; };
 		B4C27F2B26C1BF84005738F6 /* InformationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationModels.swift; sourceTree = "<group>"; };
 		B4CB879026C93A8D00F68893 /* TotalCasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCasesView.swift; sourceTree = "<group>"; };
 		B4CB879226C96BC300F68893 /* CommandButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandButtonView.swift; sourceTree = "<group>"; };
@@ -677,6 +681,7 @@
 				B4AFDCFD26F1119A001E640B /* VaccinationViewControllerTests.swift */,
 				B4CD72F326EFC25200C218CF /* StatisticsViewControllerTests.swift */,
 				B4CD72E526EFBB9F00C218CF /* InformationControllerTests.swift */,
+				B4AFDD0C26F12590001E640B /* CountryListControllerTests.swift */,
 			);
 			path = "Controllers tests";
 			sourceTree = "<group>";
@@ -712,6 +717,7 @@
 				B4CD72E726EFBBD900C218CF /* InformationControllerMocks.swift */,
 				B4CD732226EFF4DE00C218CF /* StatisticsControllerMocks.swift */,
 				B4AFDD0026F11205001E640B /* VaccinationControllerMocks.swift */,
+				B4AFDD0E26F12623001E640B /* CountryListControllerMocks.swift */,
 			);
 			path = "Controllers mocks";
 			sourceTree = "<group>";
@@ -1014,6 +1020,7 @@
 				B4AFDD0526F115F9001E640B /* ImageStorageServiceMocks.swift in Sources */,
 				B4CD731126EFF20600C218CF /* NetworkingService.swift in Sources */,
 				B4AFDCFE26F1119A001E640B /* VaccinationViewControllerTests.swift in Sources */,
+				B4AFDD0F26F12623001E640B /* CountryListControllerMocks.swift in Sources */,
 				B4CD732126EFF45D00C218CF /* NetworkingServiceMocks.swift in Sources */,
 				B4CD730426EFF15800C218CF /* CountryListViewController.swift in Sources */,
 				B4CD72F726EFC61F00C218CF /* DataMapper.swift in Sources */,
@@ -1036,6 +1043,7 @@
 				B4CD72F126EFBF3300C218CF /* DataFormatterServiceTests.swift in Sources */,
 				B4CD731C26EFF2AD00C218CF /* TotalCasesView.swift in Sources */,
 				B4CD730B26EFF18400C218CF /* PhoneContactView.swift in Sources */,
+				B4AFDD0D26F12590001E640B /* CountryListControllerTests.swift in Sources */,
 				B4CD732726EFF65000C218CF /* AssemblyBuilderMocks.swift in Sources */,
 				B4CD72E626EFBB9F00C218CF /* InformationControllerTests.swift in Sources */,
 				B4CD72FB26EFC75400C218CF /* DBStatistics+CoreDataClass.swift in Sources */,

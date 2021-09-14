@@ -27,6 +27,10 @@ class MainRouterMock: IMainRouter {
         openWebViewControllerWasCalled = true
     }
 
+    var closeCountryListViewControllerWasCalled = false
+    func closeCountryListViewController() {
+        closeCountryListViewControllerWasCalled = true
+    }
+
     func openCountryListViewController(controller: ICountryListViewController) {}
-    func closeCountryListViewController() {}
 }

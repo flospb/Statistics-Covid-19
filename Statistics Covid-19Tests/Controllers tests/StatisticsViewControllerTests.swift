@@ -6,16 +6,17 @@
 //
 
 import XCTest
+import UIKit
 @testable import Statistics_Covid_19
 
 class StatisticsViewControllerTest: XCTestCase {
-    var sut: StatisticsViewController!
-    var view: IStatisticsView!
-    var router: IMainRouter!
-    var networkingService: INetworkingService!
-    var coreDataService: ICoreDataService!
-    var builder: IAssemblyBuilder!
-    var userDefaultsService: IUserDefaultsService!
+    var sut: IStatisticsViewController!
+    var view: StatisticsViewMock!
+    var router: MainRouterMock!
+    var networkingService: NetworkingServiceMock!
+    var coreDataService: CoreDataServiceMock!
+    var builder: AssemblyBuilderMock!
+    var userDefaultsService: UserDefaultsServiceMock!
 
     override func setUp() {
         super.setUp()
@@ -47,14 +48,14 @@ class StatisticsViewControllerTest: XCTestCase {
         sut = nil
     }
 
-    func testThatCheckCountryTapped() {
+    func testThatCheckShareButtonTapped() {
         // arrange
-//        let countryListViewController = CountryListViewControllerMock()
-//
-//        // act
-//        router.openCountryListViewController(controller: countryListViewController)
-//
-//        // assert
-//        XCAssertTrue(router.openCountryListViewControllerWasCalled)
+        let activityViewControllerMock = UIActivityViewController(activityItems: [], applicationActivities: nil)
+
+        // act
+        router.openActivityViewController(activityViewController: activityViewControllerMock)
+
+        // assert
+        XCTAssertTrue(router.openActivityViewControllerWasCalled)
     }
 }

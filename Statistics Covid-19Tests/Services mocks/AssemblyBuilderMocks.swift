@@ -1,5 +1,5 @@
 //
-//  AssemblyBuilderMock.swift
+//  AssemblyBuilderMocks.swift
 //  Statistics Covid-19Tests
 //
 //  Created by Сергей Флоря on 14.09.2021.

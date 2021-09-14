@@ -1,5 +1,5 @@
 //
-//  MainRouterMock.swift
+//  MainRouterMocks.swift
 //  Statistics Covid-19Tests
 //
 //  Created by Сергей Флоря on 13.09.2021.
@@ -12,20 +12,21 @@ class MainRouterMock: IMainRouter {
     func setNavigationControllers(statisticsNavigation: UINavigationController,
                                   informationNavigation: UINavigationController,
                                   vaccinationNavigation: UINavigationController) {}
-
     var openActivityViewControllerWasCalled = false
     func openActivityViewController(activityViewController: UIActivityViewController) {
         openActivityViewControllerWasCalled = true
     }
 
-    var openCountryListViewControllerWasCalled = false
-    func openCountryListViewController(controller: ICountryListViewController) {
-        openCountryListViewControllerWasCalled = true
+    var openImagePickerControllerWasCalled = false
+    func openImagePickerController(controller: IVaccinationViewController) {
+        openImagePickerControllerWasCalled = true
     }
 
+    var openWebViewControllerWasCalled = false
+    func openWebViewController(controller: UIViewController = UIViewController()) {
+        openWebViewControllerWasCalled = true
+    }
+
+    func openCountryListViewController(controller: ICountryListViewController) {}
     func closeCountryListViewController() {}
-
-    func openWebViewController(controller: UIViewController) {}
-
-    func openImagePickerController(controller: IVaccinationViewController) {}
 }

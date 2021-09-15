@@ -1,5 +1,5 @@
 //
-//  Statistics_Covid_19UITests.swift
+//  StatisticsCovid19UITests.swift
 //  Statistics Covid-19UITests
 //
 //  Created by Сергей Флоря on 08.08.2021.

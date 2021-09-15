@@ -8,7 +8,7 @@
 // MARK: - Symptoms
 
 struct SymptomModel {
-    static var imageAddresses: [String] = ["Temperature", "Cough", "Fatigue", "Dyspnea", "MusclePain"]
+    static var imageAddresses: [String] = ["Temperature", "Cough", "Fatigue", "Dyspnea"]
 }
 
 // MARK: - Recommendations
@@ -21,26 +21,20 @@ struct Recommendation {
 
 struct RecommendationModel {
     static let recommendations: [Recommendation] = [
-        Recommendation(title: "Оставайтесь дома",
-                       content: "Карантин - Способ остановить распространение коронавируса",
-                       imageAddress: "StayHome"),
-        Recommendation(title: "Ограничьте личные контакты с людьми",
-                       content: "Меньше контактов - меньше вероятность заражения",
+        Recommendation(title: "Ограничьте личные контакты",
+                       content: "Карантин - Способ остановить распространение коронавируса и снижает вероятность заражения",
                        imageAddress: "LimitContacts"),
         Recommendation(title: "Соблюдайте дистанцию",
-                       content: "На улице постарайтесь держаться на расстоянии 2 метров от окружающих",
+                       content: "На улице постарайтесь держаться примерно на расстоянии 2 метров от окружающих",
                        imageAddress: "KeepDistance"),
         Recommendation(title: "Еще чаще мойте руки",
                        content: "После каждого выхода на улицу обрабатывайте телефон ключи и банковскую карту",
                        imageAddress: "WashHands"),
         Recommendation(title: "Используйте средства защиты",
-                       content: "Надевайте маску, если вы чувствуете себя заболевшим",
+                       content: "Надевайте маску, если вы чувствуете себя заболевшим, а лучше уйти на карантин",
                        imageAddress: "MeansOfProtection"),
         Recommendation(title: "Сохраняйте спокойствие",
-                       content: "Высыпайтесь, ешьте полезное и занимайтесь спортом дома",
-                       imageAddress: "KeepingCalm"),
-        Recommendation(title: "Будьте на связи с близкими",
-                       content: "Говорите с друзьями и близкими, сохраняйте с ними контакт",
-                       imageAddress: "StayConnected")
+                       content: "Высыпайтесь, ешьте полезное, занимайтесь спортом дома, говорите с друзьями и близкими",
+                       imageAddress: "KeepingCalm")
     ]
 }

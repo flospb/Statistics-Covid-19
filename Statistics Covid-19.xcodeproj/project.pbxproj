@@ -31,7 +31,6 @@
 		B42BD68926BFDF02007969B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD68826BFDF02007969B7 /* AppDelegate.swift */; };
 		B42BD68B26BFDF02007969B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD68A26BFDF02007969B7 /* SceneDelegate.swift */; };
 		B42BD69826BFDF03007969B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B42BD69626BFDF03007969B7 /* LaunchScreen.storyboard */; };
-		B42BD6AE26BFDF04007969B7 /* Statistics_Covid_19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6AD26BFDF04007969B7 /* Statistics_Covid_19UITests.swift */; };
 		B42BD6C126BFF568007969B7 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6C026BFF568007969B7 /* AssemblyBuilder.swift */; };
 		B42BD6C326BFF6E5007969B7 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6C226BFF6E5007969B7 /* StatisticsViewController.swift */; };
 		B42BD6C626C00021007969B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6C526C00021007969B7 /* Constants.swift */; };
@@ -39,6 +38,8 @@
 		B42BD6CC26C0091A007969B7 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6CB26C0091A007969B7 /* InformationViewController.swift */; };
 		B42BD6D026C013DF007969B7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6CF26C013DF007969B7 /* InformationView.swift */; };
 		B42BD6D226C02BB8007969B7 /* InformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6D126C02BB8007969B7 /* InformationCollectionViewCell.swift */; };
+		B436AAB426F256F500788C49 /* PageObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B436AAB326F256F500788C49 /* PageObjects.swift */; };
+		B436AAB626F2648B00788C49 /* Statistics_Covid_19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BD6AD26BFDF04007969B7 /* Statistics_Covid_19UITests.swift */; };
 		B43C946226E69CA0008DAF93 /* FileStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C946126E69CA0008DAF93 /* FileStorageService.swift */; };
 		B447911926DBCFCB00A8CEA6 /* ImageActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447911826DBCFCB00A8CEA6 /* ImageActivityItemSource.swift */; };
 		B449E8ED26E3E3700089815B /* VaccinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B449E8EC26E3E3700089815B /* VaccinationView.swift */; };
@@ -176,6 +177,7 @@
 		B42BD6CB26C0091A007969B7 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		B42BD6CF26C013DF007969B7 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		B42BD6D126C02BB8007969B7 /* InformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCollectionViewCell.swift; sourceTree = "<group>"; };
+		B436AAB326F256F500788C49 /* PageObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageObjects.swift; sourceTree = "<group>"; };
 		B43C946126E69CA0008DAF93 /* FileStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageService.swift; sourceTree = "<group>"; };
 		B447911826DBCFCB00A8CEA6 /* ImageActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageActivityItemSource.swift; sourceTree = "<group>"; };
 		B449E8EC26E3E3700089815B /* VaccinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationView.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			children = (
 				B42BD6AD26BFDF04007969B7 /* Statistics_Covid_19UITests.swift */,
 				B42BD6AF26BFDF04007969B7 /* Info.plist */,
+				B436AAB326F256F500788C49 /* PageObjects.swift */,
 			);
 			path = "Statistics Covid-19UITests";
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 					};
 					B42BD6A826BFDF04007969B7 = {
 						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = B42BD68426BFDF02007969B7;
 					};
 				};
 			};
@@ -1022,7 +1026,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B42BD6AE26BFDF04007969B7 /* Statistics_Covid_19UITests.swift in Sources */,
+				B436AAB626F2648B00788C49 /* Statistics_Covid_19UITests.swift in Sources */,
+				B436AAB426F256F500788C49 /* PageObjects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1271,6 +1276,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Statistics Covid-19";
 			};
 			name = Debug;
 		};
@@ -1292,6 +1298,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Statistics Covid-19";
 			};
 			name = Release;
 		};

@@ -16,7 +16,7 @@ class VaccinationView: UIView {
 
     // MARK: - Dependencies
 
-    var delegate: IVaccinationViewController?
+    weak var delegate: IVaccinationViewController?
 
     // MARK: - UI
 

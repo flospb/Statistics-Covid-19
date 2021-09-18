@@ -17,7 +17,7 @@ class StatisticsView: UIView {
 
     // MARK: - Dependencies
 
-    var delegate: IStatisticsViewController?
+    weak var delegate: IStatisticsViewController?
 
     // MARK: - UI
 

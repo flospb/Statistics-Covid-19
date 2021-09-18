@@ -16,7 +16,7 @@ class InformationView: UIView {
 
     // MARK: - Dependencies
 
-    var delegate: IInformationViewController?
+    weak var delegate: IInformationViewController?
     private let recommendations: [Recommendation]
 
     // MARK: - UI

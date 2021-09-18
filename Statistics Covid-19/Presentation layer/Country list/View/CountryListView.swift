@@ -19,7 +19,7 @@ class CountryListView: UIView {
 
     // MARK: - Dependencies
 
-    var delegate: ICountryListViewController?
+    weak var delegate: ICountryListViewController?
 
     // MARK: - UI
 

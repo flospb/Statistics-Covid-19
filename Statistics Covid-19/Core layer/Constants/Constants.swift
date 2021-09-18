@@ -58,7 +58,7 @@ struct CountryListConstants {
 
 struct VaccinationConstants {
     static let vaccinationTitle = "Вакцинация"
-    static let choiceCertificateTitle = "Выбрать сертификат о вакцинации"
+    static let choiceCertificateTitle = "Выбрать из галереи сертификат о вакцинации"
     static let clearCertificateButton = "Очистить"
     static let contactsTitle = "Полезные контакты"
     static let certificateName = "certificateImage"

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol IStatisticsViewController {
+protocol IStatisticsViewController: AnyObject {
     func countryTapped()
     func shareButtonTapped(image: UIImage)
     func refreshButtonTapped()

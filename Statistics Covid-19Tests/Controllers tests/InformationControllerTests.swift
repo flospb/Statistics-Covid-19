@@ -24,7 +24,7 @@ class InformationControllerTest: XCTestCase {
         view = nil
     }
 
-    func testThatCheckSetDelegateCollectionView() {
+    func testThatCheckSettingDelegateCollectionView() {
         // act
         sut.viewDidLoad()
 
@@ -32,7 +32,7 @@ class InformationControllerTest: XCTestCase {
         XCTAssertTrue(view.setDelegateCollectionViewWasCalled)
     }
 
-    func testThatCheckInitializationTheController14() {
+    func testThatCheckRefundableCountCollectionViewItems() {
         // arrange
         let count = 5
         let symptomsCollection = Array(repeating: "test", count: count)

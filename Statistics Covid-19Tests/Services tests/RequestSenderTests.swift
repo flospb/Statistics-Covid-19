@@ -29,6 +29,10 @@ class RequestSenderTest: XCTestCase {
     override func tearDown() {
         super.tearDown()
         sut = nil
+        session = nil
+        request = nil
+        parser = nil
+        result = nil
     }
 
     func testThatCheckSuccessResponse() {

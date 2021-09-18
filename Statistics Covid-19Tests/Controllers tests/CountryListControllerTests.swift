@@ -34,7 +34,7 @@ class CountryListControllerTests: XCTestCase {
         sut = nil
     }
 
-    func testThatCheckTableViewDidSelectRowAt() {
+    func testThatCheckTableViewDidSelectRow() {
         // act
         sut.tableView?(UITableView(), didSelectRowAt: IndexPath(row: 1, section: 1))
 

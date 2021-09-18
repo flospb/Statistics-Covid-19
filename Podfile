@@ -17,4 +17,8 @@ target 'Statistics Covid-19' do
     # Pods for testing
   end
 
+  target 'Statistics Covid-19SnapshotTests' do
+    pod 'SnapshotTesting', '~> 1.9.0'
+  end
+
 end

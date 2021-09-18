@@ -28,7 +28,7 @@ final class AssemblyBuilder: IAssemblyBuilder {
         let vaccinationViewController = makeVaccinationViewController(router: router)
         let vaccinationNavViewController = makeVaccinationNavViewController(rootViewController: vaccinationViewController)
 
-        let informationViewController = makeInformationViewController(router: router)
+        let informationViewController = makeInformationViewController()
         let informationNavViewController = makeInformationNavViewController(rootViewController: informationViewController)
 
         let viewControllers = [statisticsNavViewController, vaccinationNavViewController, informationNavViewController]
@@ -76,7 +76,7 @@ final class AssemblyBuilder: IAssemblyBuilder {
 
     // MARK: - Information
 
-    private func makeInformationViewController(router: IMainRouter) -> UIViewController {
+    func makeInformationViewController() -> UIViewController {
         let informationView = InformationView(recommendations: RecommendationModel.recommendations)
         let informationViewController = InformationViewController(view: informationView)
         return informationViewController

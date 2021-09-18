@@ -156,4 +156,5 @@ _Важное примечание._
 
 <a name="screens"><h2>Приложения на разных устройствах</h2></a>
 
+<img src="https://user-images.githubusercontent.com/73400440/133897719-2241e05c-3631-47f9-b0ed-c16222519d4e.png" width="300" /><img src="https://user-images.githubusercontent.com/73400440/133897718-67d83eb6-f2ee-4b61-b539-2abbfd8547e8.png" width="300" /><img src="https://user-images.githubusercontent.com/73400440/133897716-ed9839d8-2d23-4ab5-a969-eecc2d6c94cc.png" width="300" />
 

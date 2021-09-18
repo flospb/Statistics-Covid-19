@@ -440,9 +440,9 @@
 		B42BD6C426BFFFBC007969B7 /* Core layer */ = {
 			isa = PBXGroup;
 			children = (
+				B40CC20026CFFFDF00247152 /* Networking */,
 				B48831DC26DA652900A8017B /* Core data */,
 				B499908126D2E3F100B5338A /* Constants */,
-				B40CC20026CFFFDF00247152 /* Networking */,
 			);
 			path = "Core layer";
 			sourceTree = "<group>";
@@ -513,8 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				B449E8EC26E3E3700089815B /* VaccinationView.swift */,
-				B421DB7126E5401900951A64 /* PhoneContactView.swift */,
-				B421DB7626E54BC800951A64 /* LinkContactView.swift */,
+				B4C2DE6B26F5F0B900F62F5A /* Subviews */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -708,6 +707,15 @@
 				B4AFDD1026F1328A001E640B /* NetworkingServiceTests.swift */,
 			);
 			path = "Services tests";
+			sourceTree = "<group>";
+		};
+		B4C2DE6B26F5F0B900F62F5A /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				B421DB7126E5401900951A64 /* PhoneContactView.swift */,
+				B421DB7626E54BC800951A64 /* LinkContactView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		B4CD730226EFF0C100C218CF /* Mocks */ = {

@@ -161,8 +161,8 @@ extension StatisticsViewController: IStatisticsViewController {
 
     func countryTapped() {
         let countryListViewController = builder.makeCountryListViewController(router: router,
-                                                                        countryList: countryList,
-                                                                        countryCode: codeCurrentCountry)
+                                                                              countryList: countryList,
+                                                                              countryCode: codeCurrentCountry)
         countryListViewController.delegateHandler = countrySelectionHandler
         router.openCountryListViewController(controller: countryListViewController)
     }

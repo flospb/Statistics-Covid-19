@@ -39,8 +39,10 @@ struct StatisticsConstants {
     static let refreshImageName = "arrow.counterclockwise.circle"
 
     static let defaultCountryCode = "RU"
+    static let countryAccessibilityValue = "Country"
     static let listOpeningImage = "arrowtriangle.down.fill"
 
+    static let emptyCountryName = "-"
     static let defaultCasesValue = "0"
 }
 

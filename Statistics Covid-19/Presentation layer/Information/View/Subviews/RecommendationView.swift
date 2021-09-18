@@ -17,6 +17,10 @@ class RecommendationView: UIView {
     private let titleView = UILabel()
     private let descriptionView = UILabel()
 
+    // MARK: - Models
+
+    private let anchorСonstant: CGFloat = 10
+
     // MARK: - Initialization
 
     init(frame: CGRect, title: String, content: String, imageName: String) {
@@ -65,8 +69,8 @@ class RecommendationView: UIView {
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: 30),
             imageView.heightAnchor.constraint(equalToConstant: 30),
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10)
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: anchorСonstant),
+            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant)
         ])
     }
 
@@ -81,10 +85,10 @@ class RecommendationView: UIView {
 
         self.addSubview(rightContentStackView)
         NSLayoutConstraint.activate([
-            rightContentStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            rightContentStackView.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: 10),
-            rightContentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            rightContentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+            rightContentStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: anchorСonstant),
+            rightContentStackView.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: anchorСonstant),
+            rightContentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -anchorСonstant),
+            rightContentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -anchorСonstant)
         ])
     }
 

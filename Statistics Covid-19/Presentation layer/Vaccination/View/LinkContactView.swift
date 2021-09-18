@@ -17,6 +17,7 @@ class LinkContactView: UIView {
 
     // MARK: - Models
 
+    private let anchorСonstant: CGFloat = 10
     let link = LinkContactModel.link
 
     // MARK: - Initialization
@@ -50,10 +51,10 @@ class LinkContactView: UIView {
 
         self.addSubview(contentStackView)
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            contentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            contentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            contentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+            contentStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: anchorСonstant),
+            contentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant),
+            contentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -anchorСonstant),
+            contentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -anchorСonstant)
         ])
     }
 

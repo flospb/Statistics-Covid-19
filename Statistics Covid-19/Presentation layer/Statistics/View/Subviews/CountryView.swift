@@ -20,6 +20,10 @@ class CountryView: UIView {
     private let countryName = UILabel()
     private let listOpeningImage = UIImageView()
 
+    // MARK: - Models
+
+    private let anchorСonstant: CGFloat = 10
+
     // MARK: - Initialization
 
     init() {
@@ -45,7 +49,7 @@ class CountryView: UIView {
     private func addContentStackView() {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         contentStackView.axis = .horizontal
-        contentStackView.spacing = 10.0
+        contentStackView.spacing = anchorСonstant
         contentStackView.alignment = .fill
 
         contentStackView.addArrangedSubview(countryImage)
@@ -55,8 +59,8 @@ class CountryView: UIView {
         self.addSubview(contentStackView)
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: self.topAnchor),
-            contentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            contentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            contentStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant),
+            contentStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -anchorСonstant),
             contentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
@@ -77,10 +81,10 @@ class CountryView: UIView {
     }
 
     private func settingCountryName() {
-        countryName.text = "-"
+        countryName.text = StatisticsConstants.emptyCountryName
         countryName.font = FontConstants.mediumBoldTitle
         countryName.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        countryName.accessibilityValue = "Country"
+        countryName.accessibilityValue = StatisticsConstants.countryAccessibilityValue
     }
 
     private func settingListOpeningImage() {

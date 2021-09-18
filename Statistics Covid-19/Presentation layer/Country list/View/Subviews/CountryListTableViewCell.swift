@@ -15,6 +15,10 @@ class CountryListTableViewCell: UITableViewCell {
     private let countryNameView = UILabel()
     private let selectedCountryImageView = UIImageView()
 
+    // MARK: - Models
+
+    private let anchorСonstant: CGFloat = 10
+
     // MARK: - Initialization
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -45,10 +49,10 @@ class CountryListTableViewCell: UITableViewCell {
 
         self.addSubview(self.containerView)
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+            containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: anchorСonstant),
+            containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: anchorСonstant),
+            containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -anchorСonstant),
+            containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -anchorСonstant)
         ])
     }
 

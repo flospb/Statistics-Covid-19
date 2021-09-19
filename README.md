@@ -117,8 +117,17 @@
 * Service layer - слой, в котором расположены все сервисы (Networking, CoreData и пр.)
 * Core layer - слой, в котором расположены универсальные механизмы, но так же в разбивке по контексту использования
 
+<img src="https://user-images.githubusercontent.com/73400440/133921489-0095fc7e-d9d1-474b-8375-dab5a8bebac8.png" width="500" />
+
 _Важное примечание._
 Когда происходит запуск приложения, сначала получаются и отображаются данные из хранилища (если они конечно есть), а после загрузки данных из сети - отображаются и параллельно отправляются на запись в базу данных. Ориентировался в этом вопросе на телеграм - когда нет сети, чаты все равно отображаются, просто с неактуальной информацией.
+
+Из шаблонов проектирования использовал:
+Router (урезанный координатор, отвечает только за навигацию) - Service layer ->  Routers -> MainRouter
+Builder - Service layer -> Builders -> AssemblyBuilder
+Data mapper - Service layer -> Data mappers -> DataMapper
+Factory - Service layer -> Networking -> RequestsFactory
+Observer - Presentation layer -> Country list -> Controller -> CountryListViewController
 
 <a name="services"><h2>Описание предназначения сервисов</h2></a>
 Сервисы:
